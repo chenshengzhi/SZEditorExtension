@@ -1,0 +1,697 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		24A6CD681D96831100ECEF89 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A6CD671D96831100ECEF89 /* AppDelegate.m */; };
+		24A6CD6B1D96831100ECEF89 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A6CD6A1D96831100ECEF89 /* main.m */; };
+		24A6CD6E1D96831100ECEF89 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A6CD6D1D96831100ECEF89 /* ViewController.m */; };
+		24A6CD701D96831100ECEF89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24A6CD6F1D96831100ECEF89 /* Assets.xcassets */; };
+		24A6CD731D96831100ECEF89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24A6CD711D96831100ECEF89 /* Main.storyboard */; };
+		24A6CD7E1D96831100ECEF89 /* SZEditorExtensionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A6CD7D1D96831100ECEF89 /* SZEditorExtensionTests.m */; };
+		24A6CD891D96831100ECEF89 /* SZEditorExtensionUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A6CD881D96831100ECEF89 /* SZEditorExtensionUITests.m */; };
+		24A6CD9D1D96831D00ECEF89 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A6CD9C1D96831D00ECEF89 /* Cocoa.framework */; };
+		24A6CDA31D96831D00ECEF89 /* SourceEditorExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A6CDA21D96831D00ECEF89 /* SourceEditorExtension.m */; };
+		24A6CDAA1D96831D00ECEF89 /* SZXcodeEditorExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 24A6CD9A1D96831D00ECEF89 /* SZXcodeEditorExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		24A6CDB11D96834C00ECEF89 /* SZDuplicateLineCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A6CDB01D96834C00ECEF89 /* SZDuplicateLineCommand.m */; };
+		24A6CDB41D9683C700ECEF89 /* SZDeleteLineCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A6CDB31D9683C700ECEF89 /* SZDeleteLineCommand.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		24A6CD7A1D96831100ECEF89 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 24A6CD5B1D96831000ECEF89 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 24A6CD621D96831100ECEF89;
+			remoteInfo = SZEditorExtension;
+		};
+		24A6CD851D96831100ECEF89 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 24A6CD5B1D96831000ECEF89 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 24A6CD621D96831100ECEF89;
+			remoteInfo = SZEditorExtension;
+		};
+		24A6CDA81D96831D00ECEF89 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 24A6CD5B1D96831000ECEF89 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 24A6CD991D96831D00ECEF89;
+			remoteInfo = SZXcodeEditorExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		24A6CDAE1D96831D00ECEF89 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				24A6CDAA1D96831D00ECEF89 /* SZXcodeEditorExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		24A6CD631D96831100ECEF89 /* SZEditorExtension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SZEditorExtension.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		24A6CD661D96831100ECEF89 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		24A6CD671D96831100ECEF89 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		24A6CD6A1D96831100ECEF89 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		24A6CD6C1D96831100ECEF89 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		24A6CD6D1D96831100ECEF89 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		24A6CD6F1D96831100ECEF89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		24A6CD721D96831100ECEF89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		24A6CD741D96831100ECEF89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24A6CD791D96831100ECEF89 /* SZEditorExtensionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SZEditorExtensionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		24A6CD7D1D96831100ECEF89 /* SZEditorExtensionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZEditorExtensionTests.m; sourceTree = "<group>"; };
+		24A6CD7F1D96831100ECEF89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24A6CD841D96831100ECEF89 /* SZEditorExtensionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SZEditorExtensionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		24A6CD881D96831100ECEF89 /* SZEditorExtensionUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZEditorExtensionUITests.m; sourceTree = "<group>"; };
+		24A6CD8A1D96831100ECEF89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24A6CD9A1D96831D00ECEF89 /* SZXcodeEditorExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SZXcodeEditorExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		24A6CD9C1D96831D00ECEF89 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		24A6CDA01D96831D00ECEF89 /* SZXcodeEditorExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SZXcodeEditorExtension.entitlements; sourceTree = "<group>"; };
+		24A6CDA11D96831D00ECEF89 /* SourceEditorExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SourceEditorExtension.h; sourceTree = "<group>"; };
+		24A6CDA21D96831D00ECEF89 /* SourceEditorExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SourceEditorExtension.m; sourceTree = "<group>"; };
+		24A6CDA71D96831D00ECEF89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24A6CDAF1D96834C00ECEF89 /* SZDuplicateLineCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZDuplicateLineCommand.h; sourceTree = "<group>"; };
+		24A6CDB01D96834C00ECEF89 /* SZDuplicateLineCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZDuplicateLineCommand.m; sourceTree = "<group>"; };
+		24A6CDB21D9683C700ECEF89 /* SZDeleteLineCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZDeleteLineCommand.h; sourceTree = "<group>"; };
+		24A6CDB31D9683C700ECEF89 /* SZDeleteLineCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZDeleteLineCommand.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		24A6CD601D96831100ECEF89 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24A6CD761D96831100ECEF89 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24A6CD811D96831100ECEF89 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24A6CD971D96831D00ECEF89 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24A6CD9D1D96831D00ECEF89 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		24A6CD5A1D96831000ECEF89 = {
+			isa = PBXGroup;
+			children = (
+				24A6CD651D96831100ECEF89 /* SZEditorExtension */,
+				24A6CD7C1D96831100ECEF89 /* SZEditorExtensionTests */,
+				24A6CD871D96831100ECEF89 /* SZEditorExtensionUITests */,
+				24A6CD9E1D96831D00ECEF89 /* SZXcodeEditorExtension */,
+				24A6CD9B1D96831D00ECEF89 /* Frameworks */,
+				24A6CD641D96831100ECEF89 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		24A6CD641D96831100ECEF89 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				24A6CD631D96831100ECEF89 /* SZEditorExtension.app */,
+				24A6CD791D96831100ECEF89 /* SZEditorExtensionTests.xctest */,
+				24A6CD841D96831100ECEF89 /* SZEditorExtensionUITests.xctest */,
+				24A6CD9A1D96831D00ECEF89 /* SZXcodeEditorExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		24A6CD651D96831100ECEF89 /* SZEditorExtension */ = {
+			isa = PBXGroup;
+			children = (
+				24A6CD661D96831100ECEF89 /* AppDelegate.h */,
+				24A6CD671D96831100ECEF89 /* AppDelegate.m */,
+				24A6CD6C1D96831100ECEF89 /* ViewController.h */,
+				24A6CD6D1D96831100ECEF89 /* ViewController.m */,
+				24A6CD6F1D96831100ECEF89 /* Assets.xcassets */,
+				24A6CD711D96831100ECEF89 /* Main.storyboard */,
+				24A6CD741D96831100ECEF89 /* Info.plist */,
+				24A6CD691D96831100ECEF89 /* Supporting Files */,
+			);
+			path = SZEditorExtension;
+			sourceTree = "<group>";
+		};
+		24A6CD691D96831100ECEF89 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				24A6CD6A1D96831100ECEF89 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		24A6CD7C1D96831100ECEF89 /* SZEditorExtensionTests */ = {
+			isa = PBXGroup;
+			children = (
+				24A6CD7D1D96831100ECEF89 /* SZEditorExtensionTests.m */,
+				24A6CD7F1D96831100ECEF89 /* Info.plist */,
+			);
+			path = SZEditorExtensionTests;
+			sourceTree = "<group>";
+		};
+		24A6CD871D96831100ECEF89 /* SZEditorExtensionUITests */ = {
+			isa = PBXGroup;
+			children = (
+				24A6CD881D96831100ECEF89 /* SZEditorExtensionUITests.m */,
+				24A6CD8A1D96831100ECEF89 /* Info.plist */,
+			);
+			path = SZEditorExtensionUITests;
+			sourceTree = "<group>";
+		};
+		24A6CD9B1D96831D00ECEF89 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				24A6CD9C1D96831D00ECEF89 /* Cocoa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		24A6CD9E1D96831D00ECEF89 /* SZXcodeEditorExtension */ = {
+			isa = PBXGroup;
+			children = (
+				24A6CDA11D96831D00ECEF89 /* SourceEditorExtension.h */,
+				24A6CDA21D96831D00ECEF89 /* SourceEditorExtension.m */,
+				24A6CDAF1D96834C00ECEF89 /* SZDuplicateLineCommand.h */,
+				24A6CDB01D96834C00ECEF89 /* SZDuplicateLineCommand.m */,
+				24A6CDB21D9683C700ECEF89 /* SZDeleteLineCommand.h */,
+				24A6CDB31D9683C700ECEF89 /* SZDeleteLineCommand.m */,
+				24A6CDA71D96831D00ECEF89 /* Info.plist */,
+				24A6CD9F1D96831D00ECEF89 /* Supporting Files */,
+			);
+			path = SZXcodeEditorExtension;
+			sourceTree = "<group>";
+		};
+		24A6CD9F1D96831D00ECEF89 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				24A6CDA01D96831D00ECEF89 /* SZXcodeEditorExtension.entitlements */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		24A6CD621D96831100ECEF89 /* SZEditorExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 24A6CD8D1D96831100ECEF89 /* Build configuration list for PBXNativeTarget "SZEditorExtension" */;
+			buildPhases = (
+				24A6CD5F1D96831100ECEF89 /* Sources */,
+				24A6CD601D96831100ECEF89 /* Frameworks */,
+				24A6CD611D96831100ECEF89 /* Resources */,
+				24A6CDAE1D96831D00ECEF89 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				24A6CDA91D96831D00ECEF89 /* PBXTargetDependency */,
+			);
+			name = SZEditorExtension;
+			productName = SZEditorExtension;
+			productReference = 24A6CD631D96831100ECEF89 /* SZEditorExtension.app */;
+			productType = "com.apple.product-type.application";
+		};
+		24A6CD781D96831100ECEF89 /* SZEditorExtensionTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 24A6CD901D96831100ECEF89 /* Build configuration list for PBXNativeTarget "SZEditorExtensionTests" */;
+			buildPhases = (
+				24A6CD751D96831100ECEF89 /* Sources */,
+				24A6CD761D96831100ECEF89 /* Frameworks */,
+				24A6CD771D96831100ECEF89 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				24A6CD7B1D96831100ECEF89 /* PBXTargetDependency */,
+			);
+			name = SZEditorExtensionTests;
+			productName = SZEditorExtensionTests;
+			productReference = 24A6CD791D96831100ECEF89 /* SZEditorExtensionTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		24A6CD831D96831100ECEF89 /* SZEditorExtensionUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 24A6CD931D96831100ECEF89 /* Build configuration list for PBXNativeTarget "SZEditorExtensionUITests" */;
+			buildPhases = (
+				24A6CD801D96831100ECEF89 /* Sources */,
+				24A6CD811D96831100ECEF89 /* Frameworks */,
+				24A6CD821D96831100ECEF89 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				24A6CD861D96831100ECEF89 /* PBXTargetDependency */,
+			);
+			name = SZEditorExtensionUITests;
+			productName = SZEditorExtensionUITests;
+			productReference = 24A6CD841D96831100ECEF89 /* SZEditorExtensionUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		24A6CD991D96831D00ECEF89 /* SZXcodeEditorExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 24A6CDAB1D96831D00ECEF89 /* Build configuration list for PBXNativeTarget "SZXcodeEditorExtension" */;
+			buildPhases = (
+				24A6CD961D96831D00ECEF89 /* Sources */,
+				24A6CD971D96831D00ECEF89 /* Frameworks */,
+				24A6CD981D96831D00ECEF89 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SZXcodeEditorExtension;
+			productName = SZXcodeEditorExtension;
+			productReference = 24A6CD9A1D96831D00ECEF89 /* SZXcodeEditorExtension.appex */;
+			productType = "com.apple.product-type.xcode-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		24A6CD5B1D96831000ECEF89 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "陈圣治";
+				TargetAttributes = {
+					24A6CD621D96831100ECEF89 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = U3N6PE6F6K;
+						ProvisioningStyle = Automatic;
+					};
+					24A6CD781D96831100ECEF89 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = U3N6PE6F6K;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 24A6CD621D96831100ECEF89;
+					};
+					24A6CD831D96831100ECEF89 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = U3N6PE6F6K;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 24A6CD621D96831100ECEF89;
+					};
+					24A6CD991D96831D00ECEF89 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = U3N6PE6F6K;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 24A6CD5E1D96831000ECEF89 /* Build configuration list for PBXProject "SZEditorExtension" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 24A6CD5A1D96831000ECEF89;
+			productRefGroup = 24A6CD641D96831100ECEF89 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				24A6CD621D96831100ECEF89 /* SZEditorExtension */,
+				24A6CD781D96831100ECEF89 /* SZEditorExtensionTests */,
+				24A6CD831D96831100ECEF89 /* SZEditorExtensionUITests */,
+				24A6CD991D96831D00ECEF89 /* SZXcodeEditorExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		24A6CD611D96831100ECEF89 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24A6CD701D96831100ECEF89 /* Assets.xcassets in Resources */,
+				24A6CD731D96831100ECEF89 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24A6CD771D96831100ECEF89 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24A6CD821D96831100ECEF89 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24A6CD981D96831D00ECEF89 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		24A6CD5F1D96831100ECEF89 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24A6CD6E1D96831100ECEF89 /* ViewController.m in Sources */,
+				24A6CD6B1D96831100ECEF89 /* main.m in Sources */,
+				24A6CD681D96831100ECEF89 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24A6CD751D96831100ECEF89 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24A6CD7E1D96831100ECEF89 /* SZEditorExtensionTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24A6CD801D96831100ECEF89 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24A6CD891D96831100ECEF89 /* SZEditorExtensionUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24A6CD961D96831D00ECEF89 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24A6CDA31D96831D00ECEF89 /* SourceEditorExtension.m in Sources */,
+				24A6CDB11D96834C00ECEF89 /* SZDuplicateLineCommand.m in Sources */,
+				24A6CDB41D9683C700ECEF89 /* SZDeleteLineCommand.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		24A6CD7B1D96831100ECEF89 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 24A6CD621D96831100ECEF89 /* SZEditorExtension */;
+			targetProxy = 24A6CD7A1D96831100ECEF89 /* PBXContainerItemProxy */;
+		};
+		24A6CD861D96831100ECEF89 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 24A6CD621D96831100ECEF89 /* SZEditorExtension */;
+			targetProxy = 24A6CD851D96831100ECEF89 /* PBXContainerItemProxy */;
+		};
+		24A6CDA91D96831D00ECEF89 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 24A6CD991D96831D00ECEF89 /* SZXcodeEditorExtension */;
+			targetProxy = 24A6CDA81D96831D00ECEF89 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		24A6CD711D96831100ECEF89 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				24A6CD721D96831100ECEF89 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		24A6CD8B1D96831100ECEF89 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		24A6CD8C1D96831100ECEF89 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		24A6CD8E1D96831100ECEF89 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = U3N6PE6F6K;
+				INFOPLIST_FILE = SZEditorExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = csz.SZEditorExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		24A6CD8F1D96831100ECEF89 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = U3N6PE6F6K;
+				INFOPLIST_FILE = SZEditorExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = csz.SZEditorExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		24A6CD911D96831100ECEF89 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = U3N6PE6F6K;
+				INFOPLIST_FILE = SZEditorExtensionTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = csz.SZEditorExtensionTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SZEditorExtension.app/Contents/MacOS/SZEditorExtension";
+			};
+			name = Debug;
+		};
+		24A6CD921D96831100ECEF89 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = U3N6PE6F6K;
+				INFOPLIST_FILE = SZEditorExtensionTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = csz.SZEditorExtensionTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SZEditorExtension.app/Contents/MacOS/SZEditorExtension";
+			};
+			name = Release;
+		};
+		24A6CD941D96831100ECEF89 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = U3N6PE6F6K;
+				INFOPLIST_FILE = SZEditorExtensionUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = csz.SZEditorExtensionUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = SZEditorExtension;
+			};
+			name = Debug;
+		};
+		24A6CD951D96831100ECEF89 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = U3N6PE6F6K;
+				INFOPLIST_FILE = SZEditorExtensionUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = csz.SZEditorExtensionUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = SZEditorExtension;
+			};
+			name = Release;
+		};
+		24A6CDAC1D96831D00ECEF89 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SZXcodeEditorExtension/SZXcodeEditorExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = U3N6PE6F6K;
+				INFOPLIST_FILE = SZXcodeEditorExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = csz.SZEditorExtension.SZXcodeEditorExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		24A6CDAD1D96831D00ECEF89 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SZXcodeEditorExtension/SZXcodeEditorExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = U3N6PE6F6K;
+				INFOPLIST_FILE = SZXcodeEditorExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = csz.SZEditorExtension.SZXcodeEditorExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		24A6CD5E1D96831000ECEF89 /* Build configuration list for PBXProject "SZEditorExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24A6CD8B1D96831100ECEF89 /* Debug */,
+				24A6CD8C1D96831100ECEF89 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		24A6CD8D1D96831100ECEF89 /* Build configuration list for PBXNativeTarget "SZEditorExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24A6CD8E1D96831100ECEF89 /* Debug */,
+				24A6CD8F1D96831100ECEF89 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		24A6CD901D96831100ECEF89 /* Build configuration list for PBXNativeTarget "SZEditorExtensionTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24A6CD911D96831100ECEF89 /* Debug */,
+				24A6CD921D96831100ECEF89 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		24A6CD931D96831100ECEF89 /* Build configuration list for PBXNativeTarget "SZEditorExtensionUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24A6CD941D96831100ECEF89 /* Debug */,
+				24A6CD951D96831100ECEF89 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		24A6CDAB1D96831D00ECEF89 /* Build configuration list for PBXNativeTarget "SZXcodeEditorExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24A6CDAC1D96831D00ECEF89 /* Debug */,
+				24A6CDAD1D96831D00ECEF89 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 24A6CD5B1D96831000ECEF89 /* Project object */;
+}

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>SZEditorExtension.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>SZXcodeEditorExtension.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>24A6CD621D96831100ECEF89</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>24A6CD781D96831100ECEF89</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>24A6CD831D96831100ECEF89</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>24A6CD991D96831D00ECEF89</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
