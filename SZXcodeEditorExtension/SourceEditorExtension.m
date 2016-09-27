@@ -24,12 +24,12 @@
 {
     return @[
              @{
-                 XCSourceEditorCommandIdentifierKey: @"csz.SZEditorExtension.duplicateLine",
+                 XCSourceEditorCommandIdentifierKey: @"csz.SZXcodeEditorExtension.duplicateLine",
                  XCSourceEditorCommandClassNameKey: NSStringFromClass([SZDuplicateLineCommand class]),
                  XCSourceEditorCommandNameKey: @"Duplicate Line",
                },
              @{
-                 XCSourceEditorCommandIdentifierKey: @"csz.SZEditorExtension.deleteLine",
+                 XCSourceEditorCommandIdentifierKey: @"csz.SZXcodeEditorExtension.deleteLine",
                  XCSourceEditorCommandClassNameKey: NSStringFromClass([SZDeleteLineCommand class]),
                  XCSourceEditorCommandNameKey: @"Delete Line",
                  },
