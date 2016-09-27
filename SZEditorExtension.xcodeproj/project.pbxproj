@@ -666,6 +666,7 @@
 				24A6CD8F1D96831100ECEF89 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		24A6CD901D96831100ECEF89 /* Build configuration list for PBXNativeTarget "SZEditorExtensionTests" */ = {
 			isa = XCConfigurationList;
@@ -674,6 +675,7 @@
 				24A6CD921D96831100ECEF89 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		24A6CD931D96831100ECEF89 /* Build configuration list for PBXNativeTarget "SZEditorExtensionUITests" */ = {
 			isa = XCConfigurationList;
@@ -682,6 +684,7 @@
 				24A6CD951D96831100ECEF89 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		24A6CDAB1D96831D00ECEF89 /* Build configuration list for PBXNativeTarget "SZXcodeEditorExtension" */ = {
 			isa = XCConfigurationList;
@@ -690,6 +693,7 @@
 				24A6CDAD1D96831D00ECEF89 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

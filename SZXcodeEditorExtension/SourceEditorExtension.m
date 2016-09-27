@@ -7,6 +7,8 @@
 //
 
 #import "SourceEditorExtension.h"
+#import "SZDuplicateLineCommand.h"
+#import "SZDeleteLineCommand.h"
 
 @implementation SourceEditorExtension
 
@@ -17,12 +19,22 @@
 }
 */
 
-/*
+
 - (NSArray <NSDictionary <XCSourceEditorCommandDefinitionKey, id> *> *)commandDefinitions
 {
-    // If your extension needs to return a collection of command definitions that differs from those in its Info.plist, implement this optional property getter.
-    return @[];
+    return @[
+             @{
+                 XCSourceEditorCommandIdentifierKey: @"csz.SZEditorExtension.duplicateLine",
+                 XCSourceEditorCommandClassNameKey: NSStringFromClass([SZDuplicateLineCommand class]),
+                 XCSourceEditorCommandNameKey: @"Duplicate Line",
+               },
+             @{
+                 XCSourceEditorCommandIdentifierKey: @"csz.SZEditorExtension.deleteLine",
+                 XCSourceEditorCommandClassNameKey: NSStringFromClass([SZDeleteLineCommand class]),
+                 XCSourceEditorCommandNameKey: @"Delete Line",
+                 },
+             ];
 }
-*/
+
 
 @end
