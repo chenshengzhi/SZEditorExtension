@@ -625,7 +625,7 @@
 				INFOPLIST_FILE = SZXcodeEditorExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = csz.SZXcodeEditorExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = csz.SZEditorExtension.SZXcodeEditorExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -641,7 +641,7 @@
 				INFOPLIST_FILE = SZXcodeEditorExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = csz.SZXcodeEditorExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = csz.SZEditorExtension.SZXcodeEditorExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
