@@ -9,6 +9,7 @@
 #import "SourceEditorExtension.h"
 #import "SZDuplicateLineCommand.h"
 #import "SZDeleteLineCommand.h"
+#import "SZPlaceImportCommand.h"
 
 @implementation SourceEditorExtension
 
@@ -32,6 +33,11 @@
                  XCSourceEditorCommandIdentifierKey: @"csz.SZEditorExtension.SZXcodeEditorExtension.deleteLine",
                  XCSourceEditorCommandClassNameKey: NSStringFromClass([SZDeleteLineCommand class]),
                  XCSourceEditorCommandNameKey: @"Delete Line",
+                 },
+             @{
+                 XCSourceEditorCommandIdentifierKey: @"csz.SZEditorExtension.SZXcodeEditorExtension.placeImport",
+                 XCSourceEditorCommandClassNameKey: NSStringFromClass([SZPlaceImportCommand class]),
+                 XCSourceEditorCommandNameKey: @"Place Impport",
                  },
              ];
 }

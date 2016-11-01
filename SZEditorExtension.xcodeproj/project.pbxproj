@@ -19,6 +19,8 @@
 		24A6CDAA1D96831D00ECEF89 /* SZXcodeEditorExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 24A6CD9A1D96831D00ECEF89 /* SZXcodeEditorExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		24A6CDB11D96834C00ECEF89 /* SZDuplicateLineCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A6CDB01D96834C00ECEF89 /* SZDuplicateLineCommand.m */; };
 		24A6CDB41D9683C700ECEF89 /* SZDeleteLineCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A6CDB31D9683C700ECEF89 /* SZDeleteLineCommand.m */; };
+		24D211C91DC8251200894F13 /* SZPlaceImportCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 24D211C81DC8251200894F13 /* SZPlaceImportCommand.m */; };
+		24D211D01DC83F9B00894F13 /* SZRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 24D211CB1DC83B5100894F13 /* SZRange.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,10 @@
 		24A6CDB01D96834C00ECEF89 /* SZDuplicateLineCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZDuplicateLineCommand.m; sourceTree = "<group>"; };
 		24A6CDB21D9683C700ECEF89 /* SZDeleteLineCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZDeleteLineCommand.h; sourceTree = "<group>"; };
 		24A6CDB31D9683C700ECEF89 /* SZDeleteLineCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZDeleteLineCommand.m; sourceTree = "<group>"; };
+		24D211C71DC8251200894F13 /* SZPlaceImportCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZPlaceImportCommand.h; sourceTree = "<group>"; };
+		24D211C81DC8251200894F13 /* SZPlaceImportCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZPlaceImportCommand.m; sourceTree = "<group>"; };
+		24D211CA1DC83B5100894F13 /* SZRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZRange.h; sourceTree = "<group>"; };
+		24D211CB1DC83B5100894F13 /* SZRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZRange.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +207,10 @@
 				24A6CDB01D96834C00ECEF89 /* SZDuplicateLineCommand.m */,
 				24A6CDB21D9683C700ECEF89 /* SZDeleteLineCommand.h */,
 				24A6CDB31D9683C700ECEF89 /* SZDeleteLineCommand.m */,
+				24D211C71DC8251200894F13 /* SZPlaceImportCommand.h */,
+				24D211C81DC8251200894F13 /* SZPlaceImportCommand.m */,
+				24D211CA1DC83B5100894F13 /* SZRange.h */,
+				24D211CB1DC83B5100894F13 /* SZRange.m */,
 				24A6CDA71D96831D00ECEF89 /* Info.plist */,
 				24A6CD9F1D96831D00ECEF89 /* Supporting Files */,
 			);
@@ -296,7 +306,7 @@
 		24A6CD5B1D96831000ECEF89 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "陈圣治";
 				TargetAttributes = {
 					24A6CD621D96831100ECEF89 = {
@@ -392,6 +402,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24D211D01DC83F9B00894F13 /* SZRange.m in Sources */,
 				24A6CD7E1D96831100ECEF89 /* SZEditorExtensionTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,6 +421,7 @@
 			files = (
 				24A6CDA31D96831D00ECEF89 /* SourceEditorExtension.m in Sources */,
 				24A6CDB11D96834C00ECEF89 /* SZDuplicateLineCommand.m in Sources */,
+				24D211C91DC8251200894F13 /* SZPlaceImportCommand.m in Sources */,
 				24A6CDB41D9683C700ECEF89 /* SZDeleteLineCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,6 +476,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -511,6 +524,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -565,6 +579,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = U3N6PE6F6K;
 				INFOPLIST_FILE = SZEditorExtensionTests/Info.plist;
@@ -579,6 +594,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = U3N6PE6F6K;
 				INFOPLIST_FILE = SZEditorExtensionTests/Info.plist;
@@ -592,6 +608,7 @@
 		24A6CD941D96831100ECEF89 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = U3N6PE6F6K;
 				INFOPLIST_FILE = SZEditorExtensionUITests/Info.plist;
@@ -605,6 +622,7 @@
 		24A6CD951D96831100ECEF89 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = U3N6PE6F6K;
 				INFOPLIST_FILE = SZEditorExtensionUITests/Info.plist;
