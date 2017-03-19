@@ -7,6 +7,7 @@
 //
 
 #import "NSArray+SZAlignByEqualSign.h"
+#import "NSString+SZAddition.h"
 
 @implementation NSArray (SZAlignByEqualSign)
 
@@ -14,7 +15,7 @@
 - (BOOL)needAlignByEqualSign {
     NSUInteger equalSignCount = 0;
     for (NSString *lineText in self) {
-        if ([lineText rangeOfString:@"="].location != NSNotFound) {
+        if ([lineText isAsignmentStatement]) {
             equalSignCount++;
         }
         
@@ -31,9 +32,8 @@
     
     for (int idx = 0; idx < self.count; idx++) {
         NSString *lineText = self[idx];
-        NSRange range = [lineText rangeOfString:@"="];
-        if (range.location != NSNotFound) {
-            maxColumn = MAX(maxColumn, range.location);
+        if ([lineText isAsignmentStatement]) {
+            maxColumn = MAX(maxColumn, [lineText rangeOfString:@"="].location);
             has_equal_sign_lines[idx] = YES;
         } else {
             has_equal_sign_lines[idx] = NO;

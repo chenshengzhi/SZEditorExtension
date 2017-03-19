@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "SZRange.h"
+#import "NSString+SZAddition.h"
 #import "NSArray+SZAlignByEqualSign.h"
 
 @interface SZEditorExtensionTests : XCTestCase
@@ -90,13 +91,56 @@
     XCTAssert([predicate evaluateWithObject:text]);
 }
 
+- (void)testAsignmentStatement {
+    NSArray *array = @[
+                       @"for (NSInteger idx = 0; idx < lines.count; idx++) {",
+                       @"    NSString *lineText = lines[idx];",
+                       @"    NSString *trimedLineText = [lineText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];",
+                       @"    if (trimedLineText.length > 0) {",
+                       @"        if ([trimedLineText isImportLine]) {",
+                       @"            otherImportIndex = idx;",
+                       @"        } else if (![trimedLineText hasPrefix:@\"//\"]) {",
+                       @"            otherDefineIndex = idx;",
+                       @"            break;",
+                       @"        }",
+                       @"    }",
+                       @"}",
+                       @"",
+                       @"if (otherImportIndex >= 0) {",
+                       @"    return otherImportIndex + 1;",
+                       @"} else if (otherDefineIndex >= 0) {",
+                       @"    return MAX(0, otherDefineIndex - 1);",
+                       @"} else {",
+                       @"    return 0;",
+                       @"}",
+                       ];
+    for (NSString *text in array) {
+        NSLog(@"%d  %@", [text isAsignmentStatement], text);
+    }
+}
+
 - (void)testAlign {
     NSArray *array = @[
-                       @"__block NSInteger maxColumn = -1;",
-                       @"BOOL has_equal_sign_lines[self.count];",
-                       @"__block BOOL *pt = has_equal_sign_lines;",
-                       @"maxColumn = MAX(maxColumn, range.location);",
-                       @"pt[idx] = YES;",
+                       @"for (NSInteger idx = 0; idx < lines.count; idx++) {",
+                       @"    NSString *lineText = lines[idx];",
+                       @"    NSString *trimedLineText = [lineText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];",
+                       @"    if (trimedLineText.length > 0) {",
+                       @"        if ([trimedLineText isImportLine]) {",
+                       @"            otherImportIndex = idx;",
+                       @"        } else if (![trimedLineText hasPrefix:@\"//\"]) {",
+                       @"            otherDefineIndex = idx;",
+                       @"            break;",
+                       @"        }",
+                       @"    }",
+                       @"}",
+                       @"",
+                       @"if (otherImportIndex >= 0) {",
+                       @"    return otherImportIndex + 1;",
+                       @"} else if (otherDefineIndex >= 0) {",
+                       @"    return MAX(0, otherDefineIndex - 1);",
+                       @"} else {",
+                       @"    return 0;",
+                       @"}",
                        ];
     NSLog(@"%@", [array alignedArrayByEqualSign]);
 }

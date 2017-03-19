@@ -19,6 +19,8 @@
 		24A6CDAA1D96831D00ECEF89 /* SZXcodeEditorExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 24A6CD9A1D96831D00ECEF89 /* SZXcodeEditorExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		24A6CDB11D96834C00ECEF89 /* SZDuplicateLineCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A6CDB01D96834C00ECEF89 /* SZDuplicateLineCommand.m */; };
 		24A6CDB41D9683C700ECEF89 /* SZDeleteLineCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A6CDB31D9683C700ECEF89 /* SZDeleteLineCommand.m */; };
+		24AB6B511E7E3A1800A82515 /* NSString+SZAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 24AB6B501E7E3A1800A82515 /* NSString+SZAddition.m */; };
+		24AB6B521E7E3F6500A82515 /* NSString+SZAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 24AB6B501E7E3A1800A82515 /* NSString+SZAddition.m */; };
 		24D211C91DC8251200894F13 /* SZPlaceImportCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 24D211C81DC8251200894F13 /* SZPlaceImportCommand.m */; };
 		24D211D01DC83F9B00894F13 /* SZRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 24D211CB1DC83B5100894F13 /* SZRange.m */; };
 		24E023AC1E7E2924004DBC93 /* SZAlignCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E023AB1E7E2924004DBC93 /* SZAlignCommand.m */; };
@@ -90,6 +92,8 @@
 		24A6CDB01D96834C00ECEF89 /* SZDuplicateLineCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZDuplicateLineCommand.m; sourceTree = "<group>"; };
 		24A6CDB21D9683C700ECEF89 /* SZDeleteLineCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZDeleteLineCommand.h; sourceTree = "<group>"; };
 		24A6CDB31D9683C700ECEF89 /* SZDeleteLineCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZDeleteLineCommand.m; sourceTree = "<group>"; };
+		24AB6B4F1E7E3A1800A82515 /* NSString+SZAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SZAddition.h"; sourceTree = "<group>"; };
+		24AB6B501E7E3A1800A82515 /* NSString+SZAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SZAddition.m"; sourceTree = "<group>"; };
 		24D211C71DC8251200894F13 /* SZPlaceImportCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZPlaceImportCommand.h; sourceTree = "<group>"; };
 		24D211C81DC8251200894F13 /* SZPlaceImportCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZPlaceImportCommand.m; sourceTree = "<group>"; };
 		24D211CA1DC83B5100894F13 /* SZRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZRange.h; sourceTree = "<group>"; };
@@ -222,6 +226,8 @@
 				24D211CB1DC83B5100894F13 /* SZRange.m */,
 				24E023AD1E7E3436004DBC93 /* NSArray+SZAlignByEqualSign.h */,
 				24E023AE1E7E3436004DBC93 /* NSArray+SZAlignByEqualSign.m */,
+				24AB6B4F1E7E3A1800A82515 /* NSString+SZAddition.h */,
+				24AB6B501E7E3A1800A82515 /* NSString+SZAddition.m */,
 				24A6CDA71D96831D00ECEF89 /* Info.plist */,
 				24A6CD9F1D96831D00ECEF89 /* Supporting Files */,
 			);
@@ -413,6 +419,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24AB6B521E7E3F6500A82515 /* NSString+SZAddition.m in Sources */,
 				24E023B01E7E34DF004DBC93 /* NSArray+SZAlignByEqualSign.m in Sources */,
 				24D211D01DC83F9B00894F13 /* SZRange.m in Sources */,
 				24A6CD7E1D96831100ECEF89 /* SZEditorExtensionTests.m in Sources */,
@@ -435,6 +442,7 @@
 				24A6CDB11D96834C00ECEF89 /* SZDuplicateLineCommand.m in Sources */,
 				24D211C91DC8251200894F13 /* SZPlaceImportCommand.m in Sources */,
 				24E023AF1E7E3436004DBC93 /* NSArray+SZAlignByEqualSign.m in Sources */,
+				24AB6B511E7E3A1800A82515 /* NSString+SZAddition.m in Sources */,
 				24E023AC1E7E2924004DBC93 /* SZAlignCommand.m in Sources */,
 				24A6CDB41D9683C700ECEF89 /* SZDeleteLineCommand.m in Sources */,
 			);
