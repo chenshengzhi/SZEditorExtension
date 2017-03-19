@@ -10,6 +10,7 @@
 #import "SZDuplicateLineCommand.h"
 #import "SZDeleteLineCommand.h"
 #import "SZPlaceImportCommand.h"
+#import "SZAlignCommand.h"
 
 @implementation SourceEditorExtension
 
@@ -25,19 +26,24 @@
 {
     return @[
              @{
-                 XCSourceEditorCommandIdentifierKey: @"csz.SZEditorExtension.SZXcodeEditorExtension.duplicateLine",
+                 XCSourceEditorCommandIdentifierKey: @"com.csz.SZEditorExtension.SZXcodeEditorExtension.duplicateLine",
                  XCSourceEditorCommandClassNameKey: NSStringFromClass([SZDuplicateLineCommand class]),
                  XCSourceEditorCommandNameKey: @"Duplicate Line",
-               },
+                 },
              @{
-                 XCSourceEditorCommandIdentifierKey: @"csz.SZEditorExtension.SZXcodeEditorExtension.deleteLine",
+                 XCSourceEditorCommandIdentifierKey: @"com.csz.SZEditorExtension.SZXcodeEditorExtension.deleteLine",
                  XCSourceEditorCommandClassNameKey: NSStringFromClass([SZDeleteLineCommand class]),
                  XCSourceEditorCommandNameKey: @"Delete Line",
                  },
              @{
-                 XCSourceEditorCommandIdentifierKey: @"csz.SZEditorExtension.SZXcodeEditorExtension.placeImport",
+                 XCSourceEditorCommandIdentifierKey: @"com.csz.SZEditorExtension.SZXcodeEditorExtension.placeImport",
                  XCSourceEditorCommandClassNameKey: NSStringFromClass([SZPlaceImportCommand class]),
                  XCSourceEditorCommandNameKey: @"Place Impport",
+                 },
+             @{
+                 XCSourceEditorCommandIdentifierKey: @"com.csz.SZEditorExtension.SZXcodeEditorExtension.align",
+                 XCSourceEditorCommandClassNameKey: NSStringFromClass([SZAlignCommand class]),
+                 XCSourceEditorCommandNameKey: @"Align Selected Lines",
                  },
              ];
 }

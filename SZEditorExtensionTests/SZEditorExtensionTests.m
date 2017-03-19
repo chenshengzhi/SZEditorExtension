@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "SZRange.h"
+#import "NSArray+SZAlignByEqualSign.h"
 
 @interface SZEditorExtensionTests : XCTestCase
 
@@ -88,5 +89,17 @@
     NSString *text = @"import";
     XCTAssert([predicate evaluateWithObject:text]);
 }
+
+- (void)testAlign {
+    NSArray *array = @[
+                       @"__block NSInteger maxColumn = -1;",
+                       @"BOOL has_equal_sign_lines[self.count];",
+                       @"__block BOOL *pt = has_equal_sign_lines;",
+                       @"maxColumn = MAX(maxColumn, range.location);",
+                       @"pt[idx] = YES;",
+                       ];
+    NSLog(@"%@", [array alignedArrayByEqualSign]);
+}
+
 
 @end
