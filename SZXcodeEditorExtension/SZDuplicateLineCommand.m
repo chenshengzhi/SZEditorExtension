@@ -24,7 +24,9 @@
     
     NSMutableArray *duplicateLines = [NSMutableArray array];
     for (NSInteger i = start.line; i <= end.line; i++) {
-        [duplicateLines addObject:lines[i]];
+        if (i < lines.count) {
+            [duplicateLines addObject:lines[i]];
+        }
     }
     NSString *text = [duplicateLines componentsJoinedByString:@""];
     [lines insertObject:text atIndex:start.line];

@@ -28,8 +28,8 @@
     if (end.line < lines.count - 1) {
         newLine = end.line + 1;
         newColumn = end.column;
-    } else if (textRange.start.line > 0) {
-        newLine = start.line + 1;
+    } else if (start.line > 0) {
+        newLine = start.line - 1;
         newColumn = start.column;
     } else {
         newLine = 0;
@@ -41,7 +41,9 @@
     }
     textRange.start = XCSourceTextPositionMake(newLine, newColumn);
     textRange.end = textRange.start;
-    [lines removeObjectsInRange:NSMakeRange(start.line, end.line - start.line + 1)];
+    NSUInteger count = end.line - start.line + 1;
+    count = MIN(count, lines.count - start.line);
+    [lines removeObjectsInRange:NSMakeRange(start.line, count)];
     
     completionHandler(nil);
 }
