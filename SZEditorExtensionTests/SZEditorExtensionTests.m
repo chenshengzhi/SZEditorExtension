@@ -145,5 +145,9 @@
     NSLog(@"%@", [array alignedArrayByEqualSign]);
 }
 
+- (void)testNSStringAddition {
+    BOOL is = [@"@implementation SZEditorExtensionUITests" isImplementationForInterface:@"SZEditorExtensionUITests"];
+    NSLog(@"%d", is);
+}
 
 @end

@@ -10,8 +10,8 @@
 
 @implementation SZDeleteLineCommand
 
-- (void)performCommandWithInvocation:(XCSourceEditorCommandInvocation *)invocation completionHandler:(void (^)(NSError * _Nullable nilOrError))completionHandler
-{
+- (void)performCommandWithInvocation:(XCSourceEditorCommandInvocation *)invocation
+                   completionHandler:(void (^)(NSError * _Nullable nilOrError))completionHandler {
     NSMutableArray<NSString *> *lines = invocation.buffer.lines;
     if (lines.count == 0) {
         completionHandler(nil);

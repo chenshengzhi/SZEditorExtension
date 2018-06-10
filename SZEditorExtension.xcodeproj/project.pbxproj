@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2445B1D920C9826400ADC78F /* SZPropertyGetterCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 2445B1D820C9826400ADC78F /* SZPropertyGetterCommand.m */; };
 		2446497520C98A090018B2CF /* Template.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2446497420C98A090018B2CF /* Template.plist */; };
+		248EB54A20CBC7B80094A6DA /* SZPropertyGetterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 248EB54920CBC7B80094A6DA /* SZPropertyGetterViewController.m */; };
+		248EB54D20CBCC910094A6DA /* SZPropertyGetterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 248EB54C20CBCC910094A6DA /* SZPropertyGetterModel.m */; };
 		24A6CD681D96831100ECEF89 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A6CD671D96831100ECEF89 /* AppDelegate.m */; };
 		24A6CD6B1D96831100ECEF89 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A6CD6A1D96831100ECEF89 /* main.m */; };
 		24A6CD6E1D96831100ECEF89 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A6CD6D1D96831100ECEF89 /* ViewController.m */; };
@@ -72,6 +74,12 @@
 		2445B1D720C9826400ADC78F /* SZPropertyGetterCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZPropertyGetterCommand.h; sourceTree = "<group>"; };
 		2445B1D820C9826400ADC78F /* SZPropertyGetterCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZPropertyGetterCommand.m; sourceTree = "<group>"; };
 		2446497420C98A090018B2CF /* Template.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Template.plist; sourceTree = "<group>"; };
+		248EB54720CBC7200094A6DA /* SZEditorExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SZEditorExtension.entitlements; sourceTree = "<group>"; };
+		248EB54820CBC7B80094A6DA /* SZPropertyGetterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZPropertyGetterViewController.h; sourceTree = "<group>"; };
+		248EB54920CBC7B80094A6DA /* SZPropertyGetterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZPropertyGetterViewController.m; sourceTree = "<group>"; };
+		248EB54B20CBCC910094A6DA /* SZPropertyGetterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZPropertyGetterModel.h; sourceTree = "<group>"; };
+		248EB54C20CBCC910094A6DA /* SZPropertyGetterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZPropertyGetterModel.m; sourceTree = "<group>"; };
+		248EB54E20CCB6980094A6DA /* SZEditorExtensionHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZEditorExtensionHeader.h; sourceTree = "<group>"; };
 		24A6CD631D96831100ECEF89 /* SZEditorExtension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SZEditorExtension.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24A6CD661D96831100ECEF89 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		24A6CD671D96831100ECEF89 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -168,10 +176,16 @@
 		24A6CD651D96831100ECEF89 /* SZEditorExtension */ = {
 			isa = PBXGroup;
 			children = (
+				248EB54720CBC7200094A6DA /* SZEditorExtension.entitlements */,
+				248EB54E20CCB6980094A6DA /* SZEditorExtensionHeader.h */,
 				24A6CD661D96831100ECEF89 /* AppDelegate.h */,
 				24A6CD671D96831100ECEF89 /* AppDelegate.m */,
 				24A6CD6C1D96831100ECEF89 /* ViewController.h */,
 				24A6CD6D1D96831100ECEF89 /* ViewController.m */,
+				248EB54820CBC7B80094A6DA /* SZPropertyGetterViewController.h */,
+				248EB54920CBC7B80094A6DA /* SZPropertyGetterViewController.m */,
+				248EB54B20CBCC910094A6DA /* SZPropertyGetterModel.h */,
+				248EB54C20CBCC910094A6DA /* SZPropertyGetterModel.m */,
 				24A6CD6F1D96831100ECEF89 /* Assets.xcassets */,
 				24A6CD711D96831100ECEF89 /* Main.storyboard */,
 				24A6CD741D96831100ECEF89 /* Info.plist */,
@@ -338,6 +352,14 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = P86AE7AXU9;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 1;
+							};
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					24A6CD781D96831100ECEF89 = {
 						CreatedOnToolsVersion = 8.0;
@@ -355,6 +377,14 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = P86AE7AXU9;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 1;
+							};
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -420,6 +450,8 @@
 			files = (
 				24A6CD6E1D96831100ECEF89 /* ViewController.m in Sources */,
 				24A6CD6B1D96831100ECEF89 /* main.m in Sources */,
+				248EB54D20CBCC910094A6DA /* SZPropertyGetterModel.m in Sources */,
+				248EB54A20CBC7B80094A6DA /* SZPropertyGetterViewController.m in Sources */,
 				24A6CD681D96831100ECEF89 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -583,6 +615,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SZEditorExtension/SZEditorExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = P86AE7AXU9;
@@ -597,6 +630,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SZEditorExtension/SZEditorExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = P86AE7AXU9;

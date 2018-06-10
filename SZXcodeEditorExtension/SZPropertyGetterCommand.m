@@ -7,65 +7,98 @@
 //
 
 #import "SZPropertyGetterCommand.h"
+#import "SZEditorExtensionHeader.h"
+#import "NSString+SZAddition.h"
+#import <AppKit/AppKit.h>
 
 @implementation SZPropertyGetterCommand
 
-- (void)performCommandWithInvocation:(XCSourceEditorCommandInvocation *)invocation completionHandler:(void (^)(NSError * _Nullable))completionHandler {
+- (void)performCommandWithInvocation:(XCSourceEditorCommandInvocation *)invocation
+                   completionHandler:(void (^)(NSError * _Nullable))completionHandler {
     NSMutableArray<NSString *> *lines = invocation.buffer.lines;
     if (lines.count == 0) {
         completionHandler(nil);
         return;
     }
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"Template" ofType:@"plist"];
-    NSDictionary *templateMap = [[NSDictionary alloc] initWithContentsOfFile:path];
-    if (!templateMap.count) {
-//        [lines insertObject:@"no template find" atIndex:0];
-        NSError *error = [NSError errorWithDomain:@"csz.noTemplate" code:-1 userInfo:nil];
-        completionHandler(error);
+    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:SZEEUserdefaultSuiteName];
+    if (!defaults) {
+        completionHandler(nil);
         return;
     }
+    NSDictionary *map = [defaults objectForKey:SZEEPropertyGetterDictKey];
     
-    XCSourceTextRange *textRange = invocation.buffer.selections.firstObject;
-    XCSourceTextPosition start = textRange.start;
-    XCSourceTextPosition end = textRange.end;
+    NSMutableArray *toInsertTextArray = [NSMutableArray array];
     
-    NSMutableArray *selectedLines = [NSMutableArray array];
-    for (NSInteger i = start.line; i <= end.line; i++) {
-        if (i < lines.count) {
-            [selectedLines addObject:lines[i]];
-        }
-    }
-    
-    for (NSString *line in selectedLines) {
-        if (![line hasPrefix:@"@property"]) {
-            continue;
-        }
+    [invocation.buffer.selections enumerateObjectsUsingBlock:^(XCSourceTextRange * _Nonnull textRange, NSUInteger idx, BOOL * _Nonnull stop) {
+        XCSourceTextPosition start = textRange.start;
+        XCSourceTextPosition end = textRange.end;
         
-        NSRange range = [line rangeOfString:@")"];
-        NSString *subString = [line substringFromIndex:NSMaxRange(range)];
-        subString = [subString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-        subString = [subString stringByReplacingOccurrencesOfString:@";" withString:@""];
-        
-        NSArray *array = [subString componentsSeparatedByString:@" "];
-        if (array.count >= 2) {
-            NSString *type = array[0];
-            NSString *name = array[1];
-            if ([name hasPrefix:@"*"]) {
-                name = [name substringFromIndex:1];
+        NSMutableArray *selectedLines = [NSMutableArray array];
+        NSInteger firstIndex = NSNotFound;
+        for (NSInteger i = start.line; i <= end.line; i++) {
+            if (i < lines.count) {
+                NSString *line = [lines[i] trimWhitespace];
+                if ([line hasPrefix:@"@property"]) {
+                    firstIndex = MIN(firstIndex, i);
+                    [selectedLines addObject:line];
+                }
             }
-            
-            NSString *template = templateMap[type];
-            template = [template stringByReplacingOccurrencesOfString:@"###type###" withString:type];
-            template = [template stringByReplacingOccurrencesOfString:@"###name###" withString:name];
-
-            [lines insertObject:template atIndex:0];
-//            [lines insertObject:[NSString stringWithFormat:@"%@", [templateMap description]] atIndex:0];
-//
-//            [lines insertObject:line atIndex:0];
-//            [lines insertObject:type atIndex:0];
-//            [lines insertObject:[NSString stringWithFormat:@"%lu", type.length] atIndex:0];
         }
+        
+        if (!selectedLines.count) {
+            return;
+        }
+        
+        NSString *interfaceName = nil;
+        for (NSInteger i = firstIndex - 1; i >= 0; i--) {
+            NSString *line = [lines[i] trimWhitespace];
+            if ([line hasPrefix:@"@interface"]) {
+                interfaceName = [line interfaceName];
+                break;
+            }
+        }
+        if (!interfaceName.length) {
+            return;
+        }
+        
+        __block NSInteger insertIndex = NSNotFound;
+        __block NSString *impl = nil;
+        [lines enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([obj isImplementationForInterface:interfaceName]) {
+                insertIndex = idx + 1;
+                *stop = YES;
+                impl = obj;
+            }
+        }];
+        
+        for (NSString *line in selectedLines.reverseObjectEnumerator) {
+            [line propertyDeclarationInfoWithBlock:^(BOOL isProperty, NSString *type, NSString *name) {
+                if (isProperty && type.length && name.length) {
+                    NSDictionary *dict = map[type];
+                    NSString *templateText = dict[SZEEPropertyGetterDictTemplateTextKey];
+                    if (!templateText.length) {
+                        templateText = SZEEPropertyGetterDictUndefinedValue;
+                    }
+                    templateText = [templateText stringByReplacingOccurrencesOfString:@"###type###" withString:type];
+                    templateText = [templateText stringByReplacingOccurrencesOfString:@"###name###" withString:name];
+                    
+                    if (insertIndex < lines.count) {
+                        [lines insertObject:templateText atIndex:insertIndex];
+                        [lines insertObject:@"" atIndex:insertIndex];
+                    } else {
+                        [toInsertTextArray addObject:templateText];
+                        [toInsertTextArray addObject:@""];
+                    }
+                }
+            }];
+        }
+    }];
+    
+    if (toInsertTextArray.count) {
+        NSString *text = [toInsertTextArray componentsJoinedByString:@"\n"];
+        [[NSPasteboard generalPasteboard] clearContents];
+        [[NSPasteboard generalPasteboard] writeObjects:@[text]];
     }
     
     completionHandler(nil);

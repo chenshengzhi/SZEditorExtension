@@ -10,6 +10,14 @@
 
 @interface NSString (SZAddition)
 
+- (NSString *)trimWhitespace;
+
 - (BOOL)isAsignmentStatement;
+
+- (void)propertyDeclarationInfoWithBlock:(void(^)(BOOL isProperty, NSString *type, NSString *name))block;
+
+- (NSString *)interfaceName;
+
+- (BOOL)isImplementationForInterface:(NSString *)interface;
 
 @end

@@ -23,8 +23,7 @@
 */
 
 
-- (NSArray <NSDictionary <XCSourceEditorCommandDefinitionKey, id> *> *)commandDefinitions
-{
+- (NSArray <NSDictionary <XCSourceEditorCommandDefinitionKey, id> *> *)commandDefinitions {
     return @[
              @{
                  XCSourceEditorCommandIdentifierKey: @"com.csz.SZEditorExtension.SZXcodeEditorExtension.duplicateLine",

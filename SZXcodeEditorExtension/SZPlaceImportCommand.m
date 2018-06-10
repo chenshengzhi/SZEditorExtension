@@ -25,7 +25,8 @@
 
 @implementation SZPlaceImportCommand
 
-- (void)performCommandWithInvocation:(XCSourceEditorCommandInvocation *)invocation completionHandler:(void (^)(NSError * _Nullable))completionHandler {
+- (void)performCommandWithInvocation:(XCSourceEditorCommandInvocation *)invocation
+                   completionHandler:(void (^)(NSError * _Nullable))completionHandler {
     XCSourceTextBuffer *buffer = invocation.buffer;
     
     XCSourceTextRange *sourceTextRange = buffer.selections.firstObject;
