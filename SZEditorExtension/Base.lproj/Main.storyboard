@@ -850,11 +850,32 @@
                                     <action selector="saveAcionHandler:" target="nD6-Fu-zok" id="9w4-9B-obI"/>
                                 </connections>
                             </button>
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="J0s-IH-QfC">
+                                <rect key="frame" x="180" y="11" width="205" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="5jn-R9-8ZL"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="Gi1-5n-lcz"/>
+                                </constraints>
+                                <popUpButtonCell key="cell" type="push" title="Implementation Start" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="Ray-6g-ACd" id="sjX-Nd-zaj">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="37q-4x-aVo">
+                                        <items>
+                                            <menuItem title="Implementation Start" state="on" id="Ray-6g-ACd"/>
+                                            <menuItem title="Implementation End" id="3Ng-tR-w4N"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <action selector="popUpActionHandler:" target="nD6-Fu-zok" id="Buc-lW-6O6"/>
+                                </connections>
+                            </popUpButton>
                         </subviews>
                         <constraints>
                             <constraint firstItem="lPb-Gj-EM4" firstAttribute="leading" secondItem="TPI-P8-gVH" secondAttribute="trailing" constant="18" id="51p-QZ-KRe"/>
                             <constraint firstItem="rep-mB-duD" firstAttribute="leading" secondItem="Xml-H7-w9Q" secondAttribute="trailing" constant="8" symbolic="YES" id="6hx-Sz-bDO"/>
                             <constraint firstAttribute="trailing" secondItem="rep-mB-duD" secondAttribute="trailing" id="8Ad-FX-ELt"/>
+                            <constraint firstItem="J0s-IH-QfC" firstAttribute="leading" secondItem="lPb-Gj-EM4" secondAttribute="trailing" constant="20" id="CMS-af-IPB"/>
                             <constraint firstAttribute="bottom" secondItem="Xml-H7-w9Q" secondAttribute="bottom" constant="50" id="Or1-pf-lzF"/>
                             <constraint firstItem="Xml-H7-w9Q" firstAttribute="bottom" secondItem="rep-mB-duD" secondAttribute="bottom" id="PWX-tW-dUf"/>
                             <constraint firstItem="TPI-P8-gVH" firstAttribute="baseline" secondItem="lPb-Gj-EM4" secondAttribute="baseline" id="TAp-1t-1ic"/>
@@ -866,9 +887,11 @@
                             <constraint firstItem="Xml-H7-w9Q" firstAttribute="top" secondItem="IfK-ar-xZz" secondAttribute="top" id="ouv-My-ATK"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lPb-Gj-EM4" secondAttribute="trailing" constant="20" symbolic="YES" id="pqF-SY-acl"/>
                             <constraint firstItem="pcv-zl-Pzp" firstAttribute="top" secondItem="Xml-H7-w9Q" secondAttribute="bottom" constant="13" id="z5h-Sc-Pn0"/>
+                            <constraint firstItem="J0s-IH-QfC" firstAttribute="centerY" secondItem="lPb-Gj-EM4" secondAttribute="centerY" id="zGV-5D-nG4"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="popUpButton" destination="J0s-IH-QfC" id="rw5-q0-dPo"/>
                         <outlet property="tableView" destination="JdE-aG-ajH" id="NXn-Oe-FB3"/>
                         <outlet property="textView" destination="10E-a6-mVC" id="Xjh-zK-dt8"/>
                     </connections>

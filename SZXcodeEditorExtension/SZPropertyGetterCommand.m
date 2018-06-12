@@ -9,6 +9,7 @@
 #import "SZPropertyGetterCommand.h"
 #import "SZEditorExtensionHeader.h"
 #import "NSString+SZAddition.h"
+#import "NSArray+SZAlignByEqualSign.h"
 #import <AppKit/AppKit.h>
 
 @implementation SZPropertyGetterCommand
@@ -29,6 +30,7 @@
     NSDictionary *map = [defaults objectForKey:SZEEPropertyGetterDictKey];
     
     NSMutableArray *toInsertTextArray = [NSMutableArray array];
+    SZEEPropertyGetterPosition position = [defaults integerForKey:SZEEPropertyGetterPositionKey];
     
     [invocation.buffer.selections enumerateObjectsUsingBlock:^(XCSourceTextRange * _Nonnull textRange, NSUInteger idx, BOOL * _Nonnull stop) {
         XCSourceTextPosition start = textRange.start;
@@ -38,8 +40,8 @@
         NSInteger firstIndex = NSNotFound;
         for (NSInteger i = start.line; i <= end.line; i++) {
             if (i < lines.count) {
-                NSString *line = [lines[i] trimWhitespace];
-                if ([line hasPrefix:@"@property"]) {
+                NSString *line = lines[i];
+                if ([line isPropertyLine]) {
                     firstIndex = MIN(firstIndex, i);
                     [selectedLines addObject:line];
                 }
@@ -52,8 +54,8 @@
         
         NSString *interfaceName = nil;
         for (NSInteger i = firstIndex - 1; i >= 0; i--) {
-            NSString *line = [lines[i] trimWhitespace];
-            if ([line hasPrefix:@"@interface"]) {
+            NSString *line = lines[i];
+            if ([line isInterfaceLine]) {
                 interfaceName = [line interfaceName];
                 break;
             }
@@ -62,33 +64,34 @@
             return;
         }
         
-        __block NSInteger insertIndex = NSNotFound;
-        __block NSString *impl = nil;
-        [lines enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            if ([obj isImplementationForInterface:interfaceName]) {
-                insertIndex = idx + 1;
-                *stop = YES;
-                impl = obj;
-            }
-        }];
-        
-        for (NSString *line in selectedLines.reverseObjectEnumerator) {
+        NSInteger insertIndex = [lines insertIdexForInterface:interfaceName position:position];
+        NSEnumerator *lineEnumerator = [selectedLines reverseObjectEnumerator];
+        for (NSString *line in lineEnumerator) {
             [line propertyDeclarationInfoWithBlock:^(BOOL isProperty, NSString *type, NSString *name) {
                 if (isProperty && type.length && name.length) {
-                    NSDictionary *dict = map[type];
-                    NSString *templateText = dict[SZEEPropertyGetterDictTemplateTextKey];
+                    NSString *templateText = map[type];
                     if (!templateText.length) {
                         templateText = SZEEPropertyGetterDictUndefinedValue;
                     }
                     templateText = [templateText stringByReplacingOccurrencesOfString:@"###type###" withString:type];
                     templateText = [templateText stringByReplacingOccurrencesOfString:@"###name###" withString:name];
                     
-                    if (insertIndex < lines.count) {
-                        [lines insertObject:templateText atIndex:insertIndex];
-                        [lines insertObject:@"" atIndex:insertIndex];
+                    if (insertIndex <= lines.count) {
+                        if (position == SZEEPropertyGetterPositionImplementationStart) {
+                            [lines insertObject:templateText atIndex:insertIndex];
+                            [lines insertObject:@"" atIndex:insertIndex];
+                        } else {
+                            [lines insertObject:@"" atIndex:insertIndex];
+                            [lines insertObject:templateText atIndex:insertIndex];
+                        }
                     } else {
-                        [toInsertTextArray addObject:templateText];
-                        [toInsertTextArray addObject:@""];
+                        if (position == SZEEPropertyGetterPositionImplementationStart) {
+                            [toInsertTextArray addObject:templateText];
+                            [toInsertTextArray addObject:@""];
+                        } else {
+                            [toInsertTextArray addObject:@""];
+                            [toInsertTextArray addObject:templateText];
+                        }
                     }
                 }
             }];

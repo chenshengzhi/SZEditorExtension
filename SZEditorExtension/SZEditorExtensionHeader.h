@@ -9,15 +9,15 @@
 #ifndef SZEditorExtensionHeader_h
 #define SZEditorExtensionHeader_h
 
-typedef NS_ENUM(NSUInteger, SZEEPropertyGetterPosition) {
+typedef NS_ENUM(NSInteger, SZEEPropertyGetterPosition) {
     SZEEPropertyGetterPositionImplementationStart,
-    SZEEPropertyGetterPositionBeforeImplementationEnd,
+    SZEEPropertyGetterPositionImplementationEnd,
 };
 
 #define SZEEUserdefaultSuiteName @"SZEditorExtension"
-#define SZEEPropertyGetterDictKey @"com.csz.SZEditorExtension.propertyGetter"
-#define SZEEPropertyGetterDictTemplateTextKey @"com.csz.SZEditorExtension.propertyGetter.templateText"
-#define SZEEPropertyGetterDictPositionKey @"com.csz.SZEditorExtension.propertyGetter.position"
+#define SZEEPropertyGetterDictKey @"com.csz.SZEditorExtension.propertyGetter.dict"
+
+#define SZEEPropertyGetterPositionKey @"com.csz.SZEditorExtension.propertyGetter.position"
 
 #define SZEEPropertyGetterDictUndefinedValue @""\
 "- (###type### *)###name### {\n"\

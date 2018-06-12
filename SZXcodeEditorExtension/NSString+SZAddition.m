@@ -92,6 +92,14 @@ static inline BOOL isSyntaxChar(unichar theChar) {
     }
 }
 
+- (BOOL)isPropertyLine {
+    return [[self trimWhitespace] hasPrefix:@"@property"];
+}
+
+- (BOOL)isInterfaceLine {
+    return [[self trimWhitespace] hasPrefix:@"@interface"];
+}
+
 - (NSString *)interfaceName {
     NSRange range = [self rangeOfString:@"@interface"];
     if (range.location == NSNotFound) {

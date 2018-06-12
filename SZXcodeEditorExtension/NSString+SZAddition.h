@@ -16,6 +16,10 @@
 
 - (void)propertyDeclarationInfoWithBlock:(void(^)(BOOL isProperty, NSString *type, NSString *name))block;
 
+- (BOOL)isPropertyLine;
+
+- (BOOL)isInterfaceLine;
+
 - (NSString *)interfaceName;
 
 - (BOOL)isImplementationForInterface:(NSString *)interface;

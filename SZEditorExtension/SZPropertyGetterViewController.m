@@ -14,8 +14,10 @@
 
 @property (weak) IBOutlet NSTableView *tableView;
 @property (unsafe_unretained) IBOutlet NSTextView *textView;
+@property (weak) IBOutlet NSPopUpButton *popUpButton;
 
 @property (nonatomic, strong) NSUserDefaults *defaults;
+@property (nonatomic) SZEEPropertyGetterPosition position;
 @property (nonatomic, strong) NSMutableArray<SZPropertyGetterModel *> *dataSource;
 
 @end
@@ -26,18 +28,21 @@
     [super viewDidLoad];
     
     self.defaults = [[NSUserDefaults alloc] initWithSuiteName:SZEEUserdefaultSuiteName];
-    [self.defaults synchronize];
+    
+    self.position = [self.defaults integerForKey:SZEEPropertyGetterPositionKey];
+    [self.popUpButton selectItemAtIndex:self.position];
+    
     NSDictionary *dict = [self.defaults objectForKey:SZEEPropertyGetterDictKey];
     self.dataSource = [NSMutableArray array];
     if (dict.count) {
-        [dict enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSDictionary *obj, BOOL *stop) {
+        [dict enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *obj, BOOL *stop) {
             SZPropertyGetterModel *model = [[SZPropertyGetterModel alloc] init];
             model.typeName = key;
-            model.templateText = obj[SZEEPropertyGetterDictTemplateTextKey];
+            model.templateText = obj;
             [self.dataSource addObject:model];
         }];
     } else  {
-        
+        /// todo load default getter template
     }
 }
 
@@ -61,10 +66,16 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [self.dataSource enumerateObjectsUsingBlock:^(SZPropertyGetterModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (obj.typeName.length) {
-            dict[obj.typeName] = @{SZEEPropertyGetterDictTemplateTextKey: obj.templateText};
+            dict[obj.typeName] = obj.templateText;
         }
     }];
     [self.defaults setObject:dict forKey:SZEEPropertyGetterDictKey];
+    [self.defaults synchronize];
+}
+
+- (IBAction)popUpActionHandler:(id)sender {
+    self.position = [self.popUpButton indexOfSelectedItem];
+    [self.defaults setInteger:self.position forKey:SZEEPropertyGetterPositionKey];
     [self.defaults synchronize];
 }
 

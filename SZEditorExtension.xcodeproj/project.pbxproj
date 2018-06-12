@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2445B1D920C9826400ADC78F /* SZPropertyGetterCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 2445B1D820C9826400ADC78F /* SZPropertyGetterCommand.m */; };
-		2446497520C98A090018B2CF /* Template.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2446497420C98A090018B2CF /* Template.plist */; };
 		248EB54A20CBC7B80094A6DA /* SZPropertyGetterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 248EB54920CBC7B80094A6DA /* SZPropertyGetterViewController.m */; };
 		248EB54D20CBCC910094A6DA /* SZPropertyGetterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 248EB54C20CBCC910094A6DA /* SZPropertyGetterModel.m */; };
 		24A6CD681D96831100ECEF89 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A6CD671D96831100ECEF89 /* AppDelegate.m */; };
@@ -73,7 +72,6 @@
 /* Begin PBXFileReference section */
 		2445B1D720C9826400ADC78F /* SZPropertyGetterCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZPropertyGetterCommand.h; sourceTree = "<group>"; };
 		2445B1D820C9826400ADC78F /* SZPropertyGetterCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZPropertyGetterCommand.m; sourceTree = "<group>"; };
-		2446497420C98A090018B2CF /* Template.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Template.plist; sourceTree = "<group>"; };
 		248EB54720CBC7200094A6DA /* SZEditorExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SZEditorExtension.entitlements; sourceTree = "<group>"; };
 		248EB54820CBC7B80094A6DA /* SZPropertyGetterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZPropertyGetterViewController.h; sourceTree = "<group>"; };
 		248EB54920CBC7B80094A6DA /* SZPropertyGetterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZPropertyGetterViewController.m; sourceTree = "<group>"; };
@@ -250,7 +248,6 @@
 				24AB6B4F1E7E3A1800A82515 /* NSString+SZAddition.h */,
 				24AB6B501E7E3A1800A82515 /* NSString+SZAddition.m */,
 				24A6CDA71D96831D00ECEF89 /* Info.plist */,
-				2446497420C98A090018B2CF /* Template.plist */,
 				24A6CD9F1D96831D00ECEF89 /* Supporting Files */,
 			);
 			path = SZXcodeEditorExtension;
@@ -437,7 +434,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2446497520C98A090018B2CF /* Template.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
