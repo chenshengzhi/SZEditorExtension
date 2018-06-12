@@ -11,6 +11,7 @@
 #import "SZDeleteLineCommand.h"
 #import "SZPlaceImportCommand.h"
 #import "SZAlignCommand.h"
+#import "SZPropertyGetterCommand.h"
 
 @implementation SourceEditorExtension
 
@@ -22,8 +23,7 @@
 */
 
 
-- (NSArray <NSDictionary <XCSourceEditorCommandDefinitionKey, id> *> *)commandDefinitions
-{
+- (NSArray <NSDictionary <XCSourceEditorCommandDefinitionKey, id> *> *)commandDefinitions {
     return @[
              @{
                  XCSourceEditorCommandIdentifierKey: @"com.csz.SZEditorExtension.SZXcodeEditorExtension.duplicateLine",
@@ -44,6 +44,11 @@
                  XCSourceEditorCommandIdentifierKey: @"com.csz.SZEditorExtension.SZXcodeEditorExtension.align",
                  XCSourceEditorCommandClassNameKey: NSStringFromClass([SZAlignCommand class]),
                  XCSourceEditorCommandNameKey: @"Align Selected Lines",
+                 },
+             @{
+                 XCSourceEditorCommandIdentifierKey: @"com.csz.SZEditorExtension.SZXcodeEditorExtension.propertyGetter",
+                 XCSourceEditorCommandClassNameKey: NSStringFromClass([SZPropertyGetterCommand class]),
+                 XCSourceEditorCommandNameKey: @"Property Getter",
                  },
              ];
 }

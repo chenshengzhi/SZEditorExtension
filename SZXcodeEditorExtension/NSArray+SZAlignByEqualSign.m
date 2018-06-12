@@ -58,4 +58,31 @@
     return [newArray copy];
 }
 
+- (NSInteger)insertIdexForInterface:(NSString *)interface position:(SZEEPropertyGetterPosition)position {
+    NSInteger insertIndex = NSNotFound;
+    for (NSInteger idx = 0; idx < self.count; idx++) {
+        NSString *line = self[idx];
+        if ([line isImplementationForInterface:interface]) {
+            insertIndex = idx;
+            break;
+        }
+    }
+    
+    if (insertIndex > self.count) {
+        return NSNotFound;
+    }
+    
+    if (position == SZEEPropertyGetterPositionImplementationStart) {
+        return (insertIndex + 1);
+    } else {
+        for (NSInteger idx = insertIndex + 1; idx < self.count; idx++) {
+            NSString *line = [self[idx] trimWhitespace];
+            if ([line hasPrefix:@"@end"]) {
+                return idx;
+            }
+        }
+        return NSNotFound;
+    }
+}
+
 @end
