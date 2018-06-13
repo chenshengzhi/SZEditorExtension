@@ -103,7 +103,7 @@ static inline BOOL isSyntaxChar(unichar theChar) {
 - (NSString *)interfaceName {
     NSRange range = [self rangeOfString:@"@interface"];
     if (range.location == NSNotFound) {
-        return NO;
+        return nil;
     }
     
     NSMutableString *mutableString = [self mutableCopy];
