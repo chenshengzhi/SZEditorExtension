@@ -51,14 +51,14 @@ static inline BOOL isSyntaxChar(unichar theChar) {
     return NO;
 }
 
-- (void)propertyDeclarationInfoWithBlock:(void (^)(BOOL, NSString *, NSString *))block {
+- (void)propertyDeclarationInfoWithBlock:(void (^)(BOOL, BOOL, NSString *, NSString *))block {
     if (!block) {
         return;
     }
     
     NSRange range = [self rangeOfString:@"@property"];
     if (range.location == NSNotFound) {
-        block(NO, nil, nil);
+        block(NO, NO, nil, nil);
         return;
     }
     
@@ -77,6 +77,8 @@ static inline BOOL isSyntaxChar(unichar theChar) {
         [mutableString deleteCharactersInRange:range];
     }
     
+    BOOL isPointer = [mutableString rangeOfString:@"*"].location != NSNotFound;
+    
     NSMutableCharacterSet *characterSet = [NSMutableCharacterSet whitespaceCharacterSet];
     [characterSet addCharactersInString:@"*;"];
     NSMutableArray<NSString *> *tokenArray = [[mutableString componentsSeparatedByCharactersInSet:characterSet] mutableCopy];
@@ -86,9 +88,9 @@ static inline BOOL isSyntaxChar(unichar theChar) {
     [tokenArray removeObjectsAtIndexes:indexSet];
     
     if (tokenArray.count >= 2) {
-        block(YES, tokenArray[0], tokenArray[1]);
+        block(YES, isPointer, tokenArray[0], tokenArray[1]);
     } else {
-        block(NO, nil, nil);
+        block(NO, NO, nil, nil);
     }
 }
 

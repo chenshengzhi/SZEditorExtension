@@ -67,8 +67,8 @@
         NSInteger insertIndex = [lines insertIdexForInterface:interfaceName position:position];
         NSEnumerator *lineEnumerator = [selectedLines reverseObjectEnumerator];
         for (NSString *line in lineEnumerator) {
-            [line propertyDeclarationInfoWithBlock:^(BOOL isProperty, NSString *type, NSString *name) {
-                if (isProperty && type.length && name.length) {
+            [line propertyDeclarationInfoWithBlock:^(BOOL isProperty, BOOL isPointer, NSString *type, NSString *name) {
+                if (isProperty && isPointer && type.length && name.length) {
                     NSString *templateText = map[type];
                     if (!templateText.length) {
                         templateText = SZEEPropertyGetterDictUndefinedValue;
