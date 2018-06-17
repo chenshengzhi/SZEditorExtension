@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SZEditorExtensionHeader.h"
 
 @interface NSString (SZAddition)
 
@@ -19,6 +20,10 @@
 - (BOOL)isPropertyLine;
 
 - (BOOL)isInterfaceLine;
+
+- (BOOL)isImplementationLine;
+
+- (BOOL)isMethodStartLine;
 
 - (NSString *)interfaceName;
 

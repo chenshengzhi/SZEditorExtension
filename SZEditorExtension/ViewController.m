@@ -7,8 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "SZEditorExtensionHeader.h"
 
 @interface ViewController ()
+
+@property (nonatomic, strong) NSUserDefaults *defaults;
 
 @end
 
@@ -16,6 +19,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.defaults = [[NSUserDefaults alloc] initWithSuiteName:SZEEUserdefaultSuiteName];
+}
+
+- (IBAction)copyToPastBoard:(NSButton *)sender {
+    BOOL doCopy = sender.doubleValue;
+    BOOL withoutCopy = !doCopy;
+    [self.defaults setBool:withoutCopy forKey:SZEESelectMethodWithoutCopyToPastBoardKey];
+    [self.defaults synchronize];
 }
 
 @end

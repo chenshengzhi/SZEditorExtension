@@ -64,7 +64,7 @@
             return;
         }
         
-        NSInteger insertIndex = [lines insertIdexForInterface:interfaceName position:position];
+        NSInteger insertIndex = [lines propertyGetterInsertIdexForInterface:interfaceName position:position];
         NSEnumerator *lineEnumerator = [selectedLines reverseObjectEnumerator];
         for (NSString *line in lineEnumerator) {
             [line propertyDeclarationInfoWithBlock:^(BOOL isProperty, BOOL isPointer, NSString *type, NSString *name) {

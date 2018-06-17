@@ -102,6 +102,14 @@ static inline BOOL isSyntaxChar(unichar theChar) {
     return [[self trimWhitespace] hasPrefix:@"@interface"];
 }
 
+- (BOOL)isImplementationLine {
+    return [[self trimWhitespace] hasPrefix:@"@implementation"];
+}
+
+- (BOOL)isMethodStartLine {
+    return [self rangeOfString:@"^ *[-+]{1} *\\(.+\\)" options:NSRegularExpressionSearch].location != NSNotFound;
+}
+
 - (NSString *)interfaceName {
     NSRange range = [self rangeOfString:@"@interface"];
     if (range.location == NSNotFound) {

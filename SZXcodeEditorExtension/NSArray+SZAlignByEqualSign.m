@@ -58,7 +58,7 @@
     return [newArray copy];
 }
 
-- (NSInteger)insertIdexForInterface:(NSString *)interface position:(SZEEPropertyGetterPosition)position {
+- (NSInteger)propertyGetterInsertIdexForInterface:(NSString *)interface position:(SZEEPropertyGetterPosition)position {
     NSInteger insertIndex = NSNotFound;
     for (NSInteger idx = 0; idx < self.count; idx++) {
         NSString *line = self[idx];
