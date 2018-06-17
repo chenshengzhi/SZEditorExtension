@@ -699,11 +699,38 @@
                                     <segue destination="nD6-Fu-zok" kind="show" id="SQI-mV-05b"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wSE-EA-iTh">
+                                <rect key="frame" x="18" y="201" width="93" height="17"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Select Method" id="k0Y-cs-aax">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jcm-58-Z0V">
+                                <rect key="frame" x="127" y="201" width="135" height="18"/>
+                                <buttonCell key="cell" type="check" title="Copy to Pastboard" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="k6X-WO-GzB">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="copyToPastBoard:" target="XfG-lQ-9wD" id="Pe8-mV-Mtx"/>
+                                </connections>
+                            </button>
+                            <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="eqU-Dn-ZYw" userLabel="Line1">
+                                <rect key="frame" x="0.0" y="236" width="450" height="5"/>
+                            </box>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="gmC-su-t2k" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="4yG-bn-imb"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gmC-su-t2k" secondAttribute="trailing" constant="20" symbolic="YES" id="ROw-7M-vKJ"/>
-                            <constraint firstItem="gmC-su-t2k" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" symbolic="YES" id="Tva-y4-PQN"/>
+                            <constraint firstItem="eqU-Dn-ZYw" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="7qu-1W-Bn4"/>
+                            <constraint firstItem="gmC-su-t2k" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="9Cd-di-lM2"/>
+                            <constraint firstItem="Jcm-58-Z0V" firstAttribute="centerY" secondItem="wSE-EA-iTh" secondAttribute="centerY" id="BSv-Gn-Ryw"/>
+                            <constraint firstItem="wSE-EA-iTh" firstAttribute="top" secondItem="eqU-Dn-ZYw" secondAttribute="bottom" constant="20" id="M7Z-ad-iGo"/>
+                            <constraint firstAttribute="trailing" secondItem="eqU-Dn-ZYw" secondAttribute="trailing" id="Ooo-PT-MXN"/>
+                            <constraint firstItem="eqU-Dn-ZYw" firstAttribute="top" secondItem="gmC-su-t2k" secondAttribute="bottom" constant="20" id="RhI-VA-HtB"/>
+                            <constraint firstItem="Jcm-58-Z0V" firstAttribute="leading" secondItem="wSE-EA-iTh" secondAttribute="trailing" constant="20" id="Z4c-1K-KKU"/>
+                            <constraint firstItem="gmC-su-t2k" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="l1g-lI-cnt"/>
+                            <constraint firstItem="wSE-EA-iTh" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="zVt-tw-Mt7"/>
                         </constraints>
                     </view>
                 </viewController>

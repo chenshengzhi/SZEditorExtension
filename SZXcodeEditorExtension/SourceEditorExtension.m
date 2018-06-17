@@ -12,6 +12,7 @@
 #import "SZPlaceImportCommand.h"
 #import "SZAlignCommand.h"
 #import "SZPropertyGetterCommand.h"
+#import "SZSelectMethodStatementCommand.h"
 
 @implementation SourceEditorExtension
 
@@ -49,6 +50,11 @@
                  XCSourceEditorCommandIdentifierKey: @"com.csz.SZEditorExtension.SZXcodeEditorExtension.propertyGetter",
                  XCSourceEditorCommandClassNameKey: NSStringFromClass([SZPropertyGetterCommand class]),
                  XCSourceEditorCommandNameKey: @"Property Getter",
+                 },
+             @{
+                 XCSourceEditorCommandIdentifierKey: @"com.csz.SZEditorExtension.SZXcodeEditorExtension.selectMethod",
+                 XCSourceEditorCommandClassNameKey: NSStringFromClass([SZSelectMethodStatementCommand class]),
+                 XCSourceEditorCommandNameKey: @"Select Method",
                  },
              ];
 }

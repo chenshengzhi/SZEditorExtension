@@ -15,6 +15,6 @@
 
 - (NSArray *)alignedArrayByEqualSign;
 
-- (NSInteger)insertIdexForInterface:(NSString *)interface position:(SZEEPropertyGetterPosition)position;
+- (NSInteger)propertyGetterInsertIdexForInterface:(NSString *)interface position:(SZEEPropertyGetterPosition)position;
 
 @end

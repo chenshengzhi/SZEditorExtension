@@ -27,4 +27,7 @@ typedef NS_ENUM(NSInteger, SZEEPropertyGetterPosition) {
 "    return _###name###;\n"\
 "}"\
 
+
+#define SZEESelectMethodWithoutCopyToPastBoardKey @"com.csz.SZEditorExtension.selectMethod.withoutCopyToPastboard"
+
 #endif /* SZEditorExtensionHeader_h */

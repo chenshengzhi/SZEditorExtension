@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SZEditorExtensionHeader.h"
 
 @interface NSString (SZAddition)
 
@@ -14,11 +15,15 @@
 
 - (BOOL)isAsignmentStatement;
 
-- (void)propertyDeclarationInfoWithBlock:(void(^)(BOOL isProperty, NSString *type, NSString *name))block;
+- (void)propertyDeclarationInfoWithBlock:(void(^)(BOOL isProperty, BOOL isPointer, NSString *type, NSString *name))block;
 
 - (BOOL)isPropertyLine;
 
 - (BOOL)isInterfaceLine;
+
+- (BOOL)isImplementationLine;
+
+- (BOOL)isMethodStartLine;
 
 - (NSString *)interfaceName;
 
