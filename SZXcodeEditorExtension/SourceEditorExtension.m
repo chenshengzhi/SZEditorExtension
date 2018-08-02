@@ -13,6 +13,7 @@
 #import "SZAlignCommand.h"
 #import "SZPropertyGetterCommand.h"
 #import "SZSelectMethodStatementCommand.h"
+#import "SZPropertyReadonlyCommand.h"
 
 @implementation SourceEditorExtension
 
@@ -50,6 +51,11 @@
                  XCSourceEditorCommandIdentifierKey: @"com.csz.SZEditorExtension.SZXcodeEditorExtension.propertyGetter",
                  XCSourceEditorCommandClassNameKey: NSStringFromClass([SZPropertyGetterCommand class]),
                  XCSourceEditorCommandNameKey: @"Property Getter",
+                 },
+             @{
+                 XCSourceEditorCommandIdentifierKey: @"com.csz.SZEditorExtension.SZXcodeEditorExtension.propertyReadonly",
+                 XCSourceEditorCommandClassNameKey: NSStringFromClass([SZPropertyReadonlyCommand class]),
+                 XCSourceEditorCommandNameKey: @"Property Readonly",
                  },
              @{
                  XCSourceEditorCommandIdentifierKey: @"com.csz.SZEditorExtension.SZXcodeEditorExtension.selectMethod",
