@@ -13,6 +13,7 @@
 		24679D3F20D5681D003C95D4 /* NSArray+SZAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 24679D3A20D5637B003C95D4 /* NSArray+SZAddition.m */; };
 		24679D4120D63672003C95D4 /* XcodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24679D4020D63672003C95D4 /* XcodeKit.framework */; };
 		24679D4220D63693003C95D4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A6CD9C1D96831D00ECEF89 /* Cocoa.framework */; };
+		247AD917211350D800E81E01 /* SZPropertyReadonlyCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 247AD916211350D800E81E01 /* SZPropertyReadonlyCommand.m */; };
 		248EB54A20CBC7B80094A6DA /* SZPropertyGetterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 248EB54920CBC7B80094A6DA /* SZPropertyGetterViewController.m */; };
 		248EB54D20CBCC910094A6DA /* SZPropertyGetterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 248EB54C20CBCC910094A6DA /* SZPropertyGetterModel.m */; };
 		24A6CD681D96831100ECEF89 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A6CD671D96831100ECEF89 /* AppDelegate.m */; };
@@ -82,6 +83,8 @@
 		24679D3C20D56652003C95D4 /* SZSelectMethodStatementCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZSelectMethodStatementCommand.h; sourceTree = "<group>"; };
 		24679D3D20D56652003C95D4 /* SZSelectMethodStatementCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZSelectMethodStatementCommand.m; sourceTree = "<group>"; };
 		24679D4020D63672003C95D4 /* XcodeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XcodeKit.framework; path = Library/Frameworks/XcodeKit.framework; sourceTree = DEVELOPER_DIR; };
+		247AD915211350D800E81E01 /* SZPropertyReadonlyCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZPropertyReadonlyCommand.h; sourceTree = "<group>"; };
+		247AD916211350D800E81E01 /* SZPropertyReadonlyCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZPropertyReadonlyCommand.m; sourceTree = "<group>"; };
 		248EB54720CBC7200094A6DA /* SZEditorExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SZEditorExtension.entitlements; sourceTree = "<group>"; };
 		248EB54820CBC7B80094A6DA /* SZPropertyGetterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZPropertyGetterViewController.h; sourceTree = "<group>"; };
 		248EB54920CBC7B80094A6DA /* SZPropertyGetterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZPropertyGetterViewController.m; sourceTree = "<group>"; };
@@ -254,6 +257,8 @@
 				24E023AB1E7E2924004DBC93 /* SZAlignCommand.m */,
 				2445B1D720C9826400ADC78F /* SZPropertyGetterCommand.h */,
 				2445B1D820C9826400ADC78F /* SZPropertyGetterCommand.m */,
+				247AD915211350D800E81E01 /* SZPropertyReadonlyCommand.h */,
+				247AD916211350D800E81E01 /* SZPropertyReadonlyCommand.m */,
 				24679D3C20D56652003C95D4 /* SZSelectMethodStatementCommand.h */,
 				24679D3D20D56652003C95D4 /* SZSelectMethodStatementCommand.m */,
 				24D211CA1DC83B5100894F13 /* SZRange.h */,
@@ -503,6 +508,7 @@
 				24AB6B511E7E3A1800A82515 /* NSString+SZAddition.m in Sources */,
 				24E023AC1E7E2924004DBC93 /* SZAlignCommand.m in Sources */,
 				24A6CDB41D9683C700ECEF89 /* SZDeleteLineCommand.m in Sources */,
+				247AD917211350D800E81E01 /* SZPropertyReadonlyCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,6 +660,7 @@
 				DEVELOPMENT_TEAM = P86AE7AXU9;
 				INFOPLIST_FILE = SZEditorExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = com.csz.SZEditorExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -671,6 +678,7 @@
 				DEVELOPMENT_TEAM = P86AE7AXU9;
 				INFOPLIST_FILE = SZEditorExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = com.csz.SZEditorExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

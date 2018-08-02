@@ -153,4 +153,32 @@ static inline BOOL isSyntaxChar(unichar theChar) {
     return NO;
 }
 
+- (NSString *)readonlyPropertyLine {
+    if ([self isPropertyLine]) {
+        /// 非贪婪匹配
+        NSRange range = [self rangeOfString:@"\\(.*?\\)" options:NSRegularExpressionSearch];
+        if (range.location == NSNotFound) {
+            range = [self rangeOfString:@"@property"];
+            NSMutableString *text = [self mutableCopy];
+            [text insertString:@" (readonly)" atIndex:NSMaxRange(range)];
+            return [text copy];
+        } else {
+            NSString *subText = [self substringWithRange:NSMakeRange(range.location + 1, range.length - 2)];
+            NSMutableArray *array = [[subText componentsSeparatedByString:@","] mutableCopy];
+            for (NSUInteger idx = 0; idx < array.count; idx++) {
+                array[idx] = [array[idx] trimWhitespace];
+            }
+            NSArray *toRemoveArray = @[@"strong", @"weak", @"copy", @"retain", @"assign", @"unsafe_unretained"];
+            [array removeObjectsInArray:toRemoveArray];
+            [array addObject:@"readonly"];
+            subText = [array componentsJoinedByString:@", "];
+            subText = [NSString stringWithFormat:@"(%@)", subText];
+            NSString *text = [self stringByReplacingCharactersInRange:range withString:subText];
+            return text;
+        }
+    } else {
+        return self;
+    }
+}
+
 @end

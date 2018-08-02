@@ -29,4 +29,6 @@
 
 - (BOOL)isImplementationForInterface:(NSString *)interface;
 
+- (NSString *)readonlyPropertyLine;
+
 @end
