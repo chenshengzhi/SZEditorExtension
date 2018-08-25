@@ -7,13 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <XcodeKit/XCSourceTextRange.h>
+#import "SZEditorExtensionHeader.h"
 
 @interface NSArray (SZAddition)
 
-- (XCSourceTextRange *)methodStatementPositionsWithIndex:(NSInteger)index;
+- (NSInteger)sz_propertyGetterInsertIdexForInterface:(NSString *)interface position:(SZEEPropertyGetterPosition)position;
 
-- (NSArray *)textArrayInTextRange:(XCSourceTextRange *)textRange;
+- (void)sz_firstInterfaceNameFromIndex:(NSInteger)fromIndex block:(void(^)(NSString *name, NSInteger index))block;
+
+- (void)sz_firstImplementationNameWithFromIndex:(NSInteger)fromIndex block:(void(^)(NSString *name, NSInteger index))block;
+
+- (BOOL)sz_hasExtensionWithName:(NSString *)name fromIndex:(NSInteger)fromIndex;
 
 @end
 

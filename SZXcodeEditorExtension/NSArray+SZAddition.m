@@ -7,97 +7,106 @@
 //
 
 #import "NSArray+SZAddition.h"
+#import "NSString+SZAddition.h"
 
 @implementation NSArray (SZAddition)
 
-- (XCSourceTextRange *)methodStatementPositionsWithIndex:(NSInteger)index {
-    NSInteger startLine = NSNotFound;
-    NSInteger startColumn = 0;
-    for (NSInteger idx = index; idx >= 0; idx--) {
+- (NSInteger)sz_propertyGetterInsertIdexForInterface:(NSString *)interface position:(SZEEPropertyGetterPosition)position {
+    NSInteger insertIndex = NSNotFound;
+    for (NSInteger idx = 0; idx < self.count; idx++) {
         NSString *line = self[idx];
-        NSRange range = [line rangeOfString:@"^ *[-+]{1} *\\(.+\\)" options:NSRegularExpressionSearch];
-        if (range.location != NSNotFound) {
-            startLine = idx;
-            
-            range = [line rangeOfString:@"^ *" options:NSRegularExpressionSearch];
-            if (range.location != NSNotFound) {
-                startColumn = NSMaxRange(range);
+        if ([line sz_isImplementationForInterface:interface]) {
+            insertIndex = idx;
+            break;
+        }
+    }
+    
+    if (insertIndex > self.count) {
+        return NSNotFound;
+    }
+    
+    if (position == SZEEPropertyGetterPositionImplementationStart) {
+        return (insertIndex + 1);
+    } else {
+        for (NSInteger idx = insertIndex + 1; idx < self.count; idx++) {
+            NSString *line = [self[idx] sz_trimWhitespace];
+            if ([line hasPrefix:@"@end"]) {
+                return idx;
             }
-            break;
         }
+        return NSNotFound;
     }
-    
-    if (startLine == NSNotFound) {
-        return nil;
-    }
-    
-    NSInteger endLine = NSNotFound;
-    NSInteger endColumn = 0;
-    for (NSInteger idx = startLine; idx < self.count; idx++) {
-        NSString *line = self[idx];
-        NSRange range = [line rangeOfString:@" *[;\\{]{1}" options:NSRegularExpressionSearch];
-        if (range.location != NSNotFound) {
-            endLine = idx;
-            endColumn = range.location;
-            break;
-        }
-    }
-    
-    if (startLine < self.count && endLine < self.count) {
-        XCSourceTextPosition startPosition = XCSourceTextPositionMake(startLine, startColumn);
-        XCSourceTextPosition endPosition = XCSourceTextPositionMake(endLine, endColumn);
-        XCSourceTextRange *textRange = [[XCSourceTextRange alloc] initWithStart:startPosition end:endPosition];
-        return textRange;
-    }
-    return nil;
 }
 
-- (NSArray *)textArrayInTextRange:(XCSourceTextRange *)textRange {
-    if (!textRange) {
-        return nil;
+- (void)sz_firstInterfaceNameFromIndex:(NSInteger)fromIndex block:(void(^)(NSString *name, NSInteger index))block {
+    __block NSString *name = nil;
+    __block NSInteger targetIndex = NSNotFound;
+    [self sz_enumerateLineFromIndex:fromIndex up:YES usingBlock:^void(NSString *text, NSInteger index, BOOL *stop) {
+        if ([text sz_isInterfaceLine]) {
+            name = [text sz_interfaceName];
+            targetIndex = index;
+            *stop = YES;
+        }
+    }];
+    if (block) {
+        block(name, targetIndex);
+    }
+}
+
+- (void)sz_firstImplementationNameWithFromIndex:(NSInteger)fromIndex block:(void(^)(NSString *name, NSInteger index))block {
+    __block NSString *name = nil;
+    __block NSInteger targetIndex = NSNotFound;
+    [self sz_enumerateLineFromIndex:fromIndex up:YES usingBlock:^void(NSString *text, NSInteger index, BOOL *stop) {
+        if ([text sz_isImplementationLine]) {
+            name = [text sz_implementationName];
+            targetIndex = index;
+            *stop = YES;
+        }
+    }];
+    if (block) {
+        block(name, targetIndex);
+    }
+}
+
+- (BOOL)sz_hasExtensionWithName:(NSString *)name fromIndex:(NSInteger)fromIndex {
+    __block BOOL has = NO;
+    [self sz_enumerateLineFromIndex:fromIndex up:YES usingBlock:^(NSString *text, NSInteger index, BOOL *stop) {
+        if ([text sz_isExtensionForInterface:name]) {
+            has = YES;
+            *stop = YES;
+        }
+    }];
+    return has;
+}
+
+#pragma mark - util -
+- (void)sz_enumerateLineFromIndex:(NSInteger)fromIndex up:(BOOL)up usingBlock:(void(^)(NSString *text, NSInteger index, BOOL *stop))block {
+    if (!block) {
+        return;
     }
     
-    NSInteger startLine = textRange.start.line;
-    NSInteger startColumn = textRange.start.column;
-    NSInteger endLine = textRange.end.line;
-    NSInteger endColumn = textRange.end.column;
-    
-    if (startLine >= self.count || endLine >= self.count) {
-        return nil;
+    if (fromIndex >= self.count) {
+        fromIndex = self.count - 1;
     }
-    if (endLine < startLine) {
-        return nil;
-    }
-    
-    if (startLine == endLine) {
-        NSString *line = self[startLine];
-        if (startColumn <= line.length && endColumn <= line.length) {
-            NSString *text = [line substringWithRange:NSMakeRange(startColumn, endColumn - startColumn)];
-            if (text) {
-                return @[text];
+    if (up) {
+        BOOL stop = NO;
+        for (NSInteger idx = fromIndex; idx >= 0; idx--) {
+            NSString *text = self[idx];
+            block(text, idx, &stop);
+            if (stop) {
+                break;
             }
         }
-        return nil;
-    }
-    
-    NSMutableArray *tempArray = [NSMutableArray array];
-    for (NSInteger idx = startLine; idx <= endLine; idx++) {
-        NSString *line = self[idx];
-        if (idx == startLine) {
-            NSString *subText = [line substringFromIndex:startColumn];
-            if (subText.length) {
-                [tempArray addObject:subText];
-            }
-        } else if (idx < endLine) {
-            [tempArray addObject:[line copy]];
-        } else {
-            NSString *subText = [line substringToIndex:endColumn];
-            if (subText.length) {
-                [tempArray addObject:subText];
+    } else {
+        BOOL stop = NO;
+        for (NSInteger idx = fromIndex; idx < self.count; idx++) {
+            NSString *text = self[idx];
+            block(text, idx, &stop);
+            if (stop) {
+                break;
             }
         }
     }
-    return [tempArray copy];
 }
 
 @end

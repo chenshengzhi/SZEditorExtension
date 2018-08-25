@@ -25,11 +25,15 @@ static inline BOOL isSyntaxChar(unichar theChar) {
 
 @implementation NSString (SZAddition)
 
-- (NSString *)trimWhitespace {
+- (NSString *)sz_trimWhitespace {
     return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 }
 
-- (BOOL)isAsignmentStatement {
+- (NSString *)sz_trimWhitespaceAndNewline {
+    return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
+- (BOOL)sz_isAsignmentStatement {
     NSString *compacted = [self stringByReplacingOccurrencesOfString:@" " withString:@""];
     if ([compacted hasPrefix:@"for("]) {
         return NO;
@@ -51,7 +55,7 @@ static inline BOOL isSyntaxChar(unichar theChar) {
     return NO;
 }
 
-- (void)propertyDeclarationInfoWithBlock:(void (^)(BOOL, BOOL, NSString *, NSString *))block {
+- (void)sz_propertyDeclarationInfoWithBlock:(void (^)(BOOL, BOOL, NSString *, NSString *))block {
     if (!block) {
         return;
     }
@@ -94,23 +98,23 @@ static inline BOOL isSyntaxChar(unichar theChar) {
     }
 }
 
-- (BOOL)isPropertyLine {
-    return [[self trimWhitespace] hasPrefix:@"@property"];
+- (BOOL)sz_isPropertyLine {
+    return [[self sz_trimWhitespace] hasPrefix:@"@property"];
 }
 
-- (BOOL)isInterfaceLine {
-    return [[self trimWhitespace] hasPrefix:@"@interface"];
+- (BOOL)sz_isInterfaceLine {
+    return [[self sz_trimWhitespace] hasPrefix:@"@interface"];
 }
 
-- (BOOL)isImplementationLine {
-    return [[self trimWhitespace] hasPrefix:@"@implementation"];
+- (BOOL)sz_isImplementationLine {
+    return [[self sz_trimWhitespace] hasPrefix:@"@implementation"];
 }
 
-- (BOOL)isMethodStartLine {
+- (BOOL)sz_isMethodStartLine {
     return [self rangeOfString:@"^ *[-+]{1} *\\(.+\\)" options:NSRegularExpressionSearch].location != NSNotFound;
 }
 
-- (NSString *)interfaceName {
+- (NSString *)sz_interfaceName {
     NSRange range = [self rangeOfString:@"@interface"];
     if (range.location == NSNotFound) {
         return nil;
@@ -129,11 +133,29 @@ static inline BOOL isSyntaxChar(unichar theChar) {
         [mutableString deleteCharactersInRange:range];
     }
     
-    NSString *string = [mutableString trimWhitespace];
+    NSString *string = [mutableString sz_trimWhitespace];
     return [string componentsSeparatedByString:@" "].firstObject;
 }
 
-- (BOOL)isImplementationForInterface:(NSString *)interface {
+- (NSString *)sz_implementationName {
+    NSRange range = [self rangeOfString:@"@implementation"];
+    if (range.location == NSNotFound) {
+        return nil;
+    }
+    
+    NSMutableString *mutableString = [self mutableCopy];
+    [mutableString deleteCharactersInRange:range];
+    
+    range = [mutableString rangeOfString:@"\\{" options:NSRegularExpressionSearch];
+    if (range.location != NSNotFound) {
+        [mutableString deleteCharactersInRange:range];
+    }
+    
+    NSString *string = [mutableString sz_trimWhitespaceAndNewline];
+    return string;
+}
+
+- (BOOL)sz_isImplementationForInterface:(NSString *)interface {
     if (!interface.length) {
         return NO;
     }
@@ -153,8 +175,22 @@ static inline BOOL isSyntaxChar(unichar theChar) {
     return NO;
 }
 
-- (NSString *)readonlyPropertyLine {
-    if ([self isPropertyLine]) {
+- (BOOL)sz_isExtensionForInterface:(NSString *)interface {
+    if (!interface.length) {
+        return NO;
+    }
+    
+    NSString *text = [NSString stringWithFormat:@"@interface +%@ *\\(\\)$", interface];
+    NSRange range = [[self sz_trimWhitespace] rangeOfString:text options:NSRegularExpressionSearch];
+    if (range.location != NSNotFound) {
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (NSString *)sz_readonlyPropertyLine {
+    if ([self sz_isPropertyLine]) {
         /// 非贪婪匹配
         NSRange range = [self rangeOfString:@"\\(.*?\\)" options:NSRegularExpressionSearch];
         if (range.location == NSNotFound) {
@@ -166,7 +202,7 @@ static inline BOOL isSyntaxChar(unichar theChar) {
             NSString *subText = [self substringWithRange:NSMakeRange(range.location + 1, range.length - 2)];
             NSMutableArray *array = [[subText componentsSeparatedByString:@","] mutableCopy];
             for (NSUInteger idx = 0; idx < array.count; idx++) {
-                array[idx] = [array[idx] trimWhitespace];
+                array[idx] = [array[idx] sz_trimWhitespace];
             }
             NSArray *toRemoveArray = @[@"strong", @"weak", @"copy", @"retain", @"assign", @"unsafe_unretained", @"readonly"];
             [array removeObjectsInArray:toRemoveArray];

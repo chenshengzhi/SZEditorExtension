@@ -9,7 +9,7 @@
 #import "SZPropertyGetterCommand.h"
 #import "SZEditorExtensionHeader.h"
 #import "NSString+SZAddition.h"
-#import "NSArray+SZAlignByEqualSign.h"
+#import "NSArray+SZAddition.h"
 #import <AppKit/AppKit.h>
 
 @implementation SZPropertyGetterCommand
@@ -41,7 +41,7 @@
         for (NSInteger i = start.line; i <= end.line; i++) {
             if (i < lines.count) {
                 NSString *line = lines[i];
-                if ([line isPropertyLine]) {
+                if ([line sz_isPropertyLine]) {
                     firstIndex = MIN(firstIndex, i);
                     [selectedLines addObject:line];
                 }
@@ -55,8 +55,8 @@
         NSString *interfaceName = nil;
         for (NSInteger i = firstIndex - 1; i >= 0; i--) {
             NSString *line = lines[i];
-            if ([line isInterfaceLine]) {
-                interfaceName = [line interfaceName];
+            if ([line sz_isInterfaceLine]) {
+                interfaceName = [line sz_interfaceName];
                 break;
             }
         }
@@ -64,10 +64,10 @@
             return;
         }
         
-        NSInteger insertIndex = [lines propertyGetterInsertIdexForInterface:interfaceName position:position];
+        NSInteger insertIndex = [lines sz_propertyGetterInsertIdexForInterface:interfaceName position:position];
         NSEnumerator *lineEnumerator = [selectedLines reverseObjectEnumerator];
         for (NSString *line in lineEnumerator) {
-            [line propertyDeclarationInfoWithBlock:^(BOOL isProperty, BOOL isPointer, NSString *type, NSString *name) {
+            [line sz_propertyDeclarationInfoWithBlock:^(BOOL isProperty, BOOL isPointer, NSString *type, NSString *name) {
                 if (isProperty && isPointer && type.length && name.length) {
                     NSString *templateText = map[type];
                     if (!templateText.length) {
