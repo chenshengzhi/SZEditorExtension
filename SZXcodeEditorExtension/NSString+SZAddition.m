@@ -168,7 +168,7 @@ static inline BOOL isSyntaxChar(unichar theChar) {
             for (NSUInteger idx = 0; idx < array.count; idx++) {
                 array[idx] = [array[idx] trimWhitespace];
             }
-            NSArray *toRemoveArray = @[@"strong", @"weak", @"copy", @"retain", @"assign", @"unsafe_unretained"];
+            NSArray *toRemoveArray = @[@"strong", @"weak", @"copy", @"retain", @"assign", @"unsafe_unretained", @"readonly"];
             [array removeObjectsInArray:toRemoveArray];
             [array addObject:@"readonly"];
             subText = [array componentsJoinedByString:@", "];
