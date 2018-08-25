@@ -9,6 +9,7 @@
 #import <XCTest/XCTest.h>
 #import "SZRange.h"
 #import "NSString+SZAddition.h"
+#import "NSArray+SZAlignByEqualSign.h"
 #import "NSArray+SZAddition.h"
 
 @interface SZEditorExtensionTests : XCTestCase
@@ -152,6 +153,37 @@
     NSLog(@"%ld", index);
     index = [array sz_propertyGetterInsertIdexForInterface:@"FRVE2NavigationBar" position:1];
     NSLog(@"%ld", index);
+}
+
+- (void)testClassExtension {
+    NSArray *lines = @[
+                       @"#import \"SZClassExtensionCommand.h\"",
+                       @"",
+                       @"@interface SourceEditorExtension ()",
+                       @"",
+                       @"@end",
+                       @"",
+                       @"@implementation SourceEditorExtension",
+                       @"",
+                       @"",
+                       @"@end",
+                       ];
+    
+    __block NSString *impName = nil;
+    __block NSInteger impIndex = NSNotFound;
+    [lines sz_firstImplementationNameWithFromIndex:7 block:^(NSString *name, NSInteger index) {
+        NSLog(@"%@,  %@", name, @(index));
+        impName = name;
+        impIndex = index;
+    }];
+    
+    if (impName.length) {
+        BOOL has = [lines sz_hasExtensionWithName:impName fromIndex:impIndex];
+        if (!has) {
+            NSString *insertText = [NSString stringWithFormat:@"@interface %@ ()\n\n@end", impName];
+            NSLog(@"%@", insertText);
+        }
+    }
 }
 
 @end

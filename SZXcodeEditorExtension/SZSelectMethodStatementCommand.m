@@ -8,6 +8,7 @@
 
 #import "SZSelectMethodStatementCommand.h"
 #import "NSArray+SZAddition.h"
+#import "NSArray+SZXCSourceTextRange.h"
 #import "SZEditorExtensionHeader.h"
 #import <AppKit/AppKit.h>
 

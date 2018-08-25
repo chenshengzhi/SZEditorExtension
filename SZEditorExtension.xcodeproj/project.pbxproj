@@ -7,13 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24112F512131B427008D83D8 /* XcodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24679D4020D63672003C95D4 /* XcodeKit.framework */; };
+		24112F532131B497008D83D8 /* NSString+SZAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 24AB6B501E7E3A1800A82515 /* NSString+SZAddition.m */; };
+		24112F542131B49D008D83D8 /* NSArray+SZAlignByEqualSign.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E023AE1E7E3436004DBC93 /* NSArray+SZAlignByEqualSign.m */; };
 		2445B1D920C9826400ADC78F /* SZPropertyGetterCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 2445B1D820C9826400ADC78F /* SZPropertyGetterCommand.m */; };
 		24679D3B20D5637B003C95D4 /* NSArray+SZAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 24679D3A20D5637B003C95D4 /* NSArray+SZAddition.m */; };
 		24679D3E20D56652003C95D4 /* SZSelectMethodStatementCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 24679D3D20D56652003C95D4 /* SZSelectMethodStatementCommand.m */; };
-		24679D3F20D5681D003C95D4 /* NSArray+SZAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 24679D3A20D5637B003C95D4 /* NSArray+SZAddition.m */; };
-		24679D4120D63672003C95D4 /* XcodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24679D4020D63672003C95D4 /* XcodeKit.framework */; };
 		24679D4220D63693003C95D4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A6CD9C1D96831D00ECEF89 /* Cocoa.framework */; };
 		247AD917211350D800E81E01 /* SZPropertyReadonlyCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 247AD916211350D800E81E01 /* SZPropertyReadonlyCommand.m */; };
+		248B5F4A2131B64500B226BB /* NSArray+SZXCSourceTextRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 248B5F492131B64500B226BB /* NSArray+SZXCSourceTextRange.m */; };
+		248B5F4B2131B6B700B226BB /* NSArray+SZAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 24679D3A20D5637B003C95D4 /* NSArray+SZAddition.m */; };
+		248B5F4C2131B6B800B226BB /* NSArray+SZAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 24679D3A20D5637B003C95D4 /* NSArray+SZAddition.m */; };
+		248B5F502131B75E00B226BB /* SZRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 24D211CB1DC83B5100894F13 /* SZRange.m */; };
 		248EB54A20CBC7B80094A6DA /* SZPropertyGetterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 248EB54920CBC7B80094A6DA /* SZPropertyGetterViewController.m */; };
 		248EB54D20CBCC910094A6DA /* SZPropertyGetterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 248EB54C20CBCC910094A6DA /* SZPropertyGetterModel.m */; };
 		24A6CD681D96831100ECEF89 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A6CD671D96831100ECEF89 /* AppDelegate.m */; };
@@ -30,8 +35,8 @@
 		24A6CDB41D9683C700ECEF89 /* SZDeleteLineCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A6CDB31D9683C700ECEF89 /* SZDeleteLineCommand.m */; };
 		24AB6B511E7E3A1800A82515 /* NSString+SZAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 24AB6B501E7E3A1800A82515 /* NSString+SZAddition.m */; };
 		24AB6B521E7E3F6500A82515 /* NSString+SZAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 24AB6B501E7E3A1800A82515 /* NSString+SZAddition.m */; };
+		24C1A71E2131A389007C78D0 /* SZClassExtensionCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C1A71D2131A389007C78D0 /* SZClassExtensionCommand.m */; };
 		24D211C91DC8251200894F13 /* SZPlaceImportCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 24D211C81DC8251200894F13 /* SZPlaceImportCommand.m */; };
-		24D211D01DC83F9B00894F13 /* SZRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 24D211CB1DC83B5100894F13 /* SZRange.m */; };
 		24E023AC1E7E2924004DBC93 /* SZAlignCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E023AB1E7E2924004DBC93 /* SZAlignCommand.m */; };
 		24E023AF1E7E3436004DBC93 /* NSArray+SZAlignByEqualSign.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E023AE1E7E3436004DBC93 /* NSArray+SZAlignByEqualSign.m */; };
 		24E023B01E7E34DF004DBC93 /* NSArray+SZAlignByEqualSign.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E023AE1E7E3436004DBC93 /* NSArray+SZAlignByEqualSign.m */; };
@@ -85,6 +90,8 @@
 		24679D4020D63672003C95D4 /* XcodeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XcodeKit.framework; path = Library/Frameworks/XcodeKit.framework; sourceTree = DEVELOPER_DIR; };
 		247AD915211350D800E81E01 /* SZPropertyReadonlyCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZPropertyReadonlyCommand.h; sourceTree = "<group>"; };
 		247AD916211350D800E81E01 /* SZPropertyReadonlyCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZPropertyReadonlyCommand.m; sourceTree = "<group>"; };
+		248B5F482131B64500B226BB /* NSArray+SZXCSourceTextRange.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+SZXCSourceTextRange.h"; sourceTree = "<group>"; };
+		248B5F492131B64500B226BB /* NSArray+SZXCSourceTextRange.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+SZXCSourceTextRange.m"; sourceTree = "<group>"; };
 		248EB54720CBC7200094A6DA /* SZEditorExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SZEditorExtension.entitlements; sourceTree = "<group>"; };
 		248EB54820CBC7B80094A6DA /* SZPropertyGetterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZPropertyGetterViewController.h; sourceTree = "<group>"; };
 		248EB54920CBC7B80094A6DA /* SZPropertyGetterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZPropertyGetterViewController.m; sourceTree = "<group>"; };
@@ -118,6 +125,8 @@
 		24A6CDB31D9683C700ECEF89 /* SZDeleteLineCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZDeleteLineCommand.m; sourceTree = "<group>"; };
 		24AB6B4F1E7E3A1800A82515 /* NSString+SZAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SZAddition.h"; sourceTree = "<group>"; };
 		24AB6B501E7E3A1800A82515 /* NSString+SZAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SZAddition.m"; sourceTree = "<group>"; };
+		24C1A71C2131A389007C78D0 /* SZClassExtensionCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZClassExtensionCommand.h; sourceTree = "<group>"; };
+		24C1A71D2131A389007C78D0 /* SZClassExtensionCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZClassExtensionCommand.m; sourceTree = "<group>"; };
 		24D211C71DC8251200894F13 /* SZPlaceImportCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZPlaceImportCommand.h; sourceTree = "<group>"; };
 		24D211C81DC8251200894F13 /* SZPlaceImportCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZPlaceImportCommand.m; sourceTree = "<group>"; };
 		24D211CA1DC83B5100894F13 /* SZRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZRange.h; sourceTree = "<group>"; };
@@ -141,7 +150,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				24679D4220D63693003C95D4 /* Cocoa.framework in Frameworks */,
-				24679D4120D63672003C95D4 /* XcodeKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,6 +164,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24112F512131B427008D83D8 /* XcodeKit.framework in Frameworks */,
 				24A6CD9D1D96831D00ECEF89 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,10 +270,14 @@
 				247AD916211350D800E81E01 /* SZPropertyReadonlyCommand.m */,
 				24679D3C20D56652003C95D4 /* SZSelectMethodStatementCommand.h */,
 				24679D3D20D56652003C95D4 /* SZSelectMethodStatementCommand.m */,
+				24C1A71C2131A389007C78D0 /* SZClassExtensionCommand.h */,
+				24C1A71D2131A389007C78D0 /* SZClassExtensionCommand.m */,
 				24D211CA1DC83B5100894F13 /* SZRange.h */,
 				24D211CB1DC83B5100894F13 /* SZRange.m */,
 				24E023AD1E7E3436004DBC93 /* NSArray+SZAlignByEqualSign.h */,
 				24E023AE1E7E3436004DBC93 /* NSArray+SZAlignByEqualSign.m */,
+				248B5F482131B64500B226BB /* NSArray+SZXCSourceTextRange.h */,
+				248B5F492131B64500B226BB /* NSArray+SZXCSourceTextRange.m */,
 				24679D3920D5637B003C95D4 /* NSArray+SZAddition.h */,
 				24679D3A20D5637B003C95D4 /* NSArray+SZAddition.m */,
 				24AB6B4F1E7E3A1800A82515 /* NSString+SZAddition.h */,
@@ -469,8 +482,11 @@
 				24A6CD6E1D96831100ECEF89 /* ViewController.m in Sources */,
 				24A6CD6B1D96831100ECEF89 /* main.m in Sources */,
 				248EB54D20CBCC910094A6DA /* SZPropertyGetterModel.m in Sources */,
+				248B5F4B2131B6B700B226BB /* NSArray+SZAddition.m in Sources */,
 				248EB54A20CBC7B80094A6DA /* SZPropertyGetterViewController.m in Sources */,
+				24112F532131B497008D83D8 /* NSString+SZAddition.m in Sources */,
 				24A6CD681D96831100ECEF89 /* AppDelegate.m in Sources */,
+				24112F542131B49D008D83D8 /* NSArray+SZAlignByEqualSign.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,8 +496,8 @@
 			files = (
 				24AB6B521E7E3F6500A82515 /* NSString+SZAddition.m in Sources */,
 				24E023B01E7E34DF004DBC93 /* NSArray+SZAlignByEqualSign.m in Sources */,
-				24D211D01DC83F9B00894F13 /* SZRange.m in Sources */,
-				24679D3F20D5681D003C95D4 /* NSArray+SZAddition.m in Sources */,
+				248B5F502131B75E00B226BB /* SZRange.m in Sources */,
+				248B5F4C2131B6B800B226BB /* NSArray+SZAddition.m in Sources */,
 				24A6CD7E1D96831100ECEF89 /* SZEditorExtensionTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -509,6 +525,8 @@
 				24E023AC1E7E2924004DBC93 /* SZAlignCommand.m in Sources */,
 				24A6CDB41D9683C700ECEF89 /* SZDeleteLineCommand.m in Sources */,
 				247AD917211350D800E81E01 /* SZPropertyReadonlyCommand.m in Sources */,
+				24C1A71E2131A389007C78D0 /* SZClassExtensionCommand.m in Sources */,
+				248B5F4A2131B64500B226BB /* NSArray+SZXCSourceTextRange.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

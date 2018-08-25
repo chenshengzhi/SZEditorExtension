@@ -29,6 +29,10 @@ static inline BOOL isSyntaxChar(unichar theChar) {
     return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 }
 
+- (NSString *)sz_trimWhitespaceAndNewline {
+    return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
 - (BOOL)sz_isAsignmentStatement {
     NSString *compacted = [self stringByReplacingOccurrencesOfString:@" " withString:@""];
     if ([compacted hasPrefix:@"for("]) {
@@ -147,25 +151,11 @@ static inline BOOL isSyntaxChar(unichar theChar) {
         [mutableString deleteCharactersInRange:range];
     }
     
-    NSString *string = [mutableString sz_trimWhitespace];
+    NSString *string = [mutableString sz_trimWhitespaceAndNewline];
     return string;
 }
 
 - (BOOL)sz_isImplementationForInterface:(NSString *)interface {
-    if (!interface.length) {
-        return NO;
-    }
-    
-    NSString *text = [NSString stringWithFormat:@"@interface +%@ *\\(\\)$", interface];
-    NSRange range = [[self sz_trimWhitespace] rangeOfString:text options:NSRegularExpressionSearch];
-    if (range.location != NSNotFound) {
-        return YES;
-    }
-    
-    return NO;
-}
-
-- (BOOL)sz_isExtensionForInterface:(NSString *)interface {
     if (!interface.length) {
         return NO;
     }
@@ -178,6 +168,20 @@ static inline BOOL isSyntaxChar(unichar theChar) {
     
     text = [NSString stringWithFormat:@"@implementation +%@ *[(\\{]", interface];
     range = [self rangeOfString:text options:NSRegularExpressionSearch];
+    if (range.location != NSNotFound) {
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (BOOL)sz_isExtensionForInterface:(NSString *)interface {
+    if (!interface.length) {
+        return NO;
+    }
+    
+    NSString *text = [NSString stringWithFormat:@"@interface +%@ *\\(\\)$", interface];
+    NSRange range = [[self sz_trimWhitespace] rangeOfString:text options:NSRegularExpressionSearch];
     if (range.location != NSNotFound) {
         return YES;
     }
