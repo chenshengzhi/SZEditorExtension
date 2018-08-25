@@ -18,7 +18,7 @@
     NSMutableArray<XCSourceTextRange *> *selections = invocation.buffer.selections;
     NSMutableArray<NSString *> *lines = invocation.buffer.lines;
     
-    XCSourceTextRange *textRange = [lines methodStatementPositionsWithIndex:selections.firstObject.start.line];
+    XCSourceTextRange *textRange = [lines sz_methodStatementPositionsWithIndex:selections.firstObject.start.line];
     if (textRange) {
         [selections removeAllObjects];
         [selections addObject:textRange];
@@ -26,7 +26,7 @@
         NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:SZEEUserdefaultSuiteName];
         BOOL withoutCopy = [defaults boolForKey:SZEESelectMethodWithoutCopyToPastBoardKey];
         if (!withoutCopy) {
-            NSArray *textArray = [lines textArrayInTextRange:textRange];
+            NSArray *textArray = [lines sz_textArrayInTextRange:textRange];
             if (textArray.count) {
                 NSString *text = [textArray componentsJoinedByString:@""];
                 [[NSPasteboard generalPasteboard] clearContents];

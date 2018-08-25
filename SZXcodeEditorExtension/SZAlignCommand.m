@@ -26,8 +26,8 @@
         NSRange selectedLineRange = NSMakeRange(start.line, end.line - start.line + 1);
         NSArray *selectedLines = [lines subarrayWithRange:selectedLineRange];
         
-        if ([selectedLines needAlignByEqualSign]) {
-            NSArray *newSelectedLines = [selectedLines alignedArrayByEqualSign];
+        if ([selectedLines sz_needAlignByEqualSign]) {
+            NSArray *newSelectedLines = [selectedLines sz_alignedArrayByEqualSign];
             [lines replaceObjectsInRange:selectedLineRange withObjectsFromArray:newSelectedLines];
         }
     }

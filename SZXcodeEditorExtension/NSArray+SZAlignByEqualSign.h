@@ -7,14 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SZEditorExtensionHeader.h"
 
 @interface NSArray (SZAlignByEqualSign)
 
-- (BOOL)needAlignByEqualSign;
+- (BOOL)sz_needAlignByEqualSign;
 
-- (NSArray *)alignedArrayByEqualSign;
-
-- (NSInteger)propertyGetterInsertIdexForInterface:(NSString *)interface position:(SZEEPropertyGetterPosition)position;
+- (NSArray *)sz_alignedArrayByEqualSign;
 
 @end

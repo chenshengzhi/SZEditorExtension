@@ -7,10 +7,11 @@
 //
 
 #import "NSArray+SZAddition.h"
+#import "NSString+SZAddition.h"
 
 @implementation NSArray (SZAddition)
 
-- (XCSourceTextRange *)methodStatementPositionsWithIndex:(NSInteger)index {
+- (XCSourceTextRange *)sz_methodStatementPositionsWithIndex:(NSInteger)index {
     NSInteger startLine = NSNotFound;
     NSInteger startColumn = 0;
     for (NSInteger idx = index; idx >= 0; idx--) {
@@ -52,7 +53,7 @@
     return nil;
 }
 
-- (NSArray *)textArrayInTextRange:(XCSourceTextRange *)textRange {
+- (NSArray *)sz_textArrayInTextRange:(XCSourceTextRange *)textRange {
     if (!textRange) {
         return nil;
     }
@@ -98,6 +99,33 @@
         }
     }
     return [tempArray copy];
+}
+
+- (NSInteger)sz_propertyGetterInsertIdexForInterface:(NSString *)interface position:(SZEEPropertyGetterPosition)position {
+    NSInteger insertIndex = NSNotFound;
+    for (NSInteger idx = 0; idx < self.count; idx++) {
+        NSString *line = self[idx];
+        if ([line sz_isImplementationForInterface:interface]) {
+            insertIndex = idx;
+            break;
+        }
+    }
+    
+    if (insertIndex > self.count) {
+        return NSNotFound;
+    }
+    
+    if (position == SZEEPropertyGetterPositionImplementationStart) {
+        return (insertIndex + 1);
+    } else {
+        for (NSInteger idx = insertIndex + 1; idx < self.count; idx++) {
+            NSString *line = [self[idx] sz_trimWhitespace];
+            if ([line hasPrefix:@"@end"]) {
+                return idx;
+            }
+        }
+        return NSNotFound;
+    }
 }
 
 @end

@@ -19,8 +19,8 @@
         XCSourceTextPosition end = textRange.end;
         for (NSUInteger idx = start.line; idx <= end.line; idx++) {
             NSString *text = lines[idx];
-            if ([text isPropertyLine]) {
-                text = [text readonlyPropertyLine];
+            if ([text sz_isPropertyLine]) {
+                text = [text sz_readonlyPropertyLine];
                 [lines replaceObjectAtIndex:idx withObject:text];
             }
         }

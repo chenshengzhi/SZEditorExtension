@@ -9,7 +9,7 @@
 #import <XCTest/XCTest.h>
 #import "SZRange.h"
 #import "NSString+SZAddition.h"
-#import "NSArray+SZAlignByEqualSign.h"
+#import "NSArray+SZAddition.h"
 
 @interface SZEditorExtensionTests : XCTestCase
 
@@ -115,7 +115,7 @@
                        @"}",
                        ];
     for (NSString *text in array) {
-        NSLog(@"%d  %@", [text isAsignmentStatement], text);
+        NSLog(@"%d  %@", [text sz_isAsignmentStatement], text);
     }
 }
 
@@ -142,15 +142,15 @@
                        @"    return 0;",
                        @"}",
                        ];
-    NSLog(@"%@", [array alignedArrayByEqualSign]);
+    NSLog(@"%@", [array sz_alignedArrayByEqualSign]);
 }
 
 - (void)testNSStringAddition {
     NSString *string = [[NSString alloc] initWithContentsOfFile:@"/Users/csz/Documents/ubnt/frontrow-ios-editor/Classes/Main/View/FRVE2NavigationBar.m" usedEncoding:NULL error:nil];
     NSArray *array = [string componentsSeparatedByString:@"\n"];
-    NSInteger index = [array propertyGetterInsertIdexForInterface:@"FRVE2NavigationBar" position:0];
+    NSInteger index = [array sz_propertyGetterInsertIdexForInterface:@"FRVE2NavigationBar" position:0];
     NSLog(@"%ld", index);
-    index = [array propertyGetterInsertIdexForInterface:@"FRVE2NavigationBar" position:1];
+    index = [array sz_propertyGetterInsertIdexForInterface:@"FRVE2NavigationBar" position:1];
     NSLog(@"%ld", index);
 }
 

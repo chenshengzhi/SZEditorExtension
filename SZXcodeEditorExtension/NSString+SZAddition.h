@@ -11,24 +11,28 @@
 
 @interface NSString (SZAddition)
 
-- (NSString *)trimWhitespace;
+- (NSString *)sz_trimWhitespace;
 
-- (BOOL)isAsignmentStatement;
+- (BOOL)sz_isAsignmentStatement;
 
-- (void)propertyDeclarationInfoWithBlock:(void(^)(BOOL isProperty, BOOL isPointer, NSString *type, NSString *name))block;
+- (void)sz_propertyDeclarationInfoWithBlock:(void(^)(BOOL isProperty, BOOL isPointer, NSString *type, NSString *name))block;
 
-- (BOOL)isPropertyLine;
+- (BOOL)sz_isPropertyLine;
 
-- (BOOL)isInterfaceLine;
+- (BOOL)sz_isInterfaceLine;
 
-- (BOOL)isImplementationLine;
+- (BOOL)sz_isImplementationLine;
 
-- (BOOL)isMethodStartLine;
+- (BOOL)sz_isMethodStartLine;
 
-- (NSString *)interfaceName;
+- (NSString *)sz_interfaceName;
 
-- (BOOL)isImplementationForInterface:(NSString *)interface;
+- (NSString *)sz_implementationName;
 
-- (NSString *)readonlyPropertyLine;
+- (BOOL)sz_isImplementationForInterface:(NSString *)interface;
+
+- (BOOL)sz_isExtensionForInterface:(NSString *)interface;
+
+- (NSString *)sz_readonlyPropertyLine;
 
 @end

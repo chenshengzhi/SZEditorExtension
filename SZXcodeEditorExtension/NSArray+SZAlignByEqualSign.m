@@ -12,10 +12,10 @@
 @implementation NSArray (SZAlignByEqualSign)
 
 #pragma mark - align by equal sign -
-- (BOOL)needAlignByEqualSign {
+- (BOOL)sz_needAlignByEqualSign {
     NSUInteger equalSignCount = 0;
     for (NSString *lineText in self) {
-        if ([lineText isAsignmentStatement]) {
+        if ([lineText sz_isAsignmentStatement]) {
             equalSignCount++;
         }
         
@@ -26,13 +26,13 @@
     return (equalSignCount > 1);
 }
 
-- (NSArray *)alignedArrayByEqualSign {
+- (NSArray *)sz_alignedArrayByEqualSign {
     NSUInteger maxColumn = 0;
     BOOL has_equal_sign_lines[self.count];
     
     for (int idx = 0; idx < self.count; idx++) {
         NSString *lineText = self[idx];
-        if ([lineText isAsignmentStatement]) {
+        if ([lineText sz_isAsignmentStatement]) {
             maxColumn = MAX(maxColumn, [lineText rangeOfString:@"="].location);
             has_equal_sign_lines[idx] = YES;
         } else {
@@ -56,33 +56,6 @@
         [newArray addObject:lineText];
     }
     return [newArray copy];
-}
-
-- (NSInteger)propertyGetterInsertIdexForInterface:(NSString *)interface position:(SZEEPropertyGetterPosition)position {
-    NSInteger insertIndex = NSNotFound;
-    for (NSInteger idx = 0; idx < self.count; idx++) {
-        NSString *line = self[idx];
-        if ([line isImplementationForInterface:interface]) {
-            insertIndex = idx;
-            break;
-        }
-    }
-    
-    if (insertIndex > self.count) {
-        return NSNotFound;
-    }
-    
-    if (position == SZEEPropertyGetterPositionImplementationStart) {
-        return (insertIndex + 1);
-    } else {
-        for (NSInteger idx = insertIndex + 1; idx < self.count; idx++) {
-            NSString *line = [self[idx] trimWhitespace];
-            if ([line hasPrefix:@"@end"]) {
-                return idx;
-            }
-        }
-        return NSNotFound;
-    }
 }
 
 @end
