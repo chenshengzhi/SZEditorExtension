@@ -92,6 +92,18 @@
     }
 }
 
+- (NSUInteger)sz_firstEndLineFromIndex:(NSUInteger)fromIndex {
+    NSUInteger endIndex = NSNotFound;
+    for (NSInteger idx = fromIndex + 1; idx < self.count; idx++) {
+        NSString *line = [self[idx] sz_trimWhitespace];
+        if ([line hasPrefix:@"@end"]) {
+            endIndex = idx;
+            break;
+        }
+    }
+    return endIndex;
+}
+
 - (BOOL)sz_hasExtensionWithName:(NSString *)name fromIndex:(NSInteger)fromIndex {
     __block BOOL has = NO;
     [self sz_enumerateLineFromIndex:fromIndex up:YES usingBlock:^(NSString *text, NSInteger index, BOOL *stop) {
@@ -101,6 +113,44 @@
         }
     }];
     return has;
+}
+
+- (void)sz_interfaceRangeFromIndex:(NSUInteger)fromIndex block:(void(^)(NSString *name, NSRange range))block {
+    if (!block) {
+        return;
+    }
+    [self sz_firstInterfaceNameFromIndex:fromIndex block:^(NSString *name, NSInteger interfaceIndex) {
+        if (interfaceIndex >= self.count) {
+            block(nil, NSMakeRange(NSNotFound, 0));
+            return;
+        }
+        
+        NSUInteger endIndex = [self sz_firstEndLineFromIndex:interfaceIndex];
+        if (endIndex < self.count) {
+            block(name, NSMakeRange(interfaceIndex, endIndex + 1 - interfaceIndex));
+        } else {
+            block(nil, NSMakeRange(NSNotFound, 0));
+        }
+    }];
+}
+
+- (void)sz_implementationRangeFromIndex:(NSUInteger)fromIndex block:(void(^)(NSString *name, NSRange range))block {
+    if (!block) {
+        return;
+    }
+    [self sz_firstImplementationNameWithFromIndex:fromIndex block:^(NSString *name, NSInteger implementationIndex) {
+        if (implementationIndex >= self.count) {
+            block(nil, NSMakeRange(NSNotFound, 0));
+            return;
+        }
+        
+        NSUInteger endIndex = [self sz_firstEndLineFromIndex:implementationIndex];
+        if (endIndex < self.count) {
+            block(name, NSMakeRange(implementationIndex, endIndex + 1 - implementationIndex));
+        } else {
+            block(nil, NSMakeRange(NSNotFound, 0));
+        }
+    }];
 }
 
 #pragma mark - util -

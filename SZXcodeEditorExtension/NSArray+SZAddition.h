@@ -19,7 +19,12 @@
 - (void)sz_firstImplementationNameWithFromIndex:(NSInteger)fromIndex block:(void(^)(NSString *name, NSInteger index))block;
 - (void)sz_firstImplementationNameWithFromIndex:(NSInteger)fromIndex up:(BOOL)up block:(void(^)(NSString *name, NSInteger index))block;
 
+- (NSUInteger)sz_firstEndLineFromIndex:(NSUInteger)fromIndex;
+
 - (BOOL)sz_hasExtensionWithName:(NSString *)name fromIndex:(NSInteger)fromIndex;
+
+- (void)sz_interfaceRangeFromIndex:(NSUInteger)fromIndex block:(void(^)(NSString *name, NSRange range))block;
+- (void)sz_implementationRangeFromIndex:(NSUInteger)fromIndex block:(void(^)(NSString *name, NSRange range))block;
 
 @end
 

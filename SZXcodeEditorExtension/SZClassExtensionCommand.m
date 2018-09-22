@@ -8,6 +8,7 @@
 
 #import "SZClassExtensionCommand.h"
 #import "NSArray+SZAddition.h"
+#import "NSError+SZAddition.h"
 
 @implementation SZClassExtensionCommand
 
@@ -28,8 +29,7 @@
         if (impName.length) {
             BOOL has = [lines sz_hasExtensionWithName:impName fromIndex:impIndex];
             if (has) {
-                NSDictionary *userInfo = @{NSLocalizedDescriptionKey: @"Class extension exist already."};
-                error = [NSError errorWithDomain:@"com.csz.SZEditorExtension.SZXcodeEditorExtension" code:-1 userInfo:userInfo];
+                error = [NSError sz_errorWithLocalizedDescription:@"Class extension exist already."];
             } else {
                 NSString *insertText = [NSString stringWithFormat:@"@interface %@ ()\n\n@end\n\n", impName];
                 [lines insertObject:insertText atIndex:impIndex];
