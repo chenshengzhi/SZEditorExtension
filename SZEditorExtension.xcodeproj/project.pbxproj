@@ -11,6 +11,13 @@
 		24112F532131B497008D83D8 /* NSString+SZAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 24AB6B501E7E3A1800A82515 /* NSString+SZAddition.m */; };
 		24112F542131B49D008D83D8 /* NSArray+SZAlignByEqualSign.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E023AE1E7E3436004DBC93 /* NSArray+SZAlignByEqualSign.m */; };
 		2445B1D920C9826400ADC78F /* SZPropertyGetterCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 2445B1D820C9826400ADC78F /* SZPropertyGetterCommand.m */; };
+		245E720F215699DE00705377 /* NSMutableArray+SZDelegateProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 245E720D215699DE00705377 /* NSMutableArray+SZDelegateProtocol.m */; };
+		245E721221569B9700705377 /* NSError+SZAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 245E721121569B9700705377 /* NSError+SZAddition.m */; };
+		245E721321569B9700705377 /* NSError+SZAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 245E721121569B9700705377 /* NSError+SZAddition.m */; };
+		245E72142156A20A00705377 /* NSMutableArray+SZDelegateProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 245E720D215699DE00705377 /* NSMutableArray+SZDelegateProtocol.m */; };
+		245E72152156A23900705377 /* NSError+SZAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 245E721121569B9700705377 /* NSError+SZAddition.m */; };
+		245E72162156A23C00705377 /* NSMutableArray+SZDelegateProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 245E720D215699DE00705377 /* NSMutableArray+SZDelegateProtocol.m */; };
+		245E72192156A32100705377 /* SZDelegateProtocolCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 245E72182156A32100705377 /* SZDelegateProtocolCommand.m */; };
 		24679D3B20D5637B003C95D4 /* NSArray+SZAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 24679D3A20D5637B003C95D4 /* NSArray+SZAddition.m */; };
 		24679D3E20D56652003C95D4 /* SZSelectMethodStatementCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 24679D3D20D56652003C95D4 /* SZSelectMethodStatementCommand.m */; };
 		24679D4220D63693003C95D4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A6CD9C1D96831D00ECEF89 /* Cocoa.framework */; };
@@ -83,6 +90,12 @@
 /* Begin PBXFileReference section */
 		2445B1D720C9826400ADC78F /* SZPropertyGetterCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZPropertyGetterCommand.h; sourceTree = "<group>"; };
 		2445B1D820C9826400ADC78F /* SZPropertyGetterCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZPropertyGetterCommand.m; sourceTree = "<group>"; };
+		245E720C215699DE00705377 /* NSMutableArray+SZDelegateProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+SZDelegateProtocol.h"; sourceTree = "<group>"; };
+		245E720D215699DE00705377 /* NSMutableArray+SZDelegateProtocol.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+SZDelegateProtocol.m"; sourceTree = "<group>"; };
+		245E721021569B9700705377 /* NSError+SZAddition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSError+SZAddition.h"; sourceTree = "<group>"; };
+		245E721121569B9700705377 /* NSError+SZAddition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSError+SZAddition.m"; sourceTree = "<group>"; };
+		245E72172156A32100705377 /* SZDelegateProtocolCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZDelegateProtocolCommand.h; sourceTree = "<group>"; };
+		245E72182156A32100705377 /* SZDelegateProtocolCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZDelegateProtocolCommand.m; sourceTree = "<group>"; };
 		24679D3920D5637B003C95D4 /* NSArray+SZAddition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+SZAddition.h"; sourceTree = "<group>"; };
 		24679D3A20D5637B003C95D4 /* NSArray+SZAddition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+SZAddition.m"; sourceTree = "<group>"; };
 		24679D3C20D56652003C95D4 /* SZSelectMethodStatementCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZSelectMethodStatementCommand.h; sourceTree = "<group>"; };
@@ -172,6 +185,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		24181896215697F70076CFFC /* Command */ = {
+			isa = PBXGroup;
+			children = (
+				24A6CDA11D96831D00ECEF89 /* SourceEditorExtension.h */,
+				24A6CDA21D96831D00ECEF89 /* SourceEditorExtension.m */,
+				24E023AA1E7E2924004DBC93 /* SZAlignCommand.h */,
+				24E023AB1E7E2924004DBC93 /* SZAlignCommand.m */,
+				24A6CDB21D9683C700ECEF89 /* SZDeleteLineCommand.h */,
+				24A6CDB31D9683C700ECEF89 /* SZDeleteLineCommand.m */,
+				24A6CDAF1D96834C00ECEF89 /* SZDuplicateLineCommand.h */,
+				24A6CDB01D96834C00ECEF89 /* SZDuplicateLineCommand.m */,
+				24D211C71DC8251200894F13 /* SZPlaceImportCommand.h */,
+				24D211C81DC8251200894F13 /* SZPlaceImportCommand.m */,
+				2445B1D720C9826400ADC78F /* SZPropertyGetterCommand.h */,
+				2445B1D820C9826400ADC78F /* SZPropertyGetterCommand.m */,
+				247AD915211350D800E81E01 /* SZPropertyReadonlyCommand.h */,
+				247AD916211350D800E81E01 /* SZPropertyReadonlyCommand.m */,
+				24679D3C20D56652003C95D4 /* SZSelectMethodStatementCommand.h */,
+				24679D3D20D56652003C95D4 /* SZSelectMethodStatementCommand.m */,
+				24C1A71C2131A389007C78D0 /* SZClassExtensionCommand.h */,
+				24C1A71D2131A389007C78D0 /* SZClassExtensionCommand.m */,
+				245E72172156A32100705377 /* SZDelegateProtocolCommand.h */,
+				245E72182156A32100705377 /* SZDelegateProtocolCommand.m */,
+			);
+			name = Command;
+			sourceTree = "<group>";
+		};
+		241818972156983E0076CFFC /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				24D211CA1DC83B5100894F13 /* SZRange.h */,
+				24D211CB1DC83B5100894F13 /* SZRange.m */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
+		241818982156984C0076CFFC /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				245E721021569B9700705377 /* NSError+SZAddition.h */,
+				245E721121569B9700705377 /* NSError+SZAddition.m */,
+				24AB6B4F1E7E3A1800A82515 /* NSString+SZAddition.h */,
+				24AB6B501E7E3A1800A82515 /* NSString+SZAddition.m */,
+				24679D3920D5637B003C95D4 /* NSArray+SZAddition.h */,
+				24679D3A20D5637B003C95D4 /* NSArray+SZAddition.m */,
+				24E023AD1E7E3436004DBC93 /* NSArray+SZAlignByEqualSign.h */,
+				24E023AE1E7E3436004DBC93 /* NSArray+SZAlignByEqualSign.m */,
+				248B5F482131B64500B226BB /* NSArray+SZXCSourceTextRange.h */,
+				248B5F492131B64500B226BB /* NSArray+SZXCSourceTextRange.m */,
+				245E720C215699DE00705377 /* NSMutableArray+SZDelegateProtocol.h */,
+				245E720D215699DE00705377 /* NSMutableArray+SZDelegateProtocol.m */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
 		24A6CD5A1D96831000ECEF89 = {
 			isa = PBXGroup;
 			children = (
@@ -254,34 +322,9 @@
 		24A6CD9E1D96831D00ECEF89 /* SZXcodeEditorExtension */ = {
 			isa = PBXGroup;
 			children = (
-				24A6CDA11D96831D00ECEF89 /* SourceEditorExtension.h */,
-				24A6CDA21D96831D00ECEF89 /* SourceEditorExtension.m */,
-				24A6CDAF1D96834C00ECEF89 /* SZDuplicateLineCommand.h */,
-				24A6CDB01D96834C00ECEF89 /* SZDuplicateLineCommand.m */,
-				24A6CDB21D9683C700ECEF89 /* SZDeleteLineCommand.h */,
-				24A6CDB31D9683C700ECEF89 /* SZDeleteLineCommand.m */,
-				24D211C71DC8251200894F13 /* SZPlaceImportCommand.h */,
-				24D211C81DC8251200894F13 /* SZPlaceImportCommand.m */,
-				24E023AA1E7E2924004DBC93 /* SZAlignCommand.h */,
-				24E023AB1E7E2924004DBC93 /* SZAlignCommand.m */,
-				2445B1D720C9826400ADC78F /* SZPropertyGetterCommand.h */,
-				2445B1D820C9826400ADC78F /* SZPropertyGetterCommand.m */,
-				247AD915211350D800E81E01 /* SZPropertyReadonlyCommand.h */,
-				247AD916211350D800E81E01 /* SZPropertyReadonlyCommand.m */,
-				24679D3C20D56652003C95D4 /* SZSelectMethodStatementCommand.h */,
-				24679D3D20D56652003C95D4 /* SZSelectMethodStatementCommand.m */,
-				24C1A71C2131A389007C78D0 /* SZClassExtensionCommand.h */,
-				24C1A71D2131A389007C78D0 /* SZClassExtensionCommand.m */,
-				24D211CA1DC83B5100894F13 /* SZRange.h */,
-				24D211CB1DC83B5100894F13 /* SZRange.m */,
-				24E023AD1E7E3436004DBC93 /* NSArray+SZAlignByEqualSign.h */,
-				24E023AE1E7E3436004DBC93 /* NSArray+SZAlignByEqualSign.m */,
-				248B5F482131B64500B226BB /* NSArray+SZXCSourceTextRange.h */,
-				248B5F492131B64500B226BB /* NSArray+SZXCSourceTextRange.m */,
-				24679D3920D5637B003C95D4 /* NSArray+SZAddition.h */,
-				24679D3A20D5637B003C95D4 /* NSArray+SZAddition.m */,
-				24AB6B4F1E7E3A1800A82515 /* NSString+SZAddition.h */,
-				24AB6B501E7E3A1800A82515 /* NSString+SZAddition.m */,
+				24181896215697F70076CFFC /* Command */,
+				241818972156983E0076CFFC /* Other */,
+				241818982156984C0076CFFC /* Category */,
 				24A6CDA71D96831D00ECEF89 /* Info.plist */,
 				24A6CD9F1D96831D00ECEF89 /* Supporting Files */,
 			);
@@ -482,7 +525,9 @@
 				24A6CD6E1D96831100ECEF89 /* ViewController.m in Sources */,
 				24A6CD6B1D96831100ECEF89 /* main.m in Sources */,
 				248EB54D20CBCC910094A6DA /* SZPropertyGetterModel.m in Sources */,
+				245E72162156A23C00705377 /* NSMutableArray+SZDelegateProtocol.m in Sources */,
 				248B5F4B2131B6B700B226BB /* NSArray+SZAddition.m in Sources */,
+				245E72152156A23900705377 /* NSError+SZAddition.m in Sources */,
 				248EB54A20CBC7B80094A6DA /* SZPropertyGetterViewController.m in Sources */,
 				24112F532131B497008D83D8 /* NSString+SZAddition.m in Sources */,
 				24A6CD681D96831100ECEF89 /* AppDelegate.m in Sources */,
@@ -494,8 +539,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				245E72142156A20A00705377 /* NSMutableArray+SZDelegateProtocol.m in Sources */,
 				24AB6B521E7E3F6500A82515 /* NSString+SZAddition.m in Sources */,
 				24E023B01E7E34DF004DBC93 /* NSArray+SZAlignByEqualSign.m in Sources */,
+				245E721221569B9700705377 /* NSError+SZAddition.m in Sources */,
 				248B5F502131B75E00B226BB /* SZRange.m in Sources */,
 				248B5F4C2131B6B800B226BB /* NSArray+SZAddition.m in Sources */,
 				24A6CD7E1D96831100ECEF89 /* SZEditorExtensionTests.m in Sources */,
@@ -515,6 +562,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2445B1D920C9826400ADC78F /* SZPropertyGetterCommand.m in Sources */,
+				245E721321569B9700705377 /* NSError+SZAddition.m in Sources */,
 				24A6CDA31D96831D00ECEF89 /* SourceEditorExtension.m in Sources */,
 				24A6CDB11D96834C00ECEF89 /* SZDuplicateLineCommand.m in Sources */,
 				24679D3B20D5637B003C95D4 /* NSArray+SZAddition.m in Sources */,
@@ -525,8 +573,10 @@
 				24E023AC1E7E2924004DBC93 /* SZAlignCommand.m in Sources */,
 				24A6CDB41D9683C700ECEF89 /* SZDeleteLineCommand.m in Sources */,
 				247AD917211350D800E81E01 /* SZPropertyReadonlyCommand.m in Sources */,
+				245E720F215699DE00705377 /* NSMutableArray+SZDelegateProtocol.m in Sources */,
 				24C1A71E2131A389007C78D0 /* SZClassExtensionCommand.m in Sources */,
 				248B5F4A2131B64500B226BB /* NSArray+SZXCSourceTextRange.m in Sources */,
+				245E72192156A32100705377 /* SZDelegateProtocolCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

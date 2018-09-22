@@ -15,6 +15,7 @@
 #import "SZSelectMethodStatementCommand.h"
 #import "SZPropertyReadonlyCommand.h"
 #import "SZClassExtensionCommand.h"
+#import "SZDelegateProtocolCommand.h"
 
 @implementation SourceEditorExtension
 
@@ -67,6 +68,11 @@
                  XCSourceEditorCommandIdentifierKey: @"com.csz.SZEditorExtension.SZXcodeEditorExtension.classExtension",
                  XCSourceEditorCommandClassNameKey: NSStringFromClass([SZClassExtensionCommand class]),
                  XCSourceEditorCommandNameKey: @"Class Extension",
+                 },
+             @{
+                 XCSourceEditorCommandIdentifierKey: @"com.csz.SZEditorExtension.SZXcodeEditorExtension.delegateProtocol",
+                 XCSourceEditorCommandClassNameKey: NSStringFromClass([SZDelegateProtocolCommand class]),
+                 XCSourceEditorCommandNameKey: @"Delegate Protocol",
                  },
              ];
 }

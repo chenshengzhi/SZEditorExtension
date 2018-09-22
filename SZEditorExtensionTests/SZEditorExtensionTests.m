@@ -11,6 +11,7 @@
 #import "NSString+SZAddition.h"
 #import "NSArray+SZAlignByEqualSign.h"
 #import "NSArray+SZAddition.h"
+#import "NSMutableArray+SZDelegateProtocol.h"
 
 @interface SZEditorExtensionTests : XCTestCase
 
@@ -187,6 +188,22 @@
             NSLog(@"%@", insertText);
         }
     }
+}
+
+- (void)testDelegateProtocol {
+    NSMutableArray *lines = [@[
+                               @"",
+                               @"#import <XcodeKit/XcodeKit.h>",
+                               @"",
+                               @"@interface SZAlignCommand : NSObject <XCSourceEditorCommand>",
+                               @"",
+                               @"@end",
+                               ] mutableCopy];
+    
+    [lines sz_addDelegateProtocolFromIndex:0 completion:^(BOOL success, NSError *error) {
+        NSLog(@"%d  %@", success, error);
+        NSLog(@"%@", lines);
+    }];
 }
 
 @end
