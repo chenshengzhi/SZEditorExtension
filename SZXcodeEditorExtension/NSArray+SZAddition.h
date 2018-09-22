@@ -14,8 +14,10 @@
 - (NSInteger)sz_propertyGetterInsertIdexForInterface:(NSString *)interface position:(SZEEPropertyGetterPosition)position;
 
 - (void)sz_firstInterfaceNameFromIndex:(NSInteger)fromIndex block:(void(^)(NSString *name, NSInteger index))block;
+- (void)sz_firstInterfaceNameFromIndex:(NSInteger)fromIndex up:(BOOL)up block:(void(^)(NSString *name, NSInteger index))block;
 
 - (void)sz_firstImplementationNameWithFromIndex:(NSInteger)fromIndex block:(void(^)(NSString *name, NSInteger index))block;
+- (void)sz_firstImplementationNameWithFromIndex:(NSInteger)fromIndex up:(BOOL)up block:(void(^)(NSString *name, NSInteger index))block;
 
 - (BOOL)sz_hasExtensionWithName:(NSString *)name fromIndex:(NSInteger)fromIndex;
 

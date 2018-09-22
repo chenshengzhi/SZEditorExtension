@@ -176,6 +176,9 @@
         impName = name;
         impIndex = index;
     }];
+    [lines sz_firstImplementationNameWithFromIndex:0 block:^(NSString *name, NSInteger index) {
+        NSLog(@"%@,  %@", name, @(index));
+    }];
     
     if (impName.length) {
         BOOL has = [lines sz_hasExtensionWithName:impName fromIndex:impIndex];

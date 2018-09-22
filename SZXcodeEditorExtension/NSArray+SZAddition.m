@@ -39,9 +39,21 @@
 }
 
 - (void)sz_firstInterfaceNameFromIndex:(NSInteger)fromIndex block:(void(^)(NSString *name, NSInteger index))block {
+    [self sz_firstInterfaceNameFromIndex:fromIndex up:YES block:^(NSString *name, NSInteger index) {
+        if (index < self.count) {
+            if (block) {
+                block(name, index);
+            }
+        } else {
+            [self sz_firstInterfaceNameFromIndex:fromIndex up:NO block:block];
+        }
+    }];
+}
+
+- (void)sz_firstInterfaceNameFromIndex:(NSInteger)fromIndex up:(BOOL)up block:(void(^)(NSString *name, NSInteger index))block {
     __block NSString *name = nil;
     __block NSInteger targetIndex = NSNotFound;
-    [self sz_enumerateLineFromIndex:fromIndex up:YES usingBlock:^void(NSString *text, NSInteger index, BOOL *stop) {
+    [self sz_enumerateLineFromIndex:fromIndex up:up usingBlock:^void(NSString *text, NSInteger index, BOOL *stop) {
         if ([text sz_isInterfaceLine]) {
             name = [text sz_interfaceName];
             targetIndex = index;
@@ -54,9 +66,21 @@
 }
 
 - (void)sz_firstImplementationNameWithFromIndex:(NSInteger)fromIndex block:(void(^)(NSString *name, NSInteger index))block {
+    [self sz_firstImplementationNameWithFromIndex:fromIndex up:YES block:^(NSString *name, NSInteger index) {
+        if (index < self.count) {
+            if (block) {
+                block(name, index);
+            }
+        } else {
+            [self sz_firstImplementationNameWithFromIndex:fromIndex up:NO block:block];
+        }
+    }];
+}
+
+- (void)sz_firstImplementationNameWithFromIndex:(NSInteger)fromIndex up:(BOOL)up block:(void(^)(NSString *name, NSInteger index))block {
     __block NSString *name = nil;
     __block NSInteger targetIndex = NSNotFound;
-    [self sz_enumerateLineFromIndex:fromIndex up:YES usingBlock:^void(NSString *text, NSInteger index, BOOL *stop) {
+    [self sz_enumerateLineFromIndex:fromIndex up:up usingBlock:^void(NSString *text, NSInteger index, BOOL *stop) {
         if ([text sz_isImplementationLine]) {
             name = [text sz_implementationName];
             targetIndex = index;
