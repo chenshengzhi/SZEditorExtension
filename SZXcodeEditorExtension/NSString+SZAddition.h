@@ -15,6 +15,8 @@
 
 - (NSString *)sz_trimWhitespaceAndNewline;
 
+- (BOOL)sz_isImportLine;
+
 - (BOOL)sz_isAsignmentStatement;
 
 - (void)sz_propertyDeclarationInfoWithBlock:(void(^)(BOOL isProperty, BOOL isPointer, NSString *type, NSString *name))block;

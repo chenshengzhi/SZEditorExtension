@@ -26,5 +26,9 @@
 - (void)sz_interfaceRangeFromIndex:(NSUInteger)fromIndex block:(void(^)(NSString *name, NSRange range))block;
 - (void)sz_implementationRangeFromIndex:(NSUInteger)fromIndex block:(void(^)(NSString *name, NSRange range))block;
 
+- (NSString *)sz_fileNameByHeaderComments;
+
+- (NSRange)sz_importLinesRange;
+
 @end
 

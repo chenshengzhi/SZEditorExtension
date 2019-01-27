@@ -7,70 +7,86 @@
 //
 
 #import "SZPlaceImportCommand.h"
-
-@interface NSString (SZPlaceImportCommand)
-
-- (BOOL)isImportLine;
-
-@end
-
-@implementation NSString (SZPlaceImportCommand)
-
-- (BOOL)isImportLine {
-    return [self hasPrefix:@"import"] || [self hasPrefix:@"@import"] || [self hasPrefix:@"#import"];
-}
-
-@end
-
+#import "NSString+SZAddition.h"
+#import "NSArray+SZAddition.h"
 
 @implementation SZPlaceImportCommand
 
 - (void)performCommandWithInvocation:(XCSourceEditorCommandInvocation *)invocation
                    completionHandler:(void (^)(NSError * _Nullable))completionHandler {
-    XCSourceTextBuffer *buffer = invocation.buffer;
+    NSMutableArray <NSString *> *lines = invocation.buffer.lines;
     
-    XCSourceTextRange *sourceTextRange = buffer.selections.firstObject;
-
-    NSInteger lineIndex = sourceTextRange.start.line;
-    NSString *lineText = buffer.lines[lineIndex];
-
-    NSString *trimedLineText = [lineText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-
-    if ([trimedLineText isImportLine]) {
-        buffer.selections.firstObject.end = buffer.selections.firstObject.start;
-        [buffer.lines removeObjectAtIndex:lineIndex];
-
-        NSInteger insertIndex = [self findInsertIndexWithLines:buffer.lines];
-        [buffer.lines insertObject:trimedLineText atIndex:insertIndex];
+    __block NSInteger insertIndex = 0;
+    NSRange importRange = [lines sz_importLinesRange];
+    if (importRange.location != NSNotFound) {
+        insertIndex = NSMaxRange(importRange);
     }
-
-    completionHandler(nil);
-}
-
-- (NSInteger)findInsertIndexWithLines:(NSArray<NSString *> *)lines {
-    NSInteger otherImportIndex = -1;
-    NSInteger otherDefineIndex = -1;
-
-    for (NSInteger idx = 0; idx < lines.count; idx++) {
-        NSString *lineText = lines[idx];
-        NSString *trimedLineText = [lineText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-        if (trimedLineText.length > 0) {
-            if ([trimedLineText isImportLine]) {
-                otherImportIndex = idx;
-            } else if (![trimedLineText hasPrefix:@"//"]) {
-                otherDefineIndex = idx;
-                break;
+    [invocation.buffer.selections enumerateObjectsUsingBlock:^(XCSourceTextRange *sourceTextRange, NSUInteger idx, BOOL *stop) {
+        for (NSInteger i = sourceTextRange.start.line; i <= sourceTextRange.end.line; i++) {
+            if (i <= insertIndex) {
+                continue;
+            }
+            NSString *lineText = lines[i];
+            if ([lineText sz_isImportLine]) {
+                [lines removeObjectAtIndex:i];
+                [lines insertObject:lineText atIndex:insertIndex];
+                insertIndex++;
             }
         }
+    }];
+    
+    NSString *fileName = [lines sz_fileNameByHeaderComments];
+    if (!fileName.length) {
+        completionHandler(nil);
+        return;
     }
-
-    if (otherImportIndex >= 0) {
-        return otherImportIndex + 1;
-    } else if (otherDefineIndex >= 0) {
-        return MAX(0, otherDefineIndex - 1);
-    } else {
-        return 0;
+    
+    importRange = [lines sz_importLinesRange];
+    if (importRange.location == NSNotFound) {
+        completionHandler(nil);
+        return;
     }
+    
+    fileName = [fileName stringByDeletingPathExtension];
+    NSString *className = [fileName componentsSeparatedByString:@"+"].firstObject;
+    
+    NSMutableArray<NSString *> *importLineArray = [[lines subarrayWithRange:importRange] mutableCopy];
+    [lines removeObjectsInRange:importRange];
+    
+    /// 移除空白行
+    for (NSInteger idx = 0; idx < importLineArray.count; idx++) {
+        NSString *line = [importLineArray[idx] sz_trimWhitespaceAndNewline];
+        if (!line.length) {
+            [importLineArray removeObjectAtIndex:idx];
+            idx--;
+        }
+    }
+    
+    [importLineArray sortUsingSelector:@selector(compare:)];
+    [importLineArray sortUsingComparator:^NSComparisonResult(NSString *obj1, NSString *obj2) {
+        if ([obj1 containsString:className]) {
+            return NSOrderedAscending;
+        } else if ([obj2 containsString:className]) {
+            return NSOrderedDescending;
+        } else {
+            return NSOrderedSame;
+        }
+    }];
+    [importLineArray sortUsingComparator:^NSComparisonResult(NSString *obj1, NSString *obj2) {
+        if ([obj1 containsString:fileName]) {
+            return NSOrderedAscending;
+        } else if ([obj2 containsString:fileName]) {
+            return NSOrderedDescending;
+        } else {
+            return NSOrderedSame;
+        }
+    }];
+    
+    importRange.length = importLineArray.count;
+    NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:importRange];
+    [lines insertObjects:importLineArray atIndexes:indexSet];
+    
+    completionHandler(nil);
 }
 
 @end

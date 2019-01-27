@@ -153,6 +153,47 @@
     }];
 }
 
+- (NSString *)sz_fileNameByHeaderComments {
+    __block NSString *fileName = nil;
+    [self enumerateObjectsUsingBlock:^(NSString *line, NSUInteger idx, BOOL *stop) {
+        if ([line hasPrefix:@"//"]) {
+            NSString *text = [[line substringFromIndex:2] sz_trimWhitespaceAndNewline];
+            if (text.length > 0) {
+                if ([text hasSuffix:@".h"] || [text hasSuffix:@".m"]) {
+                    fileName = text;
+                    *stop = YES;
+                }
+            }
+        } else {
+            *stop = YES;
+        }
+    }];
+    return fileName;
+}
+
+- (NSRange)sz_importLinesRange {
+    __block NSInteger start = NSNotFound;
+    __block NSInteger last = NSNotFound;
+    [self enumerateObjectsUsingBlock:^(NSString *line, NSUInteger idx, BOOL *stop) {
+        NSString *text = [line sz_trimWhitespaceAndNewline];
+        if (text.length) {
+            if ([text sz_isImportLine]) {
+                if (start == NSNotFound) {
+                    start = idx;
+                }
+                last = idx;
+            } else if (![text hasPrefix:@"//"]) {
+                *stop = YES;
+            }
+        }
+    }];
+    NSInteger count = 0;
+    if (start != NSNotFound) {
+        count = last + 1 - start;
+    }
+    return NSMakeRange(start, count);
+}
+
 #pragma mark - util -
 - (void)sz_enumerateLineFromIndex:(NSInteger)fromIndex up:(BOOL)up usingBlock:(void(^)(NSString *text, NSInteger index, BOOL *stop))block {
     if (!block) {

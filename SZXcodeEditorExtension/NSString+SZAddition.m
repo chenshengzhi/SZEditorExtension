@@ -33,6 +33,11 @@ static inline BOOL isSyntaxChar(unichar theChar) {
     return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
+- (BOOL)sz_isImportLine {
+    NSString *text = [self sz_trimWhitespaceAndNewline];
+    return ([text hasPrefix:@"import"] || [text hasPrefix:@"@import"] || [text hasPrefix:@"#import"]);
+}
+
 - (BOOL)sz_isAsignmentStatement {
     NSString *compacted = [self stringByReplacingOccurrencesOfString:@" " withString:@""];
     if ([compacted hasPrefix:@"for("]) {

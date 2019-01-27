@@ -206,4 +206,53 @@
     }];
 }
 
+- (void)testSortString {
+    NSMutableArray *lines = [@[
+                               @"//",
+                               @"//  SZPropertyGetterViewController.m",
+                               @"//  SZEditorExtension",
+                               @"//",
+                               @"//  Created by csz on 2018/6/9.",
+                               @"//  Copyright © 2018 陈圣治. All rights reserved.",
+                               @"//",
+                               @"",
+                               @"#import \"SZPropertyGetterViewController.h\"",
+                               @"#import \"SZPropertyGetterModel.h\"",
+                               @"#import \"SZEditorExtensionHeader.h\"",
+                               @"#import <AppKit/AppKit.h>",
+                               @"#import <Foundation/Foundation.h>",
+                               @"",
+                               @"@interface SZPropertyGetterViewController () <NSTableViewDataSource, NSTableViewDelegate, NSTextViewDelegate, NSTextFieldDelegate>",
+                               @"",
+                               @"@property (weak) IBOutlet NSTableView *tableView;",
+                               @"@property (unsafe_unretained) IBOutlet NSTextView *textView;",
+                               @"@property (weak) IBOutlet NSPopUpButton *popUpButton;",
+                               @"",
+                               @"@property (nonatomic, strong) NSUserDefaults *defaults;",
+                               @"@property (nonatomic) SZEEPropertyGetterPosition position;",
+                               @"@property (nonatomic, strong) NSMutableArray<SZPropertyGetterModel *> *dataSource;",
+                               @"",
+                               @"@end",
+                       ] mutableCopy];
+    NSRange range = [lines sz_importLinesRange];
+    NSLog(@"%@", NSStringFromRange(range));
+    
+    NSString *fileName = @"SZPropertyGetterViewController.m";
+    NSString *className = @"SZPropertyGetterViewController";
+    [lines sortUsingComparator:^NSComparisonResult(NSString *obj1, NSString *obj2) {
+        if ([obj1 containsString:fileName]) {
+            return NSOrderedAscending;
+        } else if ([obj2 containsString:fileName]) {
+            return NSOrderedDescending;
+        } else if ([obj1 containsString:className]) {
+            return NSOrderedAscending;
+        } else if ([obj2 containsString:className]) {
+            return NSOrderedDescending;
+        } else {
+            return [obj1 compare:obj2];
+        }
+    }];
+    NSLog(@"%@", lines);
+}
+
 @end
