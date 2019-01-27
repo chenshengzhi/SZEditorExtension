@@ -50,7 +50,9 @@
     fileName = [fileName stringByDeletingPathExtension];
     NSString *className = [fileName componentsSeparatedByString:@"+"].firstObject;
     
-    NSMutableArray<NSString *> *importLineArray = [[lines subarrayWithRange:importRange] mutableCopy];
+    NSArray *subLines = [lines subarrayWithRange:importRange];
+    subLines = [[NSSet setWithArray:subLines] allObjects];
+    NSMutableArray<NSString *> *importLineArray = [subLines mutableCopy];
     [lines removeObjectsInRange:importRange];
     
     /// 移除空白行
