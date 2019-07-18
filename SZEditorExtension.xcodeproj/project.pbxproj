@@ -43,6 +43,7 @@
 		24AB6B511E7E3A1800A82515 /* NSString+SZAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 24AB6B501E7E3A1800A82515 /* NSString+SZAddition.m */; };
 		24AB6B521E7E3F6500A82515 /* NSString+SZAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 24AB6B501E7E3A1800A82515 /* NSString+SZAddition.m */; };
 		24C1A71E2131A389007C78D0 /* SZClassExtensionCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C1A71D2131A389007C78D0 /* SZClassExtensionCommand.m */; };
+		24CC72BD22E0C88600CE0A2F /* SZInsertNewLineCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 24CC72BC22E0C88600CE0A2F /* SZInsertNewLineCommand.m */; };
 		24D211C91DC8251200894F13 /* SZPlaceImportCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 24D211C81DC8251200894F13 /* SZPlaceImportCommand.m */; };
 		24E023AC1E7E2924004DBC93 /* SZAlignCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E023AB1E7E2924004DBC93 /* SZAlignCommand.m */; };
 		24E023AF1E7E3436004DBC93 /* NSArray+SZAlignByEqualSign.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E023AE1E7E3436004DBC93 /* NSArray+SZAlignByEqualSign.m */; };
@@ -88,6 +89,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2416A86922E0CCB200EBAFC0 /* SZCommandConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZCommandConstants.h; sourceTree = "<group>"; };
 		2445B1D720C9826400ADC78F /* SZPropertyGetterCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZPropertyGetterCommand.h; sourceTree = "<group>"; };
 		2445B1D820C9826400ADC78F /* SZPropertyGetterCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZPropertyGetterCommand.m; sourceTree = "<group>"; };
 		245E720C215699DE00705377 /* NSMutableArray+SZDelegateProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+SZDelegateProtocol.h"; sourceTree = "<group>"; };
@@ -140,6 +142,8 @@
 		24AB6B501E7E3A1800A82515 /* NSString+SZAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SZAddition.m"; sourceTree = "<group>"; };
 		24C1A71C2131A389007C78D0 /* SZClassExtensionCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZClassExtensionCommand.h; sourceTree = "<group>"; };
 		24C1A71D2131A389007C78D0 /* SZClassExtensionCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZClassExtensionCommand.m; sourceTree = "<group>"; };
+		24CC72BB22E0C88600CE0A2F /* SZInsertNewLineCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZInsertNewLineCommand.h; sourceTree = "<group>"; };
+		24CC72BC22E0C88600CE0A2F /* SZInsertNewLineCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZInsertNewLineCommand.m; sourceTree = "<group>"; };
 		24D211C71DC8251200894F13 /* SZPlaceImportCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZPlaceImportCommand.h; sourceTree = "<group>"; };
 		24D211C81DC8251200894F13 /* SZPlaceImportCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZPlaceImportCommand.m; sourceTree = "<group>"; };
 		24D211CA1DC83B5100894F13 /* SZRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZRange.h; sourceTree = "<group>"; };
@@ -188,6 +192,7 @@
 		24181896215697F70076CFFC /* Command */ = {
 			isa = PBXGroup;
 			children = (
+				2416A86922E0CCB200EBAFC0 /* SZCommandConstants.h */,
 				24A6CDA11D96831D00ECEF89 /* SourceEditorExtension.h */,
 				24A6CDA21D96831D00ECEF89 /* SourceEditorExtension.m */,
 				24E023AA1E7E2924004DBC93 /* SZAlignCommand.h */,
@@ -208,6 +213,8 @@
 				24C1A71D2131A389007C78D0 /* SZClassExtensionCommand.m */,
 				245E72172156A32100705377 /* SZDelegateProtocolCommand.h */,
 				245E72182156A32100705377 /* SZDelegateProtocolCommand.m */,
+				24CC72BB22E0C88600CE0A2F /* SZInsertNewLineCommand.h */,
+				24CC72BC22E0C88600CE0A2F /* SZInsertNewLineCommand.m */,
 			);
 			name = Command;
 			sourceTree = "<group>";
@@ -468,6 +475,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -575,6 +583,7 @@
 				247AD917211350D800E81E01 /* SZPropertyReadonlyCommand.m in Sources */,
 				245E720F215699DE00705377 /* NSMutableArray+SZDelegateProtocol.m in Sources */,
 				24C1A71E2131A389007C78D0 /* SZClassExtensionCommand.m in Sources */,
+				24CC72BD22E0C88600CE0A2F /* SZInsertNewLineCommand.m in Sources */,
 				248B5F4A2131B64500B226BB /* NSArray+SZXCSourceTextRange.m in Sources */,
 				245E72192156A32100705377 /* SZDelegateProtocolCommand.m in Sources */,
 			);

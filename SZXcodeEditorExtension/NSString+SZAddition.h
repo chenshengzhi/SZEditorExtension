@@ -39,4 +39,6 @@
 
 - (NSString *)sz_readonlyPropertyLine;
 
+- (NSString *)sz_whiteSpacePrefix;
+
 @end

@@ -16,6 +16,8 @@
 #import "SZPropertyReadonlyCommand.h"
 #import "SZClassExtensionCommand.h"
 #import "SZDelegateProtocolCommand.h"
+#import "SZInsertNewLineCommand.h"
+#import "SZCommandConstants.h"
 
 @implementation SourceEditorExtension
 
@@ -73,6 +75,16 @@
                  XCSourceEditorCommandIdentifierKey: @"com.csz.SZEditorExtension.SZXcodeEditorExtension.delegateProtocol",
                  XCSourceEditorCommandClassNameKey: NSStringFromClass([SZDelegateProtocolCommand class]),
                  XCSourceEditorCommandNameKey: @"Delegate Protocol",
+                 },
+             @{
+                 XCSourceEditorCommandIdentifierKey: SZInsertNewLineBeforeCommandIdentifier,
+                 XCSourceEditorCommandClassNameKey: NSStringFromClass([SZInsertNewLineCommand class]),
+                 XCSourceEditorCommandNameKey: @"Insert New Line Before",
+                 },
+             @{
+                 XCSourceEditorCommandIdentifierKey: SZInsertNewLineAfterCommandIdentifier,
+                 XCSourceEditorCommandClassNameKey: NSStringFromClass([SZInsertNewLineCommand class]),
+                 XCSourceEditorCommandNameKey: @"Insert New Line After",
                  },
              ];
 }
