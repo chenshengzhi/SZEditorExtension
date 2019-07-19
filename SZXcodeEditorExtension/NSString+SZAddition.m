@@ -224,6 +224,9 @@ static inline BOOL isSyntaxChar(unichar theChar) {
 
 - (NSString *)sz_whiteSpacePrefix {
     NSRange range = [self rangeOfString:@" +" options:NSRegularExpressionSearch];
+    if (range.location == NSNotFound) {
+        return @"";
+    }
     return [self substringWithRange:range];
 }
 

@@ -29,7 +29,7 @@
             NSString *lineText = lines[i];
             if ([lineText sz_isImportLine]) {
                 [lines removeObjectAtIndex:i];
-                [lines insertObject:lineText atIndex:insertIndex];
+                [lines insertObject:[lineText sz_trimWhitespace] atIndex:insertIndex];
                 insertIndex++;
             }
         }

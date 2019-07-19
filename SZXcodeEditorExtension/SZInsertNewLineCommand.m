@@ -13,26 +13,22 @@
 @implementation SZInsertNewLineCommand
 
 - (void)performCommandWithInvocation:(XCSourceEditorCommandInvocation *)invocation completionHandler:(void (^)(NSError * _Nullable))completionHandler {
+    NSInteger index = 0;
+    XCSourceTextRange *textRange = nil;
     if ([invocation.commandIdentifier isEqualToString:SZInsertNewLineBeforeCommandIdentifier]) {
-        XCSourceTextRange *textRange = invocation.buffer.selections.firstObject;
-        NSInteger index = textRange.start.line;
-        NSMutableArray<NSString *> *lines = invocation.buffer.lines;
-        NSString *text = [lines[index] sz_whiteSpacePrefix];
-        [lines insertObject:text atIndex:index];
-        
-        textRange.start = XCSourceTextPositionMake(index, text.length);
-        textRange.end = textRange.start;
+        textRange = invocation.buffer.selections.firstObject;
+        index = textRange.start.line;
     } else {
-        XCSourceTextRange *textRange = invocation.buffer.selections.lastObject;
-        NSInteger index = textRange.end.line;
-        NSMutableArray<NSString *> *lines = invocation.buffer.lines;
-        NSString *text = [lines[index] sz_whiteSpacePrefix];
-        NSInteger nextIndex = index + 1;
-        [lines insertObject:text atIndex:nextIndex];
-        
-        textRange.start = XCSourceTextPositionMake(nextIndex, text.length);
-        textRange.end = textRange.start;
+        textRange = invocation.buffer.selections.lastObject;
+        index = textRange.end.line + 1;
+        index = MIN(index, invocation.buffer.lines.count - 1);
     }
+    NSMutableArray<NSString *> *lines = invocation.buffer.lines;
+    NSString *text = [lines[index] sz_whiteSpacePrefix];
+    [lines insertObject:text atIndex:index];
+    
+    textRange.start = XCSourceTextPositionMake(index, text.length);
+    textRange.end = textRange.start;
     
     completionHandler(nil);
 }
