@@ -9,6 +9,7 @@
 #import "SZPlaceImportCommand.h"
 #import "NSString+SZAddition.h"
 #import "NSArray+SZAddition.h"
+#import "SZCommandConstants.h"
 
 @implementation SZPlaceImportCommand
 
@@ -21,6 +22,37 @@
     if (importRange.location != NSNotFound) {
         insertIndex = NSMaxRange(importRange);
     }
+    
+    NSString *selectingClassName = nil;
+    if (invocation.buffer.selections.count == 1) {
+        XCSourceTextRange *textRange = invocation.buffer.selections.firstObject;
+        XCSourceTextPosition start = textRange.start;
+        XCSourceTextPosition end = textRange.end;
+        if (start.line == end.line) {
+            NSString *line = invocation.buffer.lines[textRange.start.line];
+            NSRange range = NSMakeRange(start.column, end.column - start.column);
+            NSString *selectedText = [line substringWithRange:range];
+            NSString *patten = @"^[a-zA-Z0-9]+$";
+            NSRegularExpression *expression = [NSRegularExpression regularExpressionWithPattern:patten options:0 error:nil];
+            NSInteger matchCount = [expression numberOfMatchesInString:selectedText
+                                                               options:0
+                                                                 range:NSMakeRange(0, selectedText.length)];
+            if (matchCount) {
+                selectingClassName = selectedText;
+            }
+        }
+    }
+    if (selectingClassName) {
+        NSString *lineNew = nil;
+        if ([invocation.commandIdentifier isEqualToString:SZPlaceImportCommandIdentifier]) {
+            lineNew = [NSString stringWithFormat:@"#import \"%@.h\"", selectingClassName];
+        } else {
+            lineNew = [NSString stringWithFormat:@"#import <%@.h>", selectingClassName];
+        }
+        [lines insertObject:lineNew atIndex:insertIndex];
+        insertIndex++;
+    }
+    
     [invocation.buffer.selections enumerateObjectsUsingBlock:^(XCSourceTextRange *sourceTextRange, NSUInteger idx, BOOL *stop) {
         for (NSInteger i = sourceTextRange.start.line; i <= sourceTextRange.end.line; i++) {
             if (i <= insertIndex) {

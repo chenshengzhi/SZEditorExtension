@@ -32,47 +32,52 @@
 - (NSArray <NSDictionary <XCSourceEditorCommandDefinitionKey, id> *> *)commandDefinitions {
     return @[
              @{
-                 XCSourceEditorCommandIdentifierKey: @"com.csz.SZEditorExtension.SZXcodeEditorExtension.duplicateLine",
+                 XCSourceEditorCommandIdentifierKey: SZDuplicateLineCommandIdentifier,
                  XCSourceEditorCommandClassNameKey: NSStringFromClass([SZDuplicateLineCommand class]),
                  XCSourceEditorCommandNameKey: @"Duplicate Line",
                  },
              @{
-                 XCSourceEditorCommandIdentifierKey: @"com.csz.SZEditorExtension.SZXcodeEditorExtension.deleteLine",
+                 XCSourceEditorCommandIdentifierKey: SZDeleteLineCommandIdentifier,
                  XCSourceEditorCommandClassNameKey: NSStringFromClass([SZDeleteLineCommand class]),
                  XCSourceEditorCommandNameKey: @"Delete Line",
                  },
              @{
-                 XCSourceEditorCommandIdentifierKey: @"com.csz.SZEditorExtension.SZXcodeEditorExtension.placeImport",
+                 XCSourceEditorCommandIdentifierKey: SZPlaceImportCommandIdentifier,
                  XCSourceEditorCommandClassNameKey: NSStringFromClass([SZPlaceImportCommand class]),
                  XCSourceEditorCommandNameKey: @"Place Impport",
                  },
              @{
-                 XCSourceEditorCommandIdentifierKey: @"com.csz.SZEditorExtension.SZXcodeEditorExtension.align",
+                 XCSourceEditorCommandIdentifierKey: SZPlaceImportShiftCommandIdentifier,
+                 XCSourceEditorCommandClassNameKey: NSStringFromClass([SZPlaceImportCommand class]),
+                 XCSourceEditorCommandNameKey: @"Place Impport Shift",
+                 },
+             @{
+                 XCSourceEditorCommandIdentifierKey: SZAlignCommandIdentifier,
                  XCSourceEditorCommandClassNameKey: NSStringFromClass([SZAlignCommand class]),
                  XCSourceEditorCommandNameKey: @"Align Selected Lines",
                  },
              @{
-                 XCSourceEditorCommandIdentifierKey: @"com.csz.SZEditorExtension.SZXcodeEditorExtension.propertyGetter",
+                 XCSourceEditorCommandIdentifierKey: SZPropertyGetterCommandIdentifier,
                  XCSourceEditorCommandClassNameKey: NSStringFromClass([SZPropertyGetterCommand class]),
                  XCSourceEditorCommandNameKey: @"Property Getter",
                  },
              @{
-                 XCSourceEditorCommandIdentifierKey: @"com.csz.SZEditorExtension.SZXcodeEditorExtension.propertyReadonly",
+                 XCSourceEditorCommandIdentifierKey: SZPropertyReadOnlyCommandIdentifier,
                  XCSourceEditorCommandClassNameKey: NSStringFromClass([SZPropertyReadonlyCommand class]),
                  XCSourceEditorCommandNameKey: @"Property Readonly",
                  },
              @{
-                 XCSourceEditorCommandIdentifierKey: @"com.csz.SZEditorExtension.SZXcodeEditorExtension.selectMethod",
+                 XCSourceEditorCommandIdentifierKey: SZSelectMethodCommandIdentifier,
                  XCSourceEditorCommandClassNameKey: NSStringFromClass([SZSelectMethodStatementCommand class]),
                  XCSourceEditorCommandNameKey: @"Select Method",
                  },
              @{
-                 XCSourceEditorCommandIdentifierKey: @"com.csz.SZEditorExtension.SZXcodeEditorExtension.classExtension",
+                 XCSourceEditorCommandIdentifierKey: SZClassExtensionCommandIdentifier,
                  XCSourceEditorCommandClassNameKey: NSStringFromClass([SZClassExtensionCommand class]),
                  XCSourceEditorCommandNameKey: @"Class Extension",
                  },
              @{
-                 XCSourceEditorCommandIdentifierKey: @"com.csz.SZEditorExtension.SZXcodeEditorExtension.delegateProtocol",
+                 XCSourceEditorCommandIdentifierKey: SZDelegateProtocolCommandIdentifier,
                  XCSourceEditorCommandClassNameKey: NSStringFromClass([SZDelegateProtocolCommand class]),
                  XCSourceEditorCommandNameKey: @"Delegate Protocol",
                  },
