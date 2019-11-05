@@ -8,6 +8,7 @@
 
 #import "SZPropertyReadonlyCommand.h"
 #import "NSString+SZAddition.h"
+#import "SZCommandConstants.h"
 
 @implementation SZPropertyReadonlyCommand
 
@@ -20,7 +21,11 @@
         for (NSUInteger idx = start.line; idx <= end.line; idx++) {
             NSString *text = lines[idx];
             if ([text sz_isPropertyLine]) {
-                text = [text sz_readonlyPropertyLine];
+                if ([invocation.commandIdentifier isEqualToString:SZPropertyReadOnlyCommandIdentifier]) {
+                    text = [text sz_readonlyPropertyLine];
+                } else {
+                    text = [text sz_antiReadonlyPropertyLine];
+                }
                 [lines replaceObjectAtIndex:idx withObject:text];
             }
         }
