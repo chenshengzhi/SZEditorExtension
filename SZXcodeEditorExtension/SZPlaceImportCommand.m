@@ -96,8 +96,35 @@
         }
     }
     
-    [importLineArray sortUsingSelector:@selector(compare:)];
-    [importLineArray sortUsingComparator:^NSComparisonResult(NSString *obj1, NSString *obj2) {
+    NSMutableArray<NSString *> *importAngleArray = [NSMutableArray array];
+    NSMutableArray<NSString *> *importQuotationArray = [NSMutableArray array];
+    NSMutableArray<NSString *> *includeAngleArray = [NSMutableArray array];
+    NSMutableArray<NSString *> *includeQuotationArray = [NSMutableArray array];
+    NSMutableArray<NSString *> *atImportArray = [NSMutableArray array];
+    NSMutableArray<NSString *> *otherArray = [NSMutableArray array];
+    
+    [importLineArray enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj hasPrefix:@"#import <"]) {
+            [importAngleArray addObject:obj];
+        } else if ([obj hasPrefix:@"#include <"]) {
+            [includeAngleArray addObject:obj];
+        } else if ([obj hasPrefix:@"#import \""]) {
+            [importQuotationArray addObject:obj];
+        } else if ([obj hasPrefix:@"include \""]) {
+            [includeQuotationArray addObject:obj];
+        } else if ([obj hasPrefix:@"@import "]) {
+            [atImportArray addObject:obj];
+        } else {
+            [otherArray addObject:obj];
+        }
+    }];
+    [importAngleArray sortUsingSelector:@selector(compare:)];
+    [importQuotationArray sortUsingSelector:@selector(compare:)];
+    [includeAngleArray sortUsingSelector:@selector(compare:)];
+    [includeQuotationArray sortUsingSelector:@selector(compare:)];
+    [atImportArray sortUsingSelector:@selector(compare:)];
+    [otherArray sortUsingSelector:@selector(compare:)];
+    [importQuotationArray sortUsingComparator:^NSComparisonResult(NSString *obj1, NSString *obj2) {
         if ([obj1 containsString:className]) {
             return NSOrderedAscending;
         } else if ([obj2 containsString:className]) {
@@ -106,7 +133,7 @@
             return NSOrderedSame;
         }
     }];
-    [importLineArray sortUsingComparator:^NSComparisonResult(NSString *obj1, NSString *obj2) {
+    [importQuotationArray sortUsingComparator:^NSComparisonResult(NSString *obj1, NSString *obj2) {
         if ([obj1 containsString:fileName]) {
             return NSOrderedAscending;
         } else if ([obj2 containsString:fileName]) {
@@ -115,6 +142,13 @@
             return NSOrderedSame;
         }
     }];
+    [importLineArray removeAllObjects];
+    [importLineArray addObjectsFromArray:importAngleArray];
+    [importLineArray addObjectsFromArray:includeAngleArray];
+    [importLineArray addObjectsFromArray:importQuotationArray];
+    [importLineArray addObjectsFromArray:includeQuotationArray];
+    [importLineArray addObjectsFromArray:atImportArray];
+    [importLineArray addObjectsFromArray:otherArray];
     
     importRange.length = importLineArray.count;
     NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:importRange];

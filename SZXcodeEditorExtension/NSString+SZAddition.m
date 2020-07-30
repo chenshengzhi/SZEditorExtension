@@ -35,7 +35,7 @@ static inline BOOL isSyntaxChar(unichar theChar) {
 
 - (BOOL)sz_isImportLine {
     NSString *text = [self sz_trimWhitespaceAndNewline];
-    return ([text hasPrefix:@"import"] || [text hasPrefix:@"@import"] || [text hasPrefix:@"#import"]);
+    return ([text hasPrefix:@"import"] || [text hasPrefix:@"@import"] || [text hasPrefix:@"#import"] || [text hasPrefix:@"#include"]);
 }
 
 - (BOOL)sz_isAsignmentStatement {
