@@ -16,6 +16,7 @@ static NSString * const SZPlaceImportShiftCommandIdentifier = @"com.csz.SZEditor
 static NSString * const SZAlignCommandIdentifier = @"com.csz.SZEditorExtension.SZXcodeEditorExtension.align";
 static NSString * const SZPropertyGetterCommandIdentifier = @"com.csz.SZEditorExtension.SZXcodeEditorExtension.propertyGetter";
 static NSString * const SZPropertyReadOnlyCommandIdentifier = @"com.csz.SZEditorExtension.SZXcodeEditorExtension.propertyReadonly";
+static NSString * const SZPropertyAntiReadOnlyCommandIdentifier = @"com.csz.SZEditorExtension.SZXcodeEditorExtension.propertyAntiReadonly";
 static NSString * const SZSelectMethodCommandIdentifier = @"com.csz.SZEditorExtension.SZXcodeEditorExtension.selectMethod";
 static NSString * const SZClassExtensionCommandIdentifier = @"com.csz.SZEditorExtension.SZXcodeEditorExtension.classExtension";
 static NSString * const SZDelegateProtocolCommandIdentifier = @"com.csz.SZEditorExtension.SZXcodeEditorExtension.delegateProtocol";

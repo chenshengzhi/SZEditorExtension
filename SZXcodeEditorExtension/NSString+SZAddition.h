@@ -38,6 +38,7 @@
 - (BOOL)sz_isExtensionForInterface:(NSString *)interface;
 
 - (NSString *)sz_readonlyPropertyLine;
+- (NSString *)sz_antiReadonlyPropertyLine;
 
 - (NSString *)sz_whiteSpacePrefix;
 

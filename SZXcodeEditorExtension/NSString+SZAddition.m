@@ -222,6 +222,33 @@ static inline BOOL isSyntaxChar(unichar theChar) {
     }
 }
 
+- (NSString *)sz_antiReadonlyPropertyLine {
+    if ([self sz_isPropertyLine]) {
+        /// 非贪婪匹配
+        NSRange range = [self rangeOfString:@"\\(.*?\\)" options:NSRegularExpressionSearch];
+        if (range.location == NSNotFound) {
+            return self;
+        } else {
+            NSString *subText = [self substringWithRange:NSMakeRange(range.location + 1, range.length - 2)];
+            NSMutableArray *array = [[subText componentsSeparatedByString:@","] mutableCopy];
+            for (NSUInteger idx = 0; idx < array.count; idx++) {
+                array[idx] = [array[idx] sz_trimWhitespace];
+            }
+            [array removeObject:@"readonly"];
+            NSString *declareText = [self substringFromIndex:NSMaxRange(range)];
+            if ([declareText containsString:@"*"]) {
+                [array addObject:@"strong"];
+            }
+            subText = [array componentsJoinedByString:@", "];
+            subText = [NSString stringWithFormat:@"(%@)", subText];
+            NSString *text = [self stringByReplacingCharactersInRange:range withString:subText];
+            return text;
+        }
+    } else {
+        return self;
+    }
+}
+
 - (NSString *)sz_whiteSpacePrefix {
     NSRange range = [self rangeOfString:@" +" options:NSRegularExpressionSearch];
     if (range.location == NSNotFound) {
