@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		24112F512131B427008D83D8 /* XcodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24679D4020D63672003C95D4 /* XcodeKit.framework */; };
 		24112F532131B497008D83D8 /* NSString+SZAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 24AB6B501E7E3A1800A82515 /* NSString+SZAddition.m */; };
 		24112F542131B49D008D83D8 /* NSArray+SZAlignByEqualSign.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E023AE1E7E3436004DBC93 /* NSArray+SZAlignByEqualSign.m */; };
 		2445B1D920C9826400ADC78F /* SZPropertyGetterCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 2445B1D820C9826400ADC78F /* SZPropertyGetterCommand.m */; };
@@ -22,6 +21,8 @@
 		24679D3E20D56652003C95D4 /* SZSelectMethodStatementCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 24679D3D20D56652003C95D4 /* SZSelectMethodStatementCommand.m */; };
 		24679D4220D63693003C95D4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A6CD9C1D96831D00ECEF89 /* Cocoa.framework */; };
 		247AD917211350D800E81E01 /* SZPropertyReadonlyCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 247AD916211350D800E81E01 /* SZPropertyReadonlyCommand.m */; };
+		247CBB032562C33200E49497 /* XcodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24679D4020D63672003C95D4 /* XcodeKit.framework */; };
+		247CBB042562C33200E49497 /* XcodeKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24679D4020D63672003C95D4 /* XcodeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		248B5F4A2131B64500B226BB /* NSArray+SZXCSourceTextRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 248B5F492131B64500B226BB /* NSArray+SZXCSourceTextRange.m */; };
 		248B5F4B2131B6B700B226BB /* NSArray+SZAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 24679D3A20D5637B003C95D4 /* NSArray+SZAddition.m */; };
 		248B5F4C2131B6B800B226BB /* NSArray+SZAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 24679D3A20D5637B003C95D4 /* NSArray+SZAddition.m */; };
@@ -75,6 +76,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		247CBB052562C33200E49497 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				247CBB042562C33200E49497 /* XcodeKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		24A6CDAE1D96831D00ECEF89 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -181,8 +193,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24112F512131B427008D83D8 /* XcodeKit.framework in Frameworks */,
 				24A6CD9D1D96831D00ECEF89 /* Cocoa.framework in Frameworks */,
+				247CBB032562C33200E49497 /* XcodeKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +423,7 @@
 				24A6CD961D96831D00ECEF89 /* Sources */,
 				24A6CD971D96831D00ECEF89 /* Frameworks */,
 				24A6CD981D96831D00ECEF89 /* Resources */,
+				247CBB052562C33200E49497 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
