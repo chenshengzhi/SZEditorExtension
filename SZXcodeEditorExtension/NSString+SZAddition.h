@@ -3,7 +3,6 @@
 //  SZEditorExtension
 //
 //  Created by csz on 2017/3/19.
-//  Copyright © 2017年 陈圣治. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -41,5 +40,8 @@
 - (NSString *)sz_antiReadonlyPropertyLine;
 
 - (NSString *)sz_whiteSpacePrefix;
+
+- (BOOL)sz_isDirectory;
+- (BOOL)sz_isFileExist;
 
 @end

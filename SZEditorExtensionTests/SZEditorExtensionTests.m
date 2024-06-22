@@ -3,7 +3,6 @@
 //  SZEditorExtensionTests
 //
 //  Created by csz on 2016/9/24.
-//  Copyright © 2016年 陈圣治. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
@@ -213,7 +212,7 @@
                                @"//  SZEditorExtension",
                                @"//",
                                @"//  Created by csz on 2018/6/9.",
-                               @"//  Copyright © 2018 陈圣治. All rights reserved.",
+                               @"//  Copyright © 2018 Neil. All rights reserved.",
                                @"//",
                                @"",
                                @"#import \"SZPropertyGetterViewController.h\"",

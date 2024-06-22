@@ -14,6 +14,11 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
+		<key>SZPlaceImports.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>SZXcodeEditorExtension.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -22,6 +27,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>245E06A72C26700600F41C75</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>24A6CD621D96831100ECEF89</key>
 		<dict>
 			<key>primary</key>

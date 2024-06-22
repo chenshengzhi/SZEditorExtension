@@ -3,7 +3,6 @@
 //  SZEditorExtension
 //
 //  Created by csz on 2019/7/18.
-//  Copyright © 2019 陈圣治. All rights reserved.
 //
 
 #ifndef SZCommandConstants_h

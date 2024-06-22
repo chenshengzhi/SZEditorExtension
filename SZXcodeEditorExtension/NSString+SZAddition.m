@@ -3,7 +3,6 @@
 //  SZEditorExtension
 //
 //  Created by csz on 2017/3/19.
-//  Copyright © 2017年 陈圣治. All rights reserved.
 //
 
 #import "NSString+SZAddition.h"
@@ -255,6 +254,23 @@ static inline BOOL isSyntaxChar(unichar theChar) {
         return @"";
     }
     return [self substringWithRange:range];
+}
+
+- (BOOL)sz_isDirectory {
+    if (!self.length) {
+        return NO;
+    }
+    BOOL isDirectory = NO;
+    BOOL exist = [[NSFileManager defaultManager] fileExistsAtPath:self isDirectory:&isDirectory];
+    return (exist && isDirectory);
+}
+
+- (BOOL)sz_isFileExist {
+    if (!self.length) {
+        return NO;
+    }
+    BOOL exist = [[NSFileManager defaultManager] fileExistsAtPath:self isDirectory:NULL];
+    return exist;
 }
 
 @end

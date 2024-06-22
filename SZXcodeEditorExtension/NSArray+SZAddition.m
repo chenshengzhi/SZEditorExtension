@@ -3,7 +3,6 @@
 //  SZXcodeEditorExtension
 //
 //  Created by csz on 2018/6/16.
-//  Copyright © 2018 陈圣治. All rights reserved.
 //
 
 #import "NSArray+SZAddition.h"
@@ -11,7 +10,8 @@
 
 @implementation NSArray (SZAddition)
 
-- (NSInteger)sz_propertyGetterInsertIdexForInterface:(NSString *)interface position:(SZEEPropertyGetterPosition)position {
+- (NSInteger)sz_propertyGetterInsertIdexForInterface:(NSString *)interface
+                                            position:(SZEEPropertyGetterPosition)position {
     NSInteger insertIndex = NSNotFound;
     for (NSInteger idx = 0; idx < self.count; idx++) {
         NSString *line = self[idx];
@@ -38,7 +38,8 @@
     }
 }
 
-- (void)sz_firstInterfaceNameFromIndex:(NSInteger)fromIndex block:(void(^)(NSString *name, NSInteger index))block {
+- (void)sz_firstInterfaceNameFromIndex:(NSInteger)fromIndex
+                                 block:(void(^)(NSString *name, NSInteger index))block {
     [self sz_firstInterfaceNameFromIndex:fromIndex up:YES block:^(NSString *name, NSInteger index) {
         if (index < self.count) {
             if (block) {
@@ -50,10 +51,14 @@
     }];
 }
 
-- (void)sz_firstInterfaceNameFromIndex:(NSInteger)fromIndex up:(BOOL)up block:(void(^)(NSString *name, NSInteger index))block {
+- (void)sz_firstInterfaceNameFromIndex:(NSInteger)fromIndex
+                                    up:(BOOL)up
+                                 block:(void(^)(NSString *name, NSInteger index))block {
     __block NSString *name = nil;
     __block NSInteger targetIndex = NSNotFound;
-    [self sz_enumerateLineFromIndex:fromIndex up:up usingBlock:^void(NSString *text, NSInteger index, BOOL *stop) {
+    [self sz_enumerateLineFromIndex:fromIndex
+                                 up:up
+                         usingBlock:^void(NSString *text, NSInteger index, BOOL *stop) {
         if ([text sz_isInterfaceLine]) {
             name = [text sz_interfaceName];
             targetIndex = index;
@@ -65,8 +70,11 @@
     }
 }
 
-- (void)sz_firstImplementationNameWithFromIndex:(NSInteger)fromIndex block:(void(^)(NSString *name, NSInteger index))block {
-    [self sz_firstImplementationNameWithFromIndex:fromIndex up:YES block:^(NSString *name, NSInteger index) {
+- (void)sz_firstImplementationNameWithFromIndex:(NSInteger)fromIndex
+                                          block:(void(^)(NSString *name, NSInteger index))block {
+    [self sz_firstImplementationNameWithFromIndex:fromIndex
+                                               up:YES
+                                            block:^(NSString *name, NSInteger index) {
         if (index < self.count) {
             if (block) {
                 block(name, index);
@@ -77,10 +85,14 @@
     }];
 }
 
-- (void)sz_firstImplementationNameWithFromIndex:(NSInteger)fromIndex up:(BOOL)up block:(void(^)(NSString *name, NSInteger index))block {
+- (void)sz_firstImplementationNameWithFromIndex:(NSInteger)fromIndex
+                                             up:(BOOL)up
+                                          block:(void(^)(NSString *name, NSInteger index))block {
     __block NSString *name = nil;
     __block NSInteger targetIndex = NSNotFound;
-    [self sz_enumerateLineFromIndex:fromIndex up:up usingBlock:^void(NSString *text, NSInteger index, BOOL *stop) {
+    [self sz_enumerateLineFromIndex:fromIndex
+                                 up:up
+                         usingBlock:^void(NSString *text, NSInteger index, BOOL *stop) {
         if ([text sz_isImplementationLine]) {
             name = [text sz_implementationName];
             targetIndex = index;
@@ -104,9 +116,12 @@
     return endIndex;
 }
 
-- (BOOL)sz_hasExtensionWithName:(NSString *)name fromIndex:(NSInteger)fromIndex {
+- (BOOL)sz_hasExtensionWithName:(NSString *)name
+                      fromIndex:(NSInteger)fromIndex {
     __block BOOL has = NO;
-    [self sz_enumerateLineFromIndex:fromIndex up:YES usingBlock:^(NSString *text, NSInteger index, BOOL *stop) {
+    [self sz_enumerateLineFromIndex:fromIndex
+                                 up:YES
+                         usingBlock:^(NSString *text, NSInteger index, BOOL *stop) {
         if ([text sz_isExtensionForInterface:name]) {
             has = YES;
             *stop = YES;
@@ -115,11 +130,13 @@
     return has;
 }
 
-- (void)sz_interfaceRangeFromIndex:(NSUInteger)fromIndex block:(void(^)(NSString *name, NSRange range))block {
+- (void)sz_interfaceRangeFromIndex:(NSUInteger)fromIndex
+                             block:(void(^)(NSString *name, NSRange range))block {
     if (!block) {
         return;
     }
-    [self sz_firstInterfaceNameFromIndex:fromIndex block:^(NSString *name, NSInteger interfaceIndex) {
+    [self sz_firstInterfaceNameFromIndex:fromIndex
+                                   block:^(NSString *name, NSInteger interfaceIndex) {
         if (interfaceIndex >= self.count) {
             block(nil, NSMakeRange(NSNotFound, 0));
             return;
@@ -134,11 +151,13 @@
     }];
 }
 
-- (void)sz_implementationRangeFromIndex:(NSUInteger)fromIndex block:(void(^)(NSString *name, NSRange range))block {
+- (void)sz_implementationRangeFromIndex:(NSUInteger)fromIndex
+                                  block:(void(^)(NSString *name, NSRange range))block {
     if (!block) {
         return;
     }
-    [self sz_firstImplementationNameWithFromIndex:fromIndex block:^(NSString *name, NSInteger implementationIndex) {
+    [self sz_firstImplementationNameWithFromIndex:fromIndex
+                                            block:^(NSString *name, NSInteger implementationIndex) {
         if (implementationIndex >= self.count) {
             block(nil, NSMakeRange(NSNotFound, 0));
             return;
@@ -172,30 +191,80 @@
 }
 
 - (NSRange)sz_importLinesRange {
-    __block NSInteger start = NSNotFound;
-    __block NSInteger last = NSNotFound;
-    [self enumerateObjectsUsingBlock:^(NSString *line, NSUInteger idx, BOOL *stop) {
+    NSInteger start = NSNotFound;
+    NSInteger end = NSNotFound;
+    NSInteger macroStart = NSNotFound;
+    NSMutableArray<NSValue *> *tempArray = [NSMutableArray array];
+    NSInteger macroDepth = 0;
+    
+    for (NSInteger idx = 0; idx < self.count; idx++) {
+        NSString *line = self[idx];
         NSString *text = [line sz_trimWhitespaceAndNewline];
-        if (text.length) {
-            if ([text sz_isImportLine]) {
-                if (start == NSNotFound) {
-                    start = idx;
+        if (!text.length) {
+            continue;
+        }
+        if ([text hasPrefix:@"//"]) {
+            continue;
+        }
+        if (macroStart != NSNotFound) {
+            if ([text hasPrefix:@"#endif"]) {
+                macroDepth--;
+                if (macroDepth == 0) {
+                    NSRange range = NSMakeRange(macroStart, idx - macroStart);
+                    NSValue *value = [NSValue valueWithRange:range];
+                    [tempArray addObject:value];
+                    macroStart = NSNotFound;
                 }
-                last = idx;
-            } else if (![text hasPrefix:@"//"]) {
-                *stop = YES;
+            }
+            continue;
+        }
+        if ([text hasPrefix:@"#if"]) {
+            macroStart = idx;
+            macroDepth++;
+            continue;
+        }
+        if ([text sz_isImportLine]) {
+            if (start == NSNotFound) {
+                start = idx;
+            }
+            end = idx;
+            continue;
+        }
+        break;
+    }
+    if (tempArray.count) {
+        for (NSValue *value in tempArray) {
+            NSRange range = [value rangeValue];
+            BOOL allImport = YES;
+            NSInteger macroStart = range.location;
+            NSInteger macroEnd = range.location + range.length;
+            for (NSInteger idx = macroStart + 1; idx < macroEnd - 1; idx++) {
+                NSString *line = self[idx];
+                if (![line sz_isImportLine]) {
+                    allImport = NO;
+                    break;
+                }
+            }
+            if (allImport) {
+                if (macroEnd < start) {
+                    start = macroStart;
+                } else if (macroStart > end) {
+                    end = macroEnd;
+                }
             }
         }
-    }];
+    }
     NSInteger count = 0;
     if (start != NSNotFound) {
-        count = last + 1 - start;
+        count = end + 1 - start;
     }
     return NSMakeRange(start, count);
 }
 
 #pragma mark - util -
-- (void)sz_enumerateLineFromIndex:(NSInteger)fromIndex up:(BOOL)up usingBlock:(void(^)(NSString *text, NSInteger index, BOOL *stop))block {
+- (void)sz_enumerateLineFromIndex:(NSInteger)fromIndex
+                               up:(BOOL)up
+                       usingBlock:(void(^)(NSString *text, NSInteger index, BOOL *stop))block {
     if (!block) {
         return;
     }
@@ -222,6 +291,21 @@
             }
         }
     }
+}
+
+- (NSArray *)sz_mapUsingBlock:(id (^)(id, NSUInteger))block {
+    if (!block) {
+        return @[];
+    }
+    NSMutableArray *tempArray = [NSMutableArray array];
+    NSArray *dataSource = [self copy];
+    [dataSource enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        id mapObj = block(obj, idx);
+        if (mapObj) {
+            [tempArray addObject:mapObj];
+        }
+    }];
+    return [tempArray copy];
 }
 
 @end

@@ -3,10 +3,10 @@
 //  SZXcodeEditorExtension
 //
 //  Created by csz on 2018/8/26.
-//  Copyright © 2018 陈圣治. All rights reserved.
 //
 
 #import "NSArray+SZXCSourceTextRange.h"
+#import "XCSourceTextRange+SZAddition.h"
 
 @implementation NSArray (SZXCSourceTextRange)
 
@@ -96,6 +96,15 @@
                 [tempArray addObject:subText];
             }
         }
+    }
+    return [tempArray copy];
+}
+
+- (NSArray<SZSourceTextRange *> *)sz_bridgedSourceTextRanges {
+    NSMutableArray *tempArray = [NSMutableArray array];
+    for (XCSourceTextRange *obj in self) {
+        SZSourceTextRange *textRange = [obj sz_bridgedSourceTextRange];
+        [tempArray addObject:textRange];
     }
     return [tempArray copy];
 }
