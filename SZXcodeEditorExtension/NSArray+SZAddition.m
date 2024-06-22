@@ -235,10 +235,10 @@
     if (tempArray.count) {
         for (NSValue *value in tempArray) {
             NSRange range = [value rangeValue];
-            BOOL allImport = YES;
+            BOOL allImport = range.length > 2;
             NSInteger macroStart = range.location;
             NSInteger macroEnd = range.location + range.length;
-            for (NSInteger idx = macroStart + 1; idx < macroEnd - 1; idx++) {
+            for (NSInteger idx = macroStart + 1; idx < macroEnd; idx++) {
                 NSString *line = self[idx];
                 if (![line sz_isImportLine]) {
                     allImport = NO;
@@ -255,7 +255,7 @@
         }
     }
     NSInteger count = 0;
-    if (start != NSNotFound) {
+    if (start != NSNotFound && end != NSNotFound) {
         count = end + 1 - start;
     }
     return NSMakeRange(start, count);

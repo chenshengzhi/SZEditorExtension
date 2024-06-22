@@ -70,9 +70,13 @@ typedef NS_ENUM(NSInteger, SZPIHLineType) {
 + (NSArray<NSString *> *)processLines:(NSArray<NSString *> *)lines
                            selections:(nullable NSArray<SZSourceTextRange *> *)selections
                     commandIdentifier:(nullable NSString *)commandIdentifier {
+    NSRange importRange = [lines sz_importLinesRange];
+    if (importRange.location == NSNotFound) {
+        return lines;
+    }
+
     NSMutableArray *linesMutable = [lines mutableCopy];
     __block NSInteger insertIndex = 0;
-    NSRange importRange = [linesMutable sz_importLinesRange];
     if (importRange.location != NSNotFound) {
         insertIndex = NSMaxRange(importRange);
     }
