@@ -21,5 +21,6 @@ static NSString * const SZClassExtensionCommandIdentifier = @"com.csz.SZEditorEx
 static NSString * const SZDelegateProtocolCommandIdentifier = @"com.csz.SZEditorExtension.SZXcodeEditorExtension.delegateProtocol";
 static NSString * const SZInsertNewLineBeforeCommandIdentifier = @"com.csz.SZEditorExtension.SZXcodeEditorExtension.insertNewLineBefore";
 static NSString * const SZInsertNewLineAfterCommandIdentifier = @"com.csz.SZEditorExtension.SZXcodeEditorExtension.insertNewLineAfter";
+static NSString * const SZDebugCodeCommandIdentifier = @"com.csz.SZEditorExtension.SZXcodeEditorExtension.debugCode";
 
 #endif /* SZCommandConstants_h */

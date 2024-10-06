@@ -6,17 +6,18 @@
 //
 
 #import "SourceEditorExtension.h"
-#import "SZDuplicateLineCommand.h"
-#import "SZDeleteLineCommand.h"
-#import "SZPlaceImportCommand.h"
 #import "SZAlignCommand.h"
-#import "SZPropertyGetterCommand.h"
-#import "SZSelectMethodStatementCommand.h"
-#import "SZPropertyReadonlyCommand.h"
 #import "SZClassExtensionCommand.h"
-#import "SZDelegateProtocolCommand.h"
-#import "SZInsertNewLineCommand.h"
 #import "SZCommandConstants.h"
+#import "SZDebugCodeCommand.h"
+#import "SZDelegateProtocolCommand.h"
+#import "SZDeleteLineCommand.h"
+#import "SZDuplicateLineCommand.h"
+#import "SZInsertNewLineCommand.h"
+#import "SZPlaceImportCommand.h"
+#import "SZPropertyGetterCommand.h"
+#import "SZPropertyReadonlyCommand.h"
+#import "SZSelectMethodStatementCommand.h"
 
 @implementation SourceEditorExtension
 
@@ -86,6 +87,11 @@
             XCSourceEditorCommandIdentifierKey: SZInsertNewLineAfterCommandIdentifier,
             XCSourceEditorCommandClassNameKey: NSStringFromClass([SZInsertNewLineCommand class]),
             XCSourceEditorCommandNameKey: @"Insert New Line After",
+        },
+        @{
+            XCSourceEditorCommandIdentifierKey: SZDebugCodeCommandIdentifier,
+            XCSourceEditorCommandClassNameKey: NSStringFromClass([SZDebugCodeCommand class]),
+            XCSourceEditorCommandNameKey: @"Debug Selected Code",
         },
     ];
 }

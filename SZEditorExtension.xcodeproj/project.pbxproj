@@ -60,6 +60,7 @@
 		24E023AC1E7E2924004DBC93 /* SZAlignCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E023AB1E7E2924004DBC93 /* SZAlignCommand.m */; };
 		24E023AF1E7E3436004DBC93 /* NSArray+SZAlignByEqualSign.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E023AE1E7E3436004DBC93 /* NSArray+SZAlignByEqualSign.m */; };
 		24E023B01E7E34DF004DBC93 /* NSArray+SZAlignByEqualSign.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E023AE1E7E3436004DBC93 /* NSArray+SZAlignByEqualSign.m */; };
+		3CE67CE92CB230E30089FF55 /* SZDebugCodeCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE67CE82CB230E30089FF55 /* SZDebugCodeCommand.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,6 +193,8 @@
 		24E023AB1E7E2924004DBC93 /* SZAlignCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZAlignCommand.m; sourceTree = "<group>"; };
 		24E023AD1E7E3436004DBC93 /* NSArray+SZAlignByEqualSign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+SZAlignByEqualSign.h"; sourceTree = "<group>"; };
 		24E023AE1E7E3436004DBC93 /* NSArray+SZAlignByEqualSign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+SZAlignByEqualSign.m"; sourceTree = "<group>"; };
+		3CE67CE72CB230E30089FF55 /* SZDebugCodeCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZDebugCodeCommand.h; sourceTree = "<group>"; };
+		3CE67CE82CB230E30089FF55 /* SZDebugCodeCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZDebugCodeCommand.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,6 +265,8 @@
 				245E72182156A32100705377 /* SZDelegateProtocolCommand.m */,
 				24CC72BB22E0C88600CE0A2F /* SZInsertNewLineCommand.h */,
 				24CC72BC22E0C88600CE0A2F /* SZInsertNewLineCommand.m */,
+				3CE67CE72CB230E30089FF55 /* SZDebugCodeCommand.h */,
+				3CE67CE82CB230E30089FF55 /* SZDebugCodeCommand.m */,
 			);
 			name = Command;
 			sourceTree = "<group>";
@@ -686,6 +691,7 @@
 				245E069F2C266CAD00F41C75 /* SZSourceTextRange.m in Sources */,
 				24A6CDB41D9683C700ECEF89 /* SZDeleteLineCommand.m in Sources */,
 				247AD917211350D800E81E01 /* SZPropertyReadonlyCommand.m in Sources */,
+				3CE67CE92CB230E30089FF55 /* SZDebugCodeCommand.m in Sources */,
 				245E720F215699DE00705377 /* NSMutableArray+SZDelegateProtocol.m in Sources */,
 				24C1A71E2131A389007C78D0 /* SZClassExtensionCommand.m in Sources */,
 				24CC72BD22E0C88600CE0A2F /* SZInsertNewLineCommand.m in Sources */,
@@ -882,12 +888,12 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20240622232000;
+				CURRENT_PROJECT_VERSION = 20241006105010;
 				DEVELOPMENT_TEAM = V33R949468;
 				INFOPLIST_FILE = SZEditorExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.1.0;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = com.csz.SZEditorExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -903,12 +909,12 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20240622232000;
+				CURRENT_PROJECT_VERSION = 20241006105010;
 				DEVELOPMENT_TEAM = V33R949468;
 				INFOPLIST_FILE = SZEditorExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.1.0;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = com.csz.SZEditorExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -985,12 +991,12 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20240622232000;
+				CURRENT_PROJECT_VERSION = 20241006105010;
 				DEVELOPMENT_TEAM = V33R949468;
 				INFOPLIST_FILE = SZXcodeEditorExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.csz.SZEditorExtension.SZXcodeEditorExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1005,12 +1011,12 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20240622232000;
+				CURRENT_PROJECT_VERSION = 20241006105010;
 				DEVELOPMENT_TEAM = V33R949468;
 				INFOPLIST_FILE = SZXcodeEditorExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.csz.SZEditorExtension.SZXcodeEditorExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
